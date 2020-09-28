@@ -1,0 +1,3656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Welcome to StockTrading Game</title>
+    <style type="text/css">
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            /* overflow: auto; Enable scroll if needed */
+            background-color: rgb(0, 0, 0); /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #intro {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        #thankyou,
+        #thankYouQhenQuizFailed {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        .portfolio {
+            font-family: Comic Sans MS, serif;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        hr {
+            display: block;
+            height: 2px;
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 1em 0;
+            padding: 0;
+        }
+
+
+        #survey {
+            max-width: 1000px;
+            margin: 30px auto 0;
+        }
+
+        .header {
+            max-width: 1000px;
+        }
+
+        .span {
+            margin-left: 13px;
+        }
+
+        .optionsdivions {
+            height: 50px;
+        }
+
+        .top {
+            background-color: #253a89;
+            color: white;
+            line-height: 3;
+            margin-bottom: 10px;
+            font-weight: bold
+        }
+
+        .top1 {
+            background-color: #000000;
+            color: white;
+            line-height: 3;
+            margin-bottom: 10px;
+            font-weight: bold
+        }
+
+        .buy-button {
+            background-color: #7d7270;
+            color: #f2f2f2
+        }
+
+        .sell-button {
+            background-color: #301e1a;
+            color: #f2f2f2
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            line-height: 2.4;
+            font-weight: bold;
+            color: #34407c;
+            background: #d8d7e7;
+            border-bottom: 2px solid #34407c;
+            border-right: 2px solid #34407c
+        }
+
+        /*  Edited by Zirui Wang  on 6/13/2020  */
+        /* .flex:last-child {
+            border-right: none
+        } */
+
+        .btns {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 142px;
+        }
+
+        /* Added by Zirui Wang */
+        .btn:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        table {
+            font-weight: bold
+        }
+
+        thead, tfoot {
+            color: #34407c
+        }
+
+        .table > tbody > tr > td {
+            border: none;
+            padding: 6px;
+        }
+
+        .blue {
+            background: #253a89
+        }
+
+        .t1 {
+            color: #2473ae
+        }
+
+        .t2 {
+            color: #8d34a2
+        }
+
+        .t3 {
+            color: #d5bd35
+        }
+
+        .t4 {
+            color: #888888
+        }
+
+        .alert {
+            margin-bottom: 10px;
+        }
+
+        /* Hide all steps by default: 
+           Added by Zirui Wang on 6/29/2020
+           Refer to w3schools */
+        .tab {
+            display: none;
+        }
+
+        /* Style the input fields */
+        input {
+            font-size: 17px;
+            border: 1px solid #aaaaaa;
+        }
+
+        /* Mark input boxes that gets an error on validation: */
+        input.invalid {
+            background-color: #ffdddd;
+        }
+
+        /* Make circles that indicate the steps of the form: 
+           Added by Zirui Wang on 6/29/2020
+           Refer to w3schools */
+        .step {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbbbbb;
+            border: none;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.5;
+        }
+
+        /* Mark the active step: 
+           Added by Zirui Wang on 6/29/2020
+           Refer to w3schools */
+        .step.active {
+            opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid:
+           Added by Zirui Wang on 6/29/2020
+           Refer to w3schools  */
+        .step.finish {
+            background-color: #4CAF50;
+        }
+
+        /* Hide all steps by default: 
+           Added by Zirui Wang on 7/5/2020
+           Refer to w3schools */
+        .introTab {
+            display: none;
+        }
+
+        /* Make circles that indicate the steps of the form: 
+           Added by Zirui Wang on 7/5/2020
+           Refer to w3schools */
+        .introStep {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbbbbb;
+            border: none;
+            border-radius: 50%;
+            display: inline-block;
+            opacity: 0.5;
+        }
+
+        /* Mark the active step: 
+           Added by Zirui Wang on 7/5/2020
+           Refer to w3schools */
+        .introStep.active {
+            opacity: 1;
+        }
+
+        /* Mark the steps that are finished and valid:
+           Added by Zirui Wang on 7/5/2020
+           Refer to w3schools  */
+        .introStep.finish {
+            background-color: #4CAF50;
+        }
+
+        /* Added by Zirui Wang on 7/13/2020 */
+        .required {
+            color: red;
+        }
+        .required_alert {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Modified by Zirui Wang on 7/5/2020 -->
+<div id="intro">
+    <H2 id="introHeader"> Instructions </H2>
+    <hr>
+    
+    <div class="introTab">
+        <br>
+        <p> This HIT will involve buying and selling fictitious stocks and will take
+            approximately 20 minutes. You will be given $1,000 of experiment cash
+            that you may use to trade stocks. Your final compensation will depend upon <b>the
+            total value of your stocks and cash</b> at the end of the experiment.
+        </p>
+        <br>
+        <p>
+            Before you start this experiment, you will be required to pass a short eligibility quiz based on key concepts.
+        </p>
+        </div>
+
+    
+<!--    <div class="row">-->
+<!--        <div class="col-xs-12">-->
+<!--            <table class="table">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th>Number of Stocks</th>-->
+<!--                    <th>Probabilty of Increase</th>-->
+<!--                    <th>Probability of Decrease</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1</td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">60%</td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">40%</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1</td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">55%</td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">45%</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1</td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">45%</td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">55%</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">1</td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">40%</td>-->
+<!--                    <td style="text-align: center; vertical-align: middle;">60%</td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!--    <img src = "https://i.ibb.co/f9s7hZ8/probabilities.png" alt = "Probabilities" class = "center"/>-->
+
+<!--    <p>-->
+<!--        <b>Second</b>, the magnitude of the price increase or decrease will be determined. Prices either change by $1,-->
+<!--        $3, or-->
+<!--        $5 with the same probability. The magnitude of the price changes is completely independent of whether the price-->
+<!--        is-->
+<!--        increasing or decreasing. </p>-->
+    
+
+    
+    
+
+    <div class="introTab">
+        <br>
+        <p><H4><u>Realized and Unrealized Gain/Loss Description</u></H4></p>
+        <p>
+            When trading, there is an important distinction between <b>realized</b> and <b>unrealized</b> gains and losses. In
+            general, when traders buy a stock and its value changes, they have an unrealized gain or loss as long as
+            they have not yet sold that stock. Once they sell the stock, they will have a realized gain or loss.
+        </p>
+        <p>
+            For example, if Lisa buys 2 shares of Stock A for $50 each and Stock A goes up in value to $56, we say
+            Lisa has an <b>unrealized gain</b> of $12 ($6 per share x 2 shares). If Lisa immediately sold her 2 shares of
+            Stock A for $56 each, she would <b>realize her gain</b> of $12. At that point we would say Lisa has a <b>realized
+            gain</b> of $12.
+        </p>
+        <p>
+            If John bought 3 shares of Stock B for $80 each and Stock B went down in value to $71, we say John
+            has an <b>unrealized loss</b> of $27 ($9 per share x 3 shares). If John immediately sold 2 shares of Stock B
+            for $71 each, he would have a <b>realized loss</b> of $18 ($9 per share x 2 shares). He would also have an
+            <b>unrealized loss</b> of $9 because he still has not sold 1 share of Stock B which is at a loss of $9.
+        </p>
+        <br>
+        <p>
+            Click the Start Quiz button to take an eligibility quiz. You must answer all 3 questions correctly to move on to 
+            the trading game (and be eligible for the bonus).
+        </p>
+    </div>
+
+    <div class="introTab">
+        <span class="required">* Required</span><br>
+        <span class="required">* You may only submit your quiz answers once.  Users who submit quiz answers submitted more than once will not have their HIT approved.</span><br><br>
+        <div style="background-color: #f2f2f2;">
+            <br><h3>Question 1</h3>
+            <hr>
+            <p>
+                Frank purchased 2 shares of Stock C for $60 each and 1 share of Stock D for $80. Stock C went up in
+                value to $66 and Stock D went down in value to $73. Frank sold his share of Stock D but did not sell any
+                shares of Stock C.
+            </p>
+            <p>
+                Which of the following is correct?<span class="required"> *</span>
+            </p>
+            <span class="required required_alert" id="quiz_required_alert_1">This is a required question.</span>
+            <br>
+            <input type="radio" id="quiz_q1_A" name="quiz_question_1" value="A">
+            <label for="quiz_q1_A"><h5>A. Frank has a <b>realized gain</b> of $6 and an <b>unrealized loss</b> of $7</h5></label>
+            <br>
+            <input type="radio" id="quiz_q1_B" name="quiz_question_1" value="B">
+            <label for="quiz_q1_B"><h5>B. Frank has a <b>realized gain</b> of $12 and an <b>unrealized loss</b> of $7</h5></label>
+            <br>
+            <input type="radio" id="quiz_q1_C" name="quiz_question_1" value="C">
+            <label for="quiz_q1_C"><h5>C. Frank has an <b>unrealized gain</b> of $6 and a <b>realized loss</b> of $7</h5></label>
+            <br>
+            <input type="radio" id="quiz_q1_D" name="quiz_question_1" value="D">
+            <label for="quiz_q1_D"><h5>D. Frank has an <b>unrealized gain</b> of $12 and a <b>realized loss</b> of $7</h5></label>
+            <br><br>
+        </div>
+
+        <div>
+            <br><h3>Question 2</h3>
+            <hr>
+            <p>
+                Amy and Bob are two players of the stock trading game. At the end of the game, Amy ends up with cash
+                value of $700 and stock value of $540. Bob ends up with cash value of $1090 and a stock value of $0.
+            </p>
+            <p>
+                Based on the instructions you read, who will get a higher bonus according to his/her performance?<span class="required"> *</span>
+            </p>
+            <span class="required required_alert" id="quiz_required_alert_2">This is a required question.</span>
+            <br>
+            <input type="radio" id="quiz_q2_A" name="quiz_question_2" value="A">
+            <label for="quiz_q2_A"><h5>A. Amy</h5></label>
+            <br>
+            <input type="radio" id="quiz_q2_B" name="quiz_question_2" value="B">
+            <label for="quiz_q2_B"><h5>B. Bob</h5></label>
+            <br><br>
+        </div>
+
+        <div style="background-color: #f2f2f2;">
+            <br><h3>Question 3</h3>
+            <hr>
+            <p>
+                Joe starts with $1000 cash. He first purchases 5 shares of stock A for $80 each. In a later round, the price
+                of stock A increases to $90, and he purchases 5 additional shares for a total of 10 shares of Stock A (now
+                with an average purchase price of $85 each). In the final round, the price of stock A rises again to $100
+                per share, and he sells 6 shares.
+            </p>
+            <p>
+                Which of the following is correct at the end of the game?<span class="required"> *</span>
+            </p>
+            <span class="required required_alert" id="quiz_required_alert_3">This is a required question.</span>
+            <br>
+            <input type="radio" id="quiz_q3_A" name="quiz_question_3" value="A">
+            <label for="quiz_q3_A"><h5>A. Joe has $400 cash (which includes an unrealized gain of $90) and <br>$750 of Stock A (which
+                includes a realized gain of $60)</h5></label>
+            <br>
+            <input type="radio" id="quiz_q3_B" name="quiz_question_3" value="B">
+            <label for="quiz_q3_B"><h5>B. Joe has $750 cash (which includes a realized gain of $90) and <br>$400 of Stock A (which
+                includes an unrealized gain of $60)</h5></label>
+            <br>
+            <input type="radio" id="quiz_q3_C" name="quiz_question_3" value="C">
+            <label for="quiz_q3_C"><h5>C. Joe has $400 cash (which includes a realized gain of $60) and <br>$750 of Stock A (which
+                includes an unrealized gain of $90)</h5></label>
+            <br>
+            <input type="radio" id="quiz_q3_D" name="quiz_question_3" value="D">
+            <label for="quiz_q3_D"><h5>D. Joe has $750 cash (which includes a realized gain of $60) and <br>$400 of Stock A (which
+                includes an unrealized gain of $90)</h5></label>
+            <br><br>
+        </div>
+    </div>
+
+    <div class="introTab">
+        <br>
+        <p> 
+            You may now continue to read the rest of instructions.
+        </p>
+        <br>
+        <p>There will be 4 stocks – Stock A, Stock B, Stock C and Stock D – and 12
+            rounds. In the first two rounds, you will just observe the stock prices and not
+            be able to trade.</p>
+        <p>In Rounds 3 through 12 you may use your cash to trade any of the stocks by using the
+            <button class="btn buy-button btn-sm" onclick="buy(1)">Buy</button>
+            and
+            <button class="btn sell-button btn-sm" onclick="sell(1)">Sell</button>
+            buttons at the bottom of your
+            screen.
+        </p>
+        <p >You will play the 12-round stock trading game a total of <b> 4 times</b>.</p>
+        <!--  A timer requires you spend at least ten seconds on each page. -->
+        <br>
+    
+    </div>
+
+        
+
+    <div class="introTab">
+        <br>
+        <p> <H4><u>Stock Price Development</u></H4> </p>
+        
+        <p>
+            Stock prices change each round according to the following two processes.  First, it will be determined whether
+            a stock will exhibit a price increase or decrease. The probabilities of increases or decreases are different
+            for each stock and do not change between rounds.</p>
+        <p>
+            Second, the magnitude of the price increase or decrease will be determined. Prices either change by $1, $3, or
+            $5 with the same probability. The magnitude of the price changes is completely independent of whether the price
+            is increasing or decreasing.
+        </p>
+        <p >The performance of a stock during 1 iteration of the game has nothing to do with its
+            performance in other iterations of the game. Also, your choices do not affect the price development.</p>
+        <br>
+    </div>
+
+    <div class="introTab">
+        <br>
+        <p> 
+            <H4><u>Trading</u></H4>
+        <p>
+            Once you start the experiment you will be shown a screen with information, graphs and a trading interface.
+        <p> At the top of the page, the current round will be displayed along with an indication of whether the round is an
+            Observation Round or a Trading Round. Remember, the first two rounds are Observation Rounds and you cannot trade
+            during these rounds. Rounds 3 – 12 are Trading Rounds.
+        </p>
+        <p> Your total portfolio will be held in cash and stocks. No interest will be paid on the amount you hold in cash.
+            The left graph entitled “Graph of Stock Prices in Each Round” displays the price development of all stocks.
+            Using your mouse cursor, you can investigate each stock’s price in more detail.
+        </p>
+        <br>
+    </div>
+    
+    <div class="introTab">
+        <br>
+        <p> <H4><u>Buying Shares</u></H4>
+        <p> At the bottom of your screen will see a row for each stock. If you click on the “buy” button, you will receive
+            1 share of the respective stock and its current price will be deducted from your cash balance.
+            You cannot buy any shares if you do not have the appropriate cash balance –– i.e., borrowing money is not
+            possible
+            in this experiment.</p>
+        <br>
+        <p> <H4><u>Selling Shares</u></H4>
+        <p> If you click on “sell,” you will sell 1 share of stock at the current price and the proceedings will be added
+            to your
+            cash balance.You cannot sell shares you do not own — i.e., short-selling is not allowed in this experiment.</p>
+            <br>
+    </div>
+
+    <div class="introTab">
+        <br>
+        <p><H4><u>Compensation</u></H4>
+        <p> For this HIT you will be paid $0.25 plus a bonus. A computer will randomly choose 1 of your 4 games and the bonus
+            will be equal to 0.3% times your <b>combined stock and cash value</b> in that game. For example, if Game #3 was randomly chosen by the 
+            computer and you finished with $1200 in stock and $300 in cash value in that game, your bonus compensation would be equal to 0.3% x $1500 = $4.50.
+            So your total compensation for the HIT would be equal to $0.25 + $4.50 = $4.75. You will be informed about your bonus
+            after you complete all 4 games and the questionnaire.
+        </p>
+        <br>
+        <div style="text-align: center">
+            <!-- button was changed to be enabled at the beginning by Zirui Wang on 6/2/2020 -->
+            <button class="btn btn-primary btn-lg blue" id="start">Start Experiment</button>
+        </div>
+
+        <br>
+        <p style="font-size:10px"><u>Consent to Participate in Research</u></p>
+        <p style="font-size: 10px">By answering the following questions, you are participating in a study on the cognitive
+            processes of
+            investors. By participating you are confirming that you are over 18 years of age. If you have questions about
+            this research,
+            or if you would like to receive a report of this research when it is completed please contact Joseph Engelberg
+            at
+            jengelberg@ucsd.edu. Your participation in this research is voluntary. You may decline to answer any or all of
+            the
+            following questions. You may decline further participation, at any time, without adverse consequences.
+            Your anonymity is assured; the researchers who have requested your participation will not receive any personal
+            information about you. By continuing, you are confirming that you understand these instructions and conditions
+            of participation.</p>
+    </div>
+
+    <!-- <div class="introTab">
+        <p> 
+            You may now begin the experiment. When you are content with all your trading decisions for the current round, you can click on the “Next Round”
+            button to receive new prices. In period 12, the button’s label will change to “Proceed”. If you click on it 
+            you will be redirected to a short questionnaire.
+        </p>
+        <br>
+    </div> -->
+
+    <br>
+    <div id="introButtons" style="overflow:auto;display: none;">
+        <div style="float:right;">
+            <button type="button" id="introPrevBtn" class="btn btn-primary btn-sm" onclick="introNextPrev(-1);">Previous</button>
+            <button type="button" id="introNextBtn" class="btn btn-primary btn-sm" onclick="introNextPrev(1); timerCountDown('introNextBtn', 'Next', _introCountDownComplete, currentIntroTab);" disabled>Next</button>
+        </div>
+    </div>
+
+    <!-- Circles which indicates the steps of the form: -->
+    <div id="introSteps" style="text-align:center;margin-top:40px;display: none;">
+        <span class="introStep"></span>
+        <span class="introStep"></span>
+        <span class="introStep"></span>
+        <span class="introStep"></span>
+        <span class="introStep"></span>
+        <span class="introStep"></span>
+        <span class="introStep"></span>
+        <span class="introStep"></span>
+    </div>
+    <br>
+    <!-- Modified by Zirui Wang on 06/27/2020 -->
+    <script type="text/javascript">
+        var button = document.getElementById("start");
+        button.onclick = function () {
+            start();
+            // uid = prompt("If you have a student ID, please enter it. Otherwise, please just hit ‘OK’. ", "");
+            // console.log(!(/^\d+$/.test(uid)));
+            // if(uid === undefined || uid ==="" || uid === null || !(/^\d+$/.test(uid))){
+            //     //modified due to the need that the buttion will never be disabled by Zirui Wang on 6/2/2020
+            //     if(defaultUid !== undefined) {
+            //         uid = defaultUid;
+            //     } else {
+            //         uid = 999999999;
+            //     }
+            // }
+            if(defaultUid === undefined) {
+                uid = 999999999;
+            }
+            document.getElementById("experiment").style.display = "block";
+            document.getElementById("intro").style.display = "none";
+        };
+    </script>
+</div>
+<div id="thankyou" style="display: none">
+    <!-- Please reload if you wanna play again(but it will no longer affect your score) -->
+    <h3> Thank you for completing all 4 games and answering the questionnaire! </h3>
+    <hr>
+    <br>
+    <!-- Added by Zirui Wang on 07/05/2020 -->
+    <p> To compute your bonus payment, Game <input disabled id="numRandomGame" value="#X" type="text"> was 
+        chosen and you finished with $<input disabled id="totalAssetthisRound" value="#Y" type="text"> in this game, 
+        so you will be paid a bonus of <input disabled id="formula" value=".3% x $Y = $Z" type="text">. </p>
+    <br>
+    <p>If your HIT is approved, your total compensation (including fixed payment and bonus) will be paid within the next <b>3 business days</b>.</p>
+    <br>
+    <p>    Click Next to receive the completion code you will need to get paid.</p>
+    <br>
+    <!-- Added by Zirui Wang on 06/24/2020 -->
+    <div style="float:right;">
+        <!-- <a href="https://turkgate.warrington.ufl.edu/codes/generate.php?stamp=10746320" 
+            class="btn btn-primary btn-sm" role="button">Next</a> -->
+
+        <button id="completeButton1" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >Next</button>
+    </div>
+</div>
+
+<!-- Added by Zirui Wang on 8/1/2020 -->
+<div id="thankYouQhenQuizFailed" style="display: none">
+    <!-- Please reload if you wanna play again(but it will no longer affect your score) -->
+    <h3> Thank you for participating in the quiz! </h3>
+    <hr>
+    <br>
+    <p>  Unfortunately, you did not answer all 3 questions correctly and therefore will not be able to access the stock
+        trading game to gain the bonus.
+    </p>
+    
+    <p>  Click Next to receive the completion code you will need to get paid.</p>
+    <br>
+    <div style="float:right;">
+        <!-- <a href="https://turkgate.warrington.ufl.edu/codes/generate.php?stamp=10746320"
+            class="btn btn-primary btn-sm" role="button">Next
+        </a> -->
+
+        <button id="completeButton2" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >Next</button>
+
+    </div>
+</div>
+
+<!-- Commented by Zirui Wang on 6/14/2020 -->
+<!-- <div id="survey" style="display: none">
+    <h2>Question 1</h2>
+    <hr>
+    <div class="header">
+        <p style="font-size: 15px"><b>Please evaluate the following statements</b></p>
+    </div>
+    <form action="" name="formquestion1">
+        <div id="question1">
+
+            <table style="border-collapse: collapse">
+                <tr>
+                    <td style="width:5%"></td>
+                    <td style="width:5%"></td>
+                    <td style="width:5%"></td>
+                    <td style="width:150px; padding-left: 4px"><label for="q11">1</label></td>
+                    <td style="width:150px; padding-left: 4px"><label for="q12">2</label></td>
+                    <td style="width:150px; padding-left: 4px"><label for="q13">3</label></td>
+                    <td style="width:150px; padding-left: 4px"><label for="q14">4</label></td>
+                    <td style="width:150px; padding-left: 4px"><label for="q15">5</label></td>
+                </tr>
+                <tr style="height: 10px"></tr>
+                <tr>
+                    <td style="width:35%; padding: 8px">How do you assess your investment knowledge? (1 = I have very
+                        small knowledge; 5 =
+                        I have a lot of knowledge)
+                    </td>
+                    <td style="width:5%"></td>
+                    <td style="width:5%"></td>
+
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q11"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q12"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q13"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q14"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q15"/></td>
+                </tr>
+                <tr style="height: 10px"></tr>
+                <tr style="background-color: #f2f2f2;">
+                    <td style="width:35%; padding: 8px">Please evaluate to what extent you have already gained
+                        investment experience
+                        (1 = I am very inexperienced; 5 = I am very experienced)
+                    </td>
+                    <td style="width:5%"></td>
+                    <td style="width:5%"></td>
+
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q21"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q22"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q23"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q24"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q25"/></td>
+                </tr>
+                <tr style="height: 10px"></tr>
+                <tr>
+                    <td style="width:35%; padding: 8px">I know a lot about investing money (1 = fully disagree; 5 = I
+                        fully agree)
+                    </td>
+                    <td style="width:5%"></td>
+                    <td style="width:5%"></td>
+
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q31"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q32"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q33"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q34"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q35"/></td>
+                </tr>
+                <tr style="height: 10px"></tr>
+                <tr style="background-color:#f2f2f2">
+                    <td style="width:35%; padding: 8px">I am very inexperienced with investing money 1 = I fully
+                        disagree; 5 = I fully
+                        agree)
+                    </td>
+                    <td style="width:5%"></td>
+                    <td style="width:5%"></td>
+
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q41"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q42"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q43"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q44"/></td>
+                    <td style="width:150px"><input type="radio" name="q11" value="1" id="q45"/></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <div id="question2">
+            <h2>Question 2</h2>
+            <hr>
+            <p style="font-size: 15px"><b>Suppose you had $100 in a savings account and the interest rate was 2 percent
+                per
+                year. After 5 years, how much do you think you would have in the account if you left the money to
+                grow</b></p>
+            <div class="optionsdivions">
+
+                <input style="margin-top: 18px; margin-left: 20px" type="radio" id="opt21" value="opt21"><span
+                    class="span">More than $102</span>
+
+            </div>
+            <div class="optionsdivions" style="background-color: #f2f2f2">
+
+                <img src="images/gaminginterface.png" height="541" width="814"/><input style="margin-top: 18px; margin-left: 20px" type="radio" id="opt22" value="opt22"><span
+                    class="span">Exactly $102</span>
+            </div>
+            <div class="optionsdivions">
+
+                <input style="margin-top: 18px; margin-left: 20px" type="radio" id="opt23" value="opt23"><span
+                    class="span">Do not know</span>
+            </div>
+            <div class="optionsdivions" style="background-color: #f2f2f2">
+
+                <input style="margin-top: 18px; margin-left: 20px" type="radio" id="opt24" value="opt24"><span
+                    class="span">less than $102</span>
+            </div>
+            <div class="optionsdivions">
+
+                <input style="margin-top: 18px; margin-left: 20px" type="radio" id="opt25" value="opt25"><span
+                    class="span">Refuse to answer</span>
+            </div>
+        </div>
+    </form>
+</div> -->
+
+<!-- Added by Zirui Wang on 06/28/2020 -->
+<!-- Modified by Zirui Wang on 07/05/2020 -->
+<div id="survey" style="display: none">
+    <span class="required">* Required</span><br><br>
+    <form id="surveyForm">
+        <div class="tab">
+            <div>
+                <h2>Question 1</h2>
+                <hr>
+                <h4>During each game, you were shown your portfolio unrealized gain/loss.</h4>
+                <img src="survey_total_ver2.jpeg" alt="location reminder of portfolio unrealized gain/loss" class="center">
+                <h4>In the last game, what is the largest portfolio unrealized <b>gain</b> you experienced?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_1">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q1_1" name="question_1_radio" value="I experienced" 
+                    onclick="getElementById('q1').removeAttribute('hidden');getElementById('q1').value='';">
+                <label for="q1_1"><h4>I did experience portfolio unrealized gains, and to the best of my memory, the largest <b>gain</b> was $</h4></label>
+                
+                <input type="text" id="q1" name="question_1" value="" style="width: 100px;" onfocus="getElementById('q1_1').setAttribute('checked','checked');">
+                <br>
+                
+                <input type="radio" id="q1_2" name="question_1_radio" value="I didn’t experience" 
+                    onclick="getElementById('q1').setAttribute('hidden','hidden');getElementById('q1').value='I didn’t experience';">
+                <label for="q1_2"><h4>I didn’t experience any portfolio unrealized <b>gains</b></h4></label>
+                <br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <br><h2>Question 2</h2>
+                <hr>
+                <h4>During each game, you were shown your portfolio unrealized gain/loss.</h4>
+                <img src="survey_total_ver2.jpeg" alt="location reminder of portfolio unrealized gain/loss" class="center">
+                <h4>In the last game, what is the largest portfolio unrealized <b>loss</b> you experienced?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_2">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q2_1" name="question_2_radio" value="Yes, I experienced." 
+                    onclick="getElementById('q2').removeAttribute('hidden');getElementById('q2').value='';">
+                <label for="q2_1"><h4>I did experience portfolio unrealized losses, and to the best of my memory, the largest <b>loss</b> was -$</h4></label>
+                <input type="text" id="q2" name="question_2" value="" style="width: 100px;" onfocus="getElementById('q2_1').setAttribute('checked','checked');">
+                <br>
+                <input type="radio" id="q2_2" name="question_2_radio" value="I didn’t experience" 
+                    onclick="getElementById('q2').setAttribute('hidden','hidden');getElementById('q2').value='I didn’t experience';">
+                <label for="q2_2"><h4>I didn’t experience any portfolio unrealized <b>losses</b></h4></label>
+                <br><br>
+            </div>
+
+            <div>
+                <br><h2>Question 3</h2>
+                <hr>
+                <h4>During each game, you were also shown individual stocks’ unrealized gains/losses.</h4>
+                <img src="survey_individual_ver2.jpeg" alt="location reminder of individual stocks’ unrealized gains/losses" class="center">
+                <h4>In the last game, what is the largest individual stock’s unrealized <b>gain</b> that you experienced?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_3">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q3_1" name="question_3_radio" value="Yes, I experienced." 
+                    onclick="getElementById('q3').removeAttribute('hidden');getElementById('q3').value='';">
+                <label for="q3_1"><h4>I did experience individual stock unrealized gains, and to the best of my memory, the largest <b>gain</b> was $</h4></label>
+                <input type="text" id="q3" name="question_3" value="" style="width: 100px;" onfocus="getElementById('q3_1').setAttribute('checked','checked');">
+                <br>
+                <input type="radio" id="q3_2" name="question_3_radio" value="I didn’t experience" 
+                    onclick="getElementById('q3').setAttribute('hidden','hidden');getElementById('q3').value='I didn’t experience';">
+                <label for="q3_2"><h4>I didn’t experience any individual stock unrealized <b>gains</b></h4></label>
+                <br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <br><h2>Question 4</h2>
+                <hr>
+                <h4>During each game, you were also shown individual stocks’ unrealized gains/losses.</h4>
+                <img src="survey_individual_ver2.jpeg" alt="location reminder of individual stocks’ unrealized gains/losses" class="center">
+                <h4>In the last game, what is the largest individual stock’s unrealized <b>loss</b> that you experienced?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_4">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q4_1" name="question_4_radio" value="Yes, I experienced." 
+                    onclick="getElementById('q4').removeAttribute('hidden');getElementById('q4').value='';">
+                <label for="q4_1"><h4>I did experience individual stock unrealized losses, and to the best of my memory, the largest <b>loss</b> was -$</h4></label>
+                <input type="text" id="q4" name="question_4" value="" style="width: 100px;" onfocus="getElementById('q4_1').setAttribute('checked','checked');">
+                <br>
+                <input type="radio" id="q4_2" name="question_4_radio" value="I didn’t experience" 
+                    onclick="getElementById('q4').setAttribute('hidden','hidden');getElementById('q4').value='I didn’t experience';">
+                <label for="q4_2"><h4>I didn’t experience any individual stock unrealized <b>losses</b></h4></label>
+                <br><br>
+            </div>
+        </div>
+        
+        <div class="tab">
+            <div>
+                <h4>For questions 5 to 7, on a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following
+                    statements: </h4>
+                
+                <br><h2>Question 5</h2>
+                <hr>
+                <!-- <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following
+                    statement: </h4>
+                <br> -->
+                <h4><i>“When deciding to sell shares of stock that I currently own, it is important that I 
+                    consider the performance of my entire portfolio.”</i><span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_5">This is a required question.</span><br>
+                    <br>
+                <input type="radio" id="q5_1" name="question_5" value="Strongly disagree">
+                <label for="q5_1" style="width:350px"><h4>1--Strongly disagree</h4></label>
+                <br>
+                <input type="radio" id="q5_2" name="question_5" value="Disagree">
+                <label for="q5_2" style="width:350px"><h4>2--Disagree</h4></label>
+                <br>
+                <input type="radio" id="q5_3" name="question_5" value="Neither agree nor disagree">
+                <label for="q5_3" style="width:350px"><h4>3--Neither agree nor disagree</h4></label>
+                <br>
+                <input type="radio" id="q5_4" name="question_5" value="Agree">
+                <label for="q5_4" style="width:350px"><h4>4--Agree</h4></label>
+                <br>
+                <input type="radio" id="q5_5" name="question_5" value="Strongly agree">
+                <label for="q5_5" style="width:350px"><h4>5--Strongly agree</h4></label><br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <h2>Question 6</h2>
+                <hr>
+                <!-- <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following statement: </h4><br> -->
+                <h4><i>“When deciding to sell shares of stock that I own, it is important to consider the price I paid for 
+                    the stock.”</i><span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_6">This is a required question.</span><br>
+                    <br>
+                <input type="radio" id="q6_1" name="question_6" value="Strongly disagree">
+                <label for="q6_1" style="width:350px"><h4>1--Strongly disagree</h4></label>
+                <br>
+                <input type="radio" id="q6_2" name="question_6" value="Disagree">
+                <label for="q6_2" style="width:350px"><h4>2--Disagree</h4></label>
+                <br>
+                <input type="radio" id="q6_3" name="question_6" value="Neither agree nor disagree">
+                <label for="q6_3" style="width:350px"><h4>3--Neither agree nor disagree</h4></label>
+                <br>
+                <input type="radio" id="q6_4" name="question_6" value="Agree">
+                <label for="q6_4" style="width:350px"><h4>4--Agree</h4></label>
+                <br>
+                <input type="radio" id="q6_5" name="question_6" value="Strongly agree">
+                <label for="q6_5" style="width:350px"><h4>5--Strongly agree</h4></label><br><br>
+            </div>
+            
+            <div>
+                <h2>Question 7</h2>
+                <hr>
+                <!-- <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following statement: </h4><br> -->
+                <h4>    <i>“It hurts to sell a stock for less than I paid for it.”</i><span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_7">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q7_1" name="question_7" value="Strongly disagree">
+                <label for="q7_1" style="width:350px"><h4>1--Strongly disagree</h4></label>
+                <br>
+                <input type="radio" id="q7_2" name="question_7" value="Disagree">
+                <label for="q7_2" style="width:350px"><h4>2--Disagree</h4></label>
+                <br>
+                <input type="radio" id="q7_3" name="question_7" value="Neither agree nor disagree">
+                <label for="q7_3" style="width:350px"><h4>3--Neither agree nor disagree</h4></label>
+                <br>
+                <input type="radio" id="q7_4" name="question_7" value="Agree">
+                <label for="q7_4" style="width:350px"><h4>4--Agree</h4></label>
+                <br>
+                <input type="radio" id="q7_5" name="question_7" value="Strongly agree">
+                <label for="q7_5" style="width:350px"><h4>5--Strongly agree</h4></label><br><br>
+            </div>
+        </div>
+        <div class="tab">
+            <div>
+                <h2>Question 8</h2>
+                <hr>
+                <h4>Imagine that you are about to purchase a pen for $15 and a backpack for $125. The backpack salesman informs
+                    you that the backpack you wish to buy is on sale for $120 at the other branch of the store, located a 20-minute
+                    drive away. Would you make the trip to the other store?<span class="required"> *</span>
+                </h4>
+                <span class="required required_alert" id="required_alert_new_13_2">This is a required question.</span>
+                <br>
+                <br>
+                <input type="radio" id="new_q13_2_yes" name="new_question_13_2" value="yes">
+                <label for="new_q13_2_yes" style="width:250px"><h4>Yes</h4></label>
+                <br>
+                <input type="radio" id="new_q13_2_no" name="new_question_13_2" value="no">
+                <label for="new_q13_2_no" style="width:250px"><h4>No</h4></label><br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <h2>Question 9</h2>
+                <hr>
+                <h4>Normally, if the price of a stock in your portfolio rose substantially since you bought 
+                    it, which of these two actions would make you feel happier?<span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_8">This is a required question.</span><br>
+                    <br>
+                <input type="radio" id="q8_1" name="question_8" value="holding on to the stock">
+                <label for="q8_1" style="width:250px"><h4>Holding on to the stock</h4></label>
+                <br>
+                <input type="radio" id="q8_2" name="question_8" value="selling that stock">
+                <label for="q8_2" style="width:250px"><h4>Selling that stock</h4></label><br><br>
+            </div>
+
+            <div>
+                <br><h2>Question 10</h2>
+                <hr>
+                <h4>Normally, if the price of a stock in your portfolio dropped substantially since you 
+                    bought it, which of these two actions would make you feel more painful?<span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_9">This is a required question.</span><br>
+                    <br>
+                <input type="radio" id="q9_1" name="question_9" value="holding on to the stock">
+                <label for="q9_1" style="width:250px"><h4>Holding on to the stock</h4></label>
+                <br>
+                <input type="radio" id="q9_2" name="question_9" value="selling that stock">
+                <label for="q9_2" style="width:250px"><h4>Selling that stock</h4></label><br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <h2>Question 11</h2>
+                <hr>
+                <h4>You played the stock trading games four times, how many stocks were available to trade in each game?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_10">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q10_1" name="question_10" value="1">
+                <label for="q10_1" style="width:250px"><h4>1</h4></label>
+                <br>
+                <input type="radio" id="q10_2" name="question_10" value="2">
+                <label for="q10_2" style="width:250px"><h4>2</h4></label>
+                <br>
+                <input type="radio" id="q10_3" name="question_10" value="3">
+                <label for="q10_3" style="width:250px"><h4>3</h4></label>
+                <br>
+                <input type="radio" id="q10_4" name="question_10" value="4">
+                <label for="q10_4" style="width:250px"><h4>4</h4></label>
+                <br>
+                <input type="radio" id="q10_5" name="question_10" value="5">
+                <label for="q10_5" style="width:250px"><h4>5</h4></label><br><br>
+            </div>
+
+            <div>
+                <h2>Question 12</h2>
+                <hr>
+                <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following statement: </h4><br>
+                <h4><i> “When deciding to sell shares of stock that I currently own, it is important that I focus on the stock 
+                    itself and not get distracted by the performance of the other stocks in my portfolio.”</i><span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_11">This is a required question.</span><br>
+                    <br>
+                <input type="radio" id="q11_1" name="question_11" value="Strongly disagree">
+                <label for="q11_1" style="width:350px"><h4>1--Strongly disagree</h4></label>
+                <br>
+                <input type="radio" id="q11_2" name="question_11" value="Disagree">
+                <label for="q11_2" style="width:350px"><h4>2--Disagree</h4></label>
+                <br>
+                <input type="radio" id="q11_3" name="question_11" value="Neither agree nor disagree">
+                <label for="q11_3" style="width:350px"><h4>3--Neither agree nor disagree</h4></label>
+                <br>
+                <input type="radio" id="q11_4" name="question_11" value="Agree">
+                <label for="q11_4" style="width:350px"><h4>4--Agree</h4></label>
+                <br>
+                <input type="radio" id="q11_5" name="question_11" value="Strongly agree">
+                <label for="q11_5" style="width:350px"><h4>5--Strongly agree</h4></label><br><br>
+            </div>
+        </div>
+
+        <div class="tab">
+            <div>
+                <h2>Question 13</h2>
+                <hr>
+                <h4>Imagine that you face the following pair of <b>concurrent</b> decisions. First examine both decisions, 
+                    then indicate the options you prefer.</h4><br>
+                <h4>Decision (i). Choose between:<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_12_i">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q12_1" name="question_12_i" value="A">
+                <label for="q12_1"><h4>A. a sure gain of $240</h4></label>
+                <br>
+                <input type="radio" id="q12_2" name="question_12_i" value="B">
+                <label for="q12_2"><h4>B. 25% chance to gain $1000, and 75% chance to gain nothing</h4></label><br>
+                <br>
+                <h4>Decision (ii). Choose between:<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_12_ii">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q12_3" name="question_12_ii" value="C">
+                <label for="q12_3"><h4>C. a sure loss of $750 </h4></label>
+                <br>
+                <input type="radio" id="q12_4" name="question_12_ii" value="D">
+                <label for="q12_4"><h4>D. 75% chance to lose $1000, and 25% chance to lose nothing</h4></label><br><br>
+            </div>
+        </div>
+
+        <div class="tab">
+            <div>
+                <h2>Question 14</h2>
+                <hr>
+                <h4>Imagine that you are about to purchase a jacket for $125 and a calculator for $15. The calculator 
+                    salesman informs you that the calculator you wish to buy is on sale for $10 at the other branch of 
+                    the store, located a 20-minute drive away. Would you make the trip to the other store?<span class="required"> *</span>
+                </h4>
+                <span class="required required_alert" id="required_alert_new_13_1">This is a required question.</span>
+                <br>
+                <br>
+                <input type="radio" id="new_q13_1_yes" name="new_question_13_1" value="yes">
+                <label for="new_q13_1_yes" style="width:250px"><h4>Yes</h4></label>
+                <br>
+                <input type="radio" id="new_q13_1_no" name="new_question_13_1" value="no">
+                <label for="new_q13_1_no" style="width:250px"><h4>No</h4></label><br><br>
+            </div>
+     
+        </div>
+
+        <div class="tab">
+            <h2>Question 15</h2>
+            <hr>
+            <h4>Below you will find three pairs of scenarios. In each case two events occur in Mr. A’s life and one event occurs in 
+                Mr. B’s life. You are asked to judge whether Mr. A or Mr. B is happier. Would most people rather be Mr. A or Mr. B? 
+                If you think the two scenarios are emotionally equivalent, check “no difference.” In all cases the events are intended 
+                to be financially equivalent.
+            </h4>
+            <br>
+
+            <div style="background-color: #f2f2f2;">
+                <br>
+                <h4>Mr. A was given tickets to two lotteries. He won $50 in one lottery and $25 in the other. Mr. B was given a 
+                    single lottery ticket. He won $75. Who was happier? <span class="required"> *</span>
+                </h4>
+                <span class="required required_alert" id="required_alert_new_14_1">This is a required question.</span>
+                <br>
+                <br>
+                <input type="radio" id="new_q14_1_a" name="new_question_14_1" value="A. Mr. A">
+                <label for="new_q14_1_a" style="width:250px"><h4>A. Mr. A</h4></label>
+                <br>
+                <input type="radio" id="new_q14_1_b" name="new_question_14_1" value="B. Mr. B">
+                <label for="new_q14_1_b" style="width:250px"><h4>B. Mr. B</h4></label>
+                <br>
+                <input type="radio" id="new_q14_1_c" name="new_question_14_1" value="C. No difference">
+                <label for="new_q14_1_c" style="width:250px"><h4>C. No difference</h4></label><br><br>
+            </div>
+
+            <div>
+                <br>
+                <h4>Mr. A bought his first New York State lottery ticket and won $100. Also, in a freak accident, he damaged the 
+                    rug in his apartment and had to pay the landlord $80. Mr. B bought his first New York State lottery ticket and 
+                    won $20. Who was happier? <span class="required"> *</span>
+                </h4>
+                <span class="required required_alert" id="required_alert_new_14_2">This is a required question.</span>
+                <br>
+                <br>
+                <input type="radio" id="new_q14_2_a" name="new_question_14_2" value="A. Mr. A">
+                <label for="new_q14_2_a" style="width:250px"><h4>A. Mr. A</h4></label>
+                <br>
+                <input type="radio" id="new_q14_2_b" name="new_question_14_2" value="B. Mr. B">
+                <label for="new_q14_2_b" style="width:250px"><h4>B. Mr. B</h4></label>
+                <br>
+                <input type="radio" id="new_q14_2_c" name="new_question_14_2" value="C. No difference">
+                <label for="new_q14_2_c" style="width:250px"><h4>C. No difference</h4></label><br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <br>
+                <h4>Mr. A’s car was damaged in a parking lot. He had to spend $200 to repair the damage. The same day the car 
+                    was damaged he won $25 in the office football pool. Mr. B’s car was damaged in a parking lot. He had to 
+                    spend $175 to repair the damage. Who was happier? <span class="required"> *</span>
+                </h4>
+                <span class="required required_alert" id="required_alert_new_14_3">This is a required question.</span>
+                <br>
+                <br>
+                <input type="radio" id="new_q14_3_a" name="new_question_14_3" value="A. Mr. A">
+                <label for="new_q14_3_a" style="width:250px"><h4>A. Mr. A</h4></label>
+                <br>
+                <input type="radio" id="new_q14_3_b" name="new_question_14_3" value="B. Mr. B">
+                <label for="new_q14_3_b" style="width:250px"><h4>B. Mr. B</h4></label>
+                <br>
+                <input type="radio" id="new_q14_3_c" name="new_question_14_3" value="C. No difference">
+                <label for="new_q14_3_c" style="width:250px"><h4>C. No difference</h4></label><br><br>
+            </div>
+        </div>
+
+        <div class="tab">
+            <div>
+                <h2>Question 16</h2>
+                <hr>
+                <h4>Over the past 12 months, have you bought or sold shares of stock? (Please ignore mutual fund 
+                    transactions)<span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_13">This is a required question.</span><br>
+                    <br>
+                <input type="radio" id="q13_1" name="question_13" value="yes">
+                <label for="q13_1" style="width:250px"><h4>Yes</h4></label>
+                <br>
+                <input type="radio" id="q13_2" name="question_13" value="no">
+                <label for="q13_2" style="width:250px"><h4>No</h4></label><br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <br><h2>Question 17</h2>
+                <hr>
+                <h4>Approximately how many stock transactions (buy or sell orders) have you completed in the past 
+                    12 months?<span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_14">This is a required question.</span><br>
+                    <br>
+                <input type="radio" id="q14_1" name="question_14" value="<10">
+                <label for="q14_1" style="width:150px"><h4><10</h4></label>
+                <br>
+                <input type="radio" id="q14_2" name="question_14" value="10-50">
+                <label for="q14_2" style="width:150px"><h4>10-50</h4></label>
+                <br>
+                <input type="radio" id="q14_3" name="question_14" value="50-100">
+                <label for="q14_3" style="width:150px"><h4>50-100</h4></label>
+                <br>
+                <input type="radio" id="q14_4" name="question_14" value=">100">
+                <label for="q14_4" style="width:150px"><h4>>100</h4></label><br><br>
+            </div>
+        </div>
+
+        <div class="tab">
+            <h2>Question 18</h2>
+            <hr>
+            <div>
+                <br><h4>What is your gender?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_15_gender">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q15_gender_1" name="question_15_gender" value="male">
+                <label for="q15_gender_1" style="width:250px"><h4>Male</h4></label>
+                <br>
+                <input type="radio" id="q15_gender_2" name="question_15_gender" value="female">
+                <label for="q15_gender_2" style="width:250px"><h4>Female</h4></label>
+                <br>
+                <input type="radio" id="q15_gender_3" name="question_15_gender" value="other">
+                <label for="q15_gender_3" style="width:250px"><h4>Other</h4></label>
+                <br>
+                <input type="radio" id="q15_gender_4" name="question_15_gender" value="I would prefer not to say">
+                <label for="q15_gender_4" style="width:250px"><h4>I would prefer not to say</h4></label><br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <br><h4>What is your age?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_15_age">This is a required question.</span><br>
+                <br>
+
+                <input type="radio" id="q15_age_1" name="question_15_age_radio" value="My age is" 
+                    onclick="getElementById('q15_age').removeAttribute('hidden');getElementById('q15_age').value='';">
+                <label for="q15_age_1"><h4>My age is </h4></label>
+                <input type="text" id="q15_age" name="question_15_age" value="" style="width: 100px;" onfocus="getElementById('q15_age_1').setAttribute('checked','checked');">
+                <br>
+                <input type="radio" id="q15_age_2" name="question_15_age_radio" value="I would prefer not to say" 
+                    onclick="getElementById('q15_age').setAttribute('hidden','hidden');getElementById('q15_age').value='I would prefer not to say';">
+                <label for="q15_age_2"><h4>I would prefer not to say</h4></label>
+                <br><br>
+            </div>
+
+            <div>
+                <br><h4>What is your annual income?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_15_income">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q15_annual_income_1" name="question_15_annual_income" value="<$15k">
+                <label for="q15_annual_income_1" style="width:330px"><h4><$15k</h4></label>
+                <br>
+                <input type="radio" id="q15_annual_income_2" name="question_15_annual_income" value="$15k-$30k">
+                <label for="q15_annual_income_2" style="width:330px"><h4>$15k-$30k</h4></label>
+                <br>
+                <input type="radio" id="q15_annual_income_3" name="question_15_annual_income" value="$30k-$55k">
+                <label for="q15_annual_income_3" style="width:330px"><h4>$30k-$55k</h4></label>
+                <br>
+                <input type="radio" id="q15_annual_income_4" name="question_15_annual_income" value="$55k-$90k">
+                <label for="q15_annual_income_4" style="width:330px"><h4>$55k-$90k</h4></label>
+                <br>
+                <input type="radio" id="q15_annual_income_5" name="question_15_annual_income" value=">$90k">
+                <label for="q15_annual_income_5" style="width:330px"><h4>>$90k</h4></label>
+                <br>
+                <input type="radio" id="q15_annual_income_6" name="question_15_annual_income" value="I would prefer not to say">
+                <label for="q15_annual_income_6" style="width:330px"><h4>I would prefer not to say</h4></label><br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <br><h4>What is your net worth?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_15_net_worth">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q15_net_worth_1" name="question_15_net_worth" value="<$0">
+                <label for="q15_net_worth_1" style="width:330px"><h4><$0</h4></label>
+                <br>
+                <input type="radio" id="q15_net_worth_2" name="question_15_net_worth" value="$0-$20k">
+                <label for="q15_net_worth_2" style="width:330px"><h4>$0-$20k</h4></label>
+                <br>
+                <input type="radio" id="q15_net_worth_3" name="question_15_net_worth" value="$20k-$95k">
+                <label for="q15_net_worth_3" style="width:330px"><h4>$20k-$95k</h4></label>
+                <br>
+                <input type="radio" id="q15_net_worth_4" name="question_15_net_worth" value="$95k-$320k">
+                <label for="q15_net_worth_4" style="width:330px"><h4>$95k-$320k</h4></label>
+                <br>
+                <input type="radio" id="q15_net_worth_5" name="question_15_net_worth" value=">$320k">
+                <label for="q15_net_worth_5" style="width:330px"><h4>>$320k</h4></label>
+                <br>
+                <input type="radio" id="q15_net_worth_6" name="question_15_net_worth" value="I would prefer not to say">
+                <label for="q15_net_worth_6" style="width:330px"><h4>I would prefer not to say</h4></label><br><br>
+            </div>
+
+            <div>
+                <br><h4>What is the highest degree or level of school you have completed?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_15_edu">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q15_education_1" name="question_15_education" value="High School Diploma"
+                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='High School Diploma';">
+                <label for="q15_education_1" style="width:300px"><h4>High School Diploma</h4></label>
+                <br>
+                <input type="radio" id="q15_education_2" name="question_15_education" value="Associate degree"
+                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='Associate degree';">
+                <label for="q15_education_2" style="width:300px"><h4>Associate degree</h4></label>
+                <br>
+                <input type="radio" id="q15_education_3" name="question_15_education" value="Bachelor's degree"
+                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='Bachelor s degree';">
+                <label for="q15_education_3" style="width:300px"><h4>Bachelor's degree</h4></label>
+                <br>
+                <input type="radio" id="q15_education_4" name="question_15_education" value="Master's degree"
+                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='Master s degree';">
+                <label for="q15_education_4" style="width:300px"><h4>Master's degree</h4></label>
+                <br>
+                <input type="radio" id="q15_education_5" name="question_15_education" value="Doctoral degree"
+                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='Doctoral degree';">
+                <label for="q15_education_5" style="width:300px"><h4>Doctoral degree</h4></label>
+                <br>
+                <input type="radio" id="q15_education_6" name="question_15_education" value="Other"
+                    onclick="getElementById('q15_edu').removeAttribute('hidden');getElementById('q15_edu').value='';">
+                <label for="q15_education_6"><h4>Other, please Specify: </h4></label>
+                <input type="text" id="q15_edu" name="question_15_edu_inputbox" value="" style="width: 300px;" onfocus="getElementById('q15_education_6').setAttribute('checked','checked');">
+                <br>
+                <input type="radio" id="q15_education_7" name="question_15_education" value="I would prefer not to say"
+                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='I would prefer not to say';">
+                <label for="q15_education_7" style="width:300px"><h4>I would prefer not to say</h4></label><br><br>
+            </div>
+
+            <div style="background-color: #f2f2f2;">
+                <br><h4>Are you homeowner or renter?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_15_home">This is a required question.</span><br>
+                <br>
+                <input type="radio" id="q15_owner_1" name="question_15_owner" value="Homeowner">
+                <label for="q15_owner_1" style="width:250px"><h4>Homeowner</h4></label>
+                <br>
+                <input type="radio" id="q15_owner_2" name="question_15_owner" value="Renter">
+                <label for="q15_owner_2" style="width:250px"><h4>Renter</h4></label>
+                <br>
+                <input type="radio" id="q15_owner_3" name="question_15_owner" value="I would prefer not to say">
+                <label for="q15_owner_3" style="width:300px"><h4>I would prefer not to say</h4></label><br><br>
+            </div>
+
+            <div>
+                <br><h4>What is the zip code of your residence?<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_15_zip">This is a required question.</span><br>
+                <br>
+
+                <input type="radio" id="q15_zip_1" name="question_15_zip_radio" value="My zip code is" 
+                    onclick="getElementById('q15_zip').removeAttribute('hidden');getElementById('q15_zip').value='';">
+                <label for="q15_zip_1"><h4>My zip code is </h4></label>
+                <input type="text" id="q15_zip" name="question_15_zip" value="" style="width: 100px;" onfocus="getElementById('q15_zip_1').setAttribute('checked','checked');">
+                <br>
+                <input type="radio" id="q15_zip_2" name="question_15_zip_radio" value="I would prefer not to say" 
+                    onclick="getElementById('q15_zip').setAttribute('hidden','hidden');getElementById('q15_zip').value='I would prefer not to say';">
+                <label for="q15_zip_2"><h4>I would prefer not to say</h4></label>
+
+                <br><br>
+            </div>
+        </div>
+        <br>
+        <div id="surveyButtons" style="overflow:auto;display: none;">
+            <div style="float:right;">
+              <button type="button" id="prevBtn" class="btn btn-primary btn-sm" onclick="nextPrev(-1)">Previous</button>
+              <button type="button" id="nextBtn" class="btn btn-primary btn-sm" onclick="nextPrev(1); timerCountDown('nextBtn', 'Next', _surveyCountDownComplete, currentTab);">Next</button>
+            </div>
+        </div>
+
+        <!-- Circles which indicates the steps of the form: -->
+        <div id="surveySteps" style="text-align:center;margin-top:40px;display: none;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+        <br>
+    </form> 
+</div>
+
+<div id="experiment" style="display: none">
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+
+            <div class="text-center top"><span id = "roundModalLabel">Round</span> <span id="round">
+        </span><span id = "totalModalLabel">of 12</span></div>
+            <br>
+            <!-- <div class="portfolio" style="text-align: center;display:none">
+                Your portfolio has <span id="changeType"></span> from the last round.
+            </div> -->
+            <div id="gainlossdiv" class="portfolio" style="text-align: center">
+                Your stock portfolio has an unrealized <span id="a"></span><span id="gainlossType"></span><span
+                    id="gainloss">10000</span>.
+            </div>
+            <div id="nochangediv" class="portfolio" style="text-align:center; display:none">
+                Your stock portfolio is breaking even.
+            </div>
+            <!-- Added by Zirui Wang on 8/31/2020 -->
+            <!-- <div id="gainlossdiv2" class="portfolio" style="text-align: center">
+                Your portfolio has a total <span id="gainlossType2"></span><span id="gainloss2">10000</span>.
+            </div>
+            <div id="nochangediv2" class="portfolio" style="text-align:center; display:none">
+                Your portfolio is breaking even.
+            </div> -->
+
+            <!-- <div id="gainlossdiv3" class="portfolio" style="text-align: center">
+                You have the following unrealized gains/losses in the 4 stocks: <br>
+                <br>
+                Stock A: <span id="gainlossType3_1"></span><span id="gainloss3_1">10000</span><br>
+                Stock B: <span id="gainlossType3_2"></span><span id="gainloss3_2">10000</span><br>
+                Stock C: <span id="gainlossType3_3"></span><span id="gainloss3_3">10000</span><br>
+                Stock D: <span id="gainlossType3_4"></span><span id="gainloss3_4">10000</span><br>
+            </div> -->
+            
+
+            <br>
+            <div style="text-align: center">
+                <button class="btn btn-primary btn-lg blue" id="confirm">OK</button>
+            </div>
+        </div>
+
+    </div>
+    <div id="myEndOfExperimentModal" class="modal">
+        <!-- Modal content. Modified by Zirui Wang on 7/12/2020-->
+        <div class="modal-content">
+            <div class="text-center top">Game <span id="attempt"></span> of <span id="totalAttempts">2</span>
+            </div>
+            <div class="portfolio" style="text-align: center; display: none;">
+                You have total cash of $<span id="totalCash"></span>
+            </div>
+            <div class="portfolio" style="text-align: center; display: none;">
+                You have total shares of $<span id="totalShare"></span>
+            </div>
+            <div class="portfolio" style="text-align: center">
+                At the end of this game, your total asset value is $<span id="totalAssetNew"></span> 
+            </div>
+            <div class="portfolio" style="text-align: center">
+            (cash value $<span id="totalCashNew"></span> + stock value $<span id="totalShareNew"></span>).
+            </div>
+            <div class="portfolio" style="text-align: center">
+                If this game was randomly chosen by the computer for your bonus payment, your bonus payment would be based on a total asset value of $<span id="bonusTotalAsset"></span>. 
+            </div>
+            <br>
+            <div style="text-align: center">
+                <button class="btn btn-primary btn-lg blue" id="proceed">Proceed</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="text-center top1" style="width:30%;float:left;">Game <span id="attempt_label"></span> of 4</div>
+        <div class="text-center top" style="width:30%;float:left;"><span id = "roundLabel">Round</span> <span id="period">
+        </span><span id = "totalLabel">of 12</span></div>
+        <div class="text-center top1" style="width:40%;float:right;"><span id="roundtype"></span></div>
+        <!-- Edited by Zirui Wang  on 7/12/2020 -->
+        <div class="row">
+            <div class="col-xs-12" style="height: 35px;">
+                <span id = "note_label" style="font-size: 20px;"><u>Note</u>: </span><span id="note">You are now in an Observation Round. You may begin trading in Round 3. Click the Next Round button at the bottom to proceed to the next round.</span>
+                <!-- After ten seconds, you will be able to click the Next Round button at the bottom to proceed. -->
+            </div>
+            <!-- <div class="col-xs-4 btns" style="height: 100px;">
+                <button class="btn btn-primary btn-lg blue" onclick="nextPeriod()" id="next_period">Next Round</button>
+            </div> -->
+        </div>
+        <!-- Edited by Zirui Wang  on 6/13/2020 -->
+        <div class="row">
+            <div class="col-xs-4 flex ">
+                <div>Cash Value:</div>
+                <div>$<span id="Cash">10000</span></div>
+            </div>
+            <div class="col-xs-4 flex ">
+                <div>Stock Value:</div>
+                <div>$<span id="Shares">0</span></div>
+            </div>
+            <div class="col-xs-4 flex "> 
+                <div>Total Assets:</div>
+                <div>$<span id="TotalAssets">10000</span></div>
+            </div>
+        </div>
+        <!-- Edited by Zirui Wang  on 7/12/2020 -->
+        <div class="row">
+            <!-- <div class="col-xs-6 col-md-offset-3">
+                <canvas id="myChart" ></canvas>
+            </div> -->
+
+            <div class="col-xs-6">
+                <canvas id="myChart" ></canvas>
+            </div>
+
+            <div class="col-xs-6">
+                <canvas id="myChart2" style="height: 330px;"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="10%">Stock</th>
+                        <th width="7%">Buy</th>
+                        <th width="7%">Sell</th>
+                        <th width="10%">Current Price</th>
+                        <th width="13%">Average Purchase Price</th>
+                        <th width="13%">Shares from Last Round</th>
+                        <th width="10%">Shares this Round</th>
+                        <th width="10%">Change in Shares</th>
+                        <th width="10%">Realized Gain/Loss</th>
+                        <th width="10%">Unrealized Gain/Loss</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="t1">Stock A</td>
+                        <td>
+                            <button class="btn buy-button btn-sm" onclick="buy(0)">Buy</button>
+                        </td>
+                        <td>
+                            <button class="btn sell-button btn-sm" onclick="sell(0)">Sell</button>
+                        </td>
+                        <td><span class="dollarSignA">$</span><span class="CurrentPrice">0</span></td>
+                        <td><span class="dollarSignA">$</span><span class="AveragePrice">0</span></td>
+                        <td><span class="previousShares">0</span></td>
+                        <td><span class="currentShares">0</span></td>
+                        <td><span class="changeInShares">0</span></td>
+                        <!-- Modified by Zirui Wang on 7/31/2020 -->
+                        <td><span class="dollarSignRGL">$</span><span class="RealizedGL">0</span></td>
+                        <td><span class="dollarSignUGL">$</span><span class="UnrealizedGL">0</span></td>
+                    </tr>
+                    <tr>
+                        <td class="t2">Stock B</td>
+                        <td>
+                            <button class="btn buy-button btn-sm" onclick="buy(1)">Buy</button>
+                        </td>
+                        <td>
+                            <button class="btn sell-button btn-sm" onclick="sell(1)">Sell</button>
+                        </td>
+                        <td><span class="dollarSignB">$</span><span class="CurrentPrice">0</span></td>
+                        <td><span class="dollarSignB">$</span><span class="AveragePrice">0</span></td>
+                        <td><span class="previousShares">0</span></td>
+                        <td><span class="currentShares">0</span></td>
+                        <td><span class="changeInShares">0</span></td>
+                        <!-- Modified by Zirui Wang on 7/31/2020 -->
+                        <td><span class="dollarSignRGL">$</span><span class="RealizedGL">0</span></td>
+                        <td><span class="dollarSignUGL">$</span><span class="UnrealizedGL">0</span></td>
+                    </tr>
+                    <tr>
+                        <td class="t3">Stock C</td>
+                        <td>
+                            <button class="btn buy-button btn-sm" onclick="buy(2)">Buy</button>
+                        </td>
+                        <td>
+                            <button class="btn sell-button btn-sm" onclick="sell(2)">Sell</button>
+                        </td>
+                        <td><span class="dollarSignC">$</span><span class="CurrentPrice">0</span></td>
+                        <td><span class="dollarSignC">$</span><span class="AveragePrice">0</span></td>
+                        <td><span class="previousShares">0</span></td>
+                        <td><span class="currentShares">0</span></td>
+                        <td><span class="changeInShares">0</span></td>
+                        <!-- Modified by Zirui Wang on 7/31/2020 -->
+                        <td><span class="dollarSignRGL">$</span><span class="RealizedGL">0</span></td>
+                        <td><span class="dollarSignUGL">$</span><span class="UnrealizedGL">0</span></td>
+                    </tr>
+                    <tr>
+                        <td class="t4">Stock D</td>
+                        <td>
+                            <button class="btn buy-button btn-sm" onclick="buy(3)">Buy</button>
+                        </td>
+                        <td>
+                            <button class="btn sell-button btn-sm" onclick="sell(3)">Sell</button>
+                        </td>
+                        <td><span class="dollarSignD">$</span><span class="CurrentPrice">0</span></td>
+                        <td><span class="dollarSignD">$</span><span class="AveragePrice">0</span></td>
+                        <td><span class="previousShares">0</span></td>
+                        <td><span class="currentShares">0</span></td>
+                        <td><span class="changeInShares">0</span></td>
+                        <!-- Modified by Zirui Wang on 7/31/2020 -->
+                        <td><span class="dollarSignRGL">$</span><span class="RealizedGL">0</span></td>
+                        <td><span class="dollarSignUGL">$</span><span class="UnrealizedGL">0</span></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-size: 20px; display: none"><span id="dollarSignRT">$</span><span id="RealizedTotal">0.00</span></td>
+                    <td style="font-size: 20px" id="urt">Total:</td>
+                    <td style="font-size: 20px" id="urtv"><span id="dollarSignUT">$</span><span id="UnrealizedTotle">0.00</span></td>
+                    </tfoot>
+
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4 btns col-md-offset-8" style="height: 30px;">
+                <button class="btn btn-primary btn-lg blue" onclick="nextPeriod();timer('next_period', 'Next Round');" id="next_period">Next Round</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript"> 
+    var _periods = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    //Current cash
+    var _cash = 1000;
+    var time_spent;
+    //Current share value
+    var _shares = 0;
+    var urlg = "https://stock-trading-game.herokuapp.com/";
+
+    const PROCEED_KEY = "Proceed";
+    const NEXT_PERIOD_KEY = "Next Round";
+    const NOTE_TRADING_KEY = " You are now in a Trading Round. You may now trade stocks using the buttons below.  " +
+        "Click the Next Round button at the bottom to proceed to the next round.";
+    const NOTE_OBSERVATION_KEY = "You are now in an Observation Round.  " +
+        " You may begin trading in Round 3. Click the Next Round button at the bottom to proceed to the next round.";
+    const NOTE_OBSERVATION_KEY_FIRST_ROUND = "You are now in an Observation Round.  " +
+        " You may begin trading in Round 3. After ten seconds, you will be able to click the Next Round button at the bottom to proceed.";
+    const ROUND_TRADING = "Trading Round";
+    const ROUND_OBSERVATION = "Observation Round";
+    const END_EXPERIMENT_KEY = "Start Survey";
+    //Total assets, it will change over  time
+    var _totalAssets = new Array(18);
+    var _unrealisedListGlobal = new Array(4);
+    //Total six stocks
+    var _sharePrices = new Array(4);
+    var _sharesOwnedRound = new Array(4);
+    var uid, defaultUid = 0;
+    //The shares of each stock
+    var _sharesOwned = [0, 0, 0, 0];
+    //current period, from 0 to 12
+    var _currentPeriodIndex = 0;
+    //The upside probability of each stock
+    var _probabilities = [0.4, 0.45, 0.55, 0.60];
+    var _pricechange = [1, 3, 5];
+    var _weightedaverageprice = [0, 0, 0, 0];
+    var unrealisedGain = new Array(18);
+    var changeInAssests = [];
+    var currentAttempt = 1;
+    //changed to 4 instead of 8 by Zirui Wang on 5/30/2020
+    var totalAttempts = 4;
+    var startTime, endTime;
+    var round_played_at = "";
+    
+    //added by Zirui Wang on 5/31/2020
+    var gainlossPopRandom = Math.random();
+
+    // For testing only, added by Zirui Wang
+    // var treatmentNum = 0;
+    // var trtStr = "";
+    // if (gainlossPopRandom<0.25) {
+    //     treatmentNum = 1;
+    //     trtStr = "Never treatment";
+    
+    // } else if (gainlossPopRandom>=0.25 && gainlossPopRandom<0.5) {
+    //     treatmentNum = 2;
+    //     trtStr = "Always pop-up";
+    // } else if (gainlossPopRandom >= 0.5 && gainlossPopRandom<0.75){
+    //     treatmentNum = 3;
+    //     trtStr = "bar chart";
+    // } else if (gainlossPopRandom >= 0.75 && gainlossPopRandom<1){
+    //     treatmentNum = 4;
+    //     trtStr = "Change Font.";
+    // }
+    // prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom + ".\n" 
+    //     + "This is treatment #" + treatmentNum + ": " + trtStr);
+
+    //added by Zirui Wang on 6/24/2020
+    const urlParams = new URLSearchParams(window.location.search);
+    const workerId = urlParams.get('workerId');
+    const assignmentId = urlParams.get('assignmentId');
+
+    // Added by Zirui Wang on 6/29/2020
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    
+    // Added by Zirui Wang on 7/5/2020
+    var currentIntroTab = 0; // Current tab is set to be the first tab (0)
+
+    // Added by Zirui Wang on 7/5/2020
+    var total_assets = [0, 1000, 1000, 1000, 1000];
+    var surveyDone = false;
+    var bonus = 0;
+
+    // Added by Zirui Wang on 7/21/2020
+    var _introCountDownComplete = [0, 0, 0, 0, 0, 0, 0, 0];
+    var _surveyCountDownComplete = [0, 0, 0, 0, 0, 0];
+
+    // Added by Zirui Wang on 8/4/2020
+    var isQuizPassed = false;
+
+    // Added by Zirui Wang on 7/5/2020
+    // showIntroTab(7);
+    showIntroTab(currentIntroTab);
+    //proceedToSurvey();
+
+    // Added by Zirui Wang on 7/21/2020
+    timerCountDown('introNextBtn', 'Next', _introCountDownComplete, currentIntroTab);
+    
+    //initialization
+    document.getElementById("roundtype").innerHTML = "Observation Round";
+    assignUID();
+
+    function initialization() {
+        document.getElementById("roundLabel").innerHTML = "Round";
+        document.getElementById("roundModalLabel").innerHTML = "Round";
+        document.getElementById("totalLabel").innerHTML = " of 12";
+        document.getElementById("totalModalLabel").innerHTML = " of 12";
+
+
+        this._currentPeriodIndex = 0;
+        shuffle(_probabilities);
+        for (var i = 0; i < _sharePrices.length; i++) {
+
+            this._sharePrices[i] = new Array(18);
+            //initialization of the six stocks。an integer from 60-120 randomly
+            this._sharePrices[i][0] = Math.floor(Math.random() * 60 + 60);
+        }
+        for (i = 0; i < unrealisedGain.length; i++) {
+            unrealisedGain[i] = 0;
+
+        }
+        for (i = 0; i < _sharesOwnedRound.length; i++) {
+            this._sharesOwnedRound[i] = new Array(18);
+            for (var j = 0; j < 13; j++) {
+
+                _sharesOwnedRound[i][j] = 0;
+            }
+        }
+        this._totalAssets[0] = _cash + _shares;
+    }
+
+    function assignUID() {
+        let xhr = new XMLHttpRequest();
+        let url = urlg + "getServerID";
+        xhr.open('GET', url, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send('');
+        xhr.onload = function () {
+            let jsonResponse = JSON.parse(xhr.response);
+            if (xhr.status === 200) {
+                let uid_temp = jsonResponse.serverCount;
+                let currentDate = new Date();
+                let month = currentDate.getMonth() + 1;
+                uid = currentDate.getDate() + "" + month + "" + currentDate.getFullYear() + "" + currentDate.getHours()
+                    + "" + currentDate.getMinutes() + "" + uid_temp;
+                // commented by Zirui Wang on 6/2/2020
+                // if (uid !== undefined)
+                //     button.disabled = false;
+                defaultUid = uid;
+                console.log(uid);
+            }
+        };
+
+
+    }
+
+    //refresh
+    function initializationHtml(isBuyOrSell) {
+        var list = document.getElementsByClassName("CurrentPrice");
+        for (var i = 0; i < list.length; i++) {
+            list[i].innerHTML = _sharePrices[i][_currentPeriodIndex];
+        }
+        var numlist = document.getElementsByClassName("currentShares");
+
+        var changeInShares = document.getElementsByClassName("changeInShares");
+        for (var i = 0; i < numlist.length; i++) {
+            if (isBuyOrSell)
+                numlist[i].innerHTML = _sharesOwnedRound[i][_currentPeriodIndex];
+            if (_currentPeriodIndex === 0) {
+                changeInShares[i].innerHTML = 0;
+            } else {
+                changeInShares[i].innerHTML = _sharesOwnedRound[i][_currentPeriodIndex] - _sharesOwnedRound[i][_currentPeriodIndex - 1];
+            }
+        }
+        _totalAssets[_currentPeriodIndex] = _cash + _shares;
+        document.getElementById("attempt_label").innerHTML = currentAttempt;
+        if(_currentPeriodIndex>12) {
+            document.getElementById("period").innerHTML = "Last Round";
+            document.getElementById("roundLabel").innerHTML = "";
+            document.getElementById("totalLabel").innerHTML = "";
+
+        }
+        else
+            document.getElementById("period").innerHTML = _periods[_currentPeriodIndex];
+        document.getElementById("Cash").innerHTML = _cash;
+        document.getElementById("Shares").innerHTML = _shares;
+        document.getElementById("TotalAssets").innerHTML = _totalAssets[_currentPeriodIndex];
+    }
+    
+    // whole fn was commented by Zirui Wang on 5/9/2020 for the reason of removing pop-up windows in between rounds
+    // undo comment by Zirui Wang on 5/30/2020
+    // modified by Zirui Wang on 5/31/2020
+    function populateModal() {
+    
+        //prompt("random = " + gainlossPopRandom);
+
+        //var change =changeInAssests[0];
+        //document.getElementById("changeAssets").innerHTML = " by $"+Math.abs(change);
+        var printIndex = _currentPeriodIndex;
+        if (_currentPeriodIndex === 13) {
+            printIndex = "Last Round";
+            document.getElementById("roundModalLabel").innerHTML = "";
+            document.getElementById("totalModalLabel").innerHTML = "";
+        }
+        // if (_currentPeriodIndex > 2)
+        //     printIndex = _currentPeriodIndex - 1;
+        document.getElementById("round").innerHTML = printIndex;
+
+
+
+        //commented by Zirui Wang on 5/31/2020
+        // let changeType = document.getElementById("changeType");
+        // if (change > 0) {
+        //     changeType.innerHTML = "<span style='color: #c45850'>increased</span>";
+        //     //$('#changeType').css('color', '#c45850').text("increased");
+        // } else if (change < 0) {
+        //     changeType.innerHTML = "<span style='color: #3cba9f'>decreased</span>";
+
+        //     //$('#changeType').css('color', '#3cba9f').text("decreased");
+        // } else {
+        //     changeType.innerHTML = "<span style='color: #000000'>not changed</span>";
+        //     //document.getElementById("changeAssets").innerHTML="";
+        //   //  $('#changeType').css('color', '#000000').text("not changed");
+        //    // $('#changeAssets').text("");
+        // 
+
+        // Temporarily commented by Zirui Wang on 8/31/2020
+        // Three treatements depend on the random variable
+        // document.getElementById("gainlossdiv").style.display = "block";
+        // document.getElementById("nochangediv").style.display = "none";
+
+        // // Modified by Zirui Wang on 6/16/2020
+        // changeInAssests[0] = _cash + _shares - 1000;
+        // // document.getElementById("gainloss").innerHTML = " is $" + Math.abs(changeInAssests[0]);
+        // document.getElementById("gainloss").innerHTML = " of $" +  Math.abs(unrealisedGain[_currentPeriodIndex]);
+
+        
+        // //document.getElementById("a").innerHTML = " a ";
+        // let gainlossType = document.getElementById("gainlossType");
+        // if (gainlossPopRandom>=0.67) {
+        //     if(unrealisedGain[_currentPeriodIndex] > 0) {
+        //         gainlossType.innerHTML = "<span style='color: #3cba9f'>gain</span>";
+        //         openModalBox();
+        //     }
+        // } else if (gainlossPopRandom>=0.34 && gainlossPopRandom<0.67) {
+        //     if(unrealisedGain[_currentPeriodIndex] < 0) {
+        //         gainlossType.innerHTML = "<span style='color: #c45850'>loss</span>";
+        //         openModalBox();
+        //     } 
+        // } else if (gainlossPopRandom < 0.34){
+        //     if(unrealisedGain[_currentPeriodIndex] > 0) {
+        //         gainlossType.innerHTML = "<span style='color: #3cba9f'>gain</span>";
+        //     }
+        //     if(unrealisedGain[_currentPeriodIndex] < 0) {
+        //         gainlossType.innerHTML = "<span style='color: #c45850'>loss</span>";
+        //     } 
+        //     if(unrealisedGain[_currentPeriodIndex] == 0) {
+        //         document.getElementById("gainlossdiv").style.display = "none";
+        //         document.getElementById("nochangediv").style.display = "block";
+        //     } 
+        //     openModalBox();
+        // }
+
+        // Added by Zirui Wang on 8/31/2020
+        // Always pop up to tell the portfolio gain or loss
+        // document.getElementById("gainlossdiv2").style.display = "block";
+        // document.getElementById("nochangediv2").style.display = "none";
+
+        // changeInAssests[0] = _cash + _shares - 1000;
+        // document.getElementById("gainloss2").innerHTML = " of $" +  Math.abs(changeInAssests[0]);
+
+        // let gainlossType2 = document.getElementById("gainlossType2");
+        
+        // if(changeInAssests[0] > 0) {
+        //     gainlossType2.innerHTML = "<span style='color: #3cba9f'>gain</span>";
+        // }
+        // if(changeInAssests[0] < 0) {
+        //     gainlossType2.innerHTML = "<span style='color: #c45850'>loss</span>";
+        // } 
+        // if(changeInAssests[0] == 0) {
+        //     document.getElementById("gainlossdiv2").style.display = "none";
+        //     document.getElementById("nochangediv2").style.display = "block";
+        // } 
+        // openModalBox();
+
+
+        // Added by Zirui Wang on 9/7/2020
+        // var unrealizedSGL = document.getElementsByClassName("UnrealizedGL");
+
+        // for (var i = 0; i < unrealizedSGL.length; i++) {
+        //     tmpId = "gainloss3_"+ (i+1);
+        //     document.getElementById(tmpId).style.display = "inline";
+        //     document.getElementById(tmpId).innerHTML = " of $" +  Math.abs(Number(unrealizedSGL[i].innerHTML));
+
+        //     let gainlossType3 = document.getElementById("gainlossType3_" + (i+1) );
+
+        //     if(Number(unrealizedSGL[i].innerHTML) > 0) {
+        //         gainlossType3.innerHTML = "<span style='color: #3cba9f'>Gain</span>";
+        //     }
+        //     if(Number(unrealizedSGL[i].innerHTML) < 0) {
+        //         gainlossType3.innerHTML = "<span style='color: #c45850'>Loss</span>";
+        //     } 
+        //     if(Number(unrealizedSGL[i].innerHTML) == 0) {
+        //         gainlossType3.innerHTML = "None";
+        //         document.getElementById(tmpId).style.display = "none";
+        //     } 
+        // }
+        //Removed by Zirui Wang on 9/13/2020 to remove the pop-up window
+        //openModalBox();
+
+        document.getElementById("gainlossdiv").style.display = "block";
+        document.getElementById("nochangediv").style.display = "none";
+        document.getElementById("gainloss").innerHTML = " of $" +  Math.abs(unrealisedGain[_currentPeriodIndex]);
+        
+        let gainlossType = document.getElementById("gainlossType");
+        
+        if(unrealisedGain[_currentPeriodIndex] > 0) {
+            gainlossType.innerHTML = "<span style='color: #3cba9f'>gain</span>";
+        }
+        if(unrealisedGain[_currentPeriodIndex] < 0) {
+            gainlossType.innerHTML = "<span style='color: #c45850'>loss</span>";
+        } 
+        if(unrealisedGain[_currentPeriodIndex] == 0) {
+            document.getElementById("gainlossdiv").style.display = "none";
+            document.getElementById("nochangediv").style.display = "block";
+        } 
+        if(0.25<=gainlossPopRandom && gainlossPopRandom<0.5) {
+            openModalBox();
+        }
+    
+
+        
+        // updateStockPrice();
+    }
+
+    // Added by Zirui Wang on 9/13/2020 to manage chart2
+    function updateChartTwo() {
+        // changeInAssests[0] = Number(document.getElementById("RealizedTotal").innerHTML);
+        changeInAssests[0] = Number(document.getElementById("UnrealizedTotle").innerHTML);
+
+        
+        if (changeInAssests[0] < 0) {
+            backgroundColors[0] = "#c45850";
+            myChart2.options.title.text = "Total Unrealized Loss";
+            myChart2.data.datasets[0].label = "Loss of $" + Math.abs(changeInAssests[0]);
+
+        } else if (changeInAssests[0] > 0) {
+            backgroundColors[0] = "#3cba9f";
+            myChart2.options.title.text = "Total Unrealized Gain";
+            myChart2.data.datasets[0].label = "Gain of $" + Math.abs(changeInAssests[0]);
+
+        } else if (changeInAssests[0] == 0) {
+            myChart2.options.title.text = "Total Unrealized Gain/Loss";
+            myChart2.data.datasets[0].label = "";
+        }
+        
+        // var chartDataLabels = myChart2.data.labels;
+        // if (changeInAssests[0] < 0) {
+        //     backgroundColors[0] = "#c45850";
+        //     chartDataLabels[0] = "Total Realized Loss";
+
+        // } else if (changeInAssests[0] > 0) {
+        //     backgroundColors[0] = "#3cba9f";
+        //     chartDataLabels[0] = "Total Realized Gain";
+
+        // } else if (changeInAssests[0] == 0) {
+        //     chartDataLabels[0] = "Total Realized Gain/Loss";
+        // }
+
+        // if (changeInAssests[1] < 0) {
+        //     backgroundColors[1] = "#c45850";
+        //     chartDataLabels[1] = "Total Unrealized Loss";
+
+        // } else if (changeInAssests[1] > 0) {
+        //     backgroundColors[1] = "#3cba9f";
+        //     chartDataLabels[1] = "Total Unrealized Gain";
+
+        // } else if (changeInAssests[1] == 0) {
+        //     chartDataLabels[1] = "Total Unrealized Gain/Loss";
+        // }
+        myChart2.update();
+    }
+
+    function updateStockPrice() {
+        // var prevStockList = document.getElementsByClassName("OldPrice1");
+        // var currentStockList = document.getElementsByClassName("CurrentPrice1");
+        // var changeStockList = document.getElementsByClassName("ChangeinPrice1");
+        // var sharesOwnedList = document.getElementsByClassName("SharesOwned1");
+        // var averagePriceList = document.getElementsByClassName("AveragePrice1");
+        // for(i=0;i<prevStockList.length;i++){
+        //     prevStockList[i].innerHTML = _sharePrices[i][_currentPeriodIndex-1];
+        // }
+        // for(i=0;i<currentStockList.length;i++){
+        //     console.log(_sharePrices[i][_currentPeriodIndex]);
+        //     currentStockList[i].innerHTML = _sharePrices[i][_currentPeriodIndex];
+        // }
+        // for(i=0;i<changeStockList.length;i++){
+        //     changeStockList[i].innerHTML = _sharePrices[i][_currentPeriodIndex]-_sharePrices[i][_currentPeriodIndex-1];
+        // }
+        // for(i=0;i<sharesOwnedList.length;i++){
+        //     sharesOwnedList[i].innerHTML = _sharesOwned[i];
+        // }
+        // for(i=0;i<averagePriceList.length;i++){
+        //     averagePriceList[i].innerHTML = _weightedaverageprice[i];
+        // }
+        // var message = document.getElementById("message");
+        // var prevTotal =0;
+        // var currentTotal = 0;
+        // prevTotal = unrealisedGain[_currentPeriodIndex-1];
+        // currentTotal = unrealisedGain[_currentPeriodIndex];
+        // //console.log(changeInAssests);
+        // document.getElementById("prevTotal").innerHTML = prevTotal;
+        // document.getElementById("currentTotal").innerHTML = currentTotal;
+        // document.getElementById("changeTotal").innerHTML = currentTotal-prevTotal;
+
+    }
+
+    //count the total assets，cash+share value
+    //method modified by Zirui Wang on 5/9/2020
+    //change the entire row's color based on the result of gain/loss
+    function countingAssets() {
+        
+        var currentPrices = document.getElementsByClassName("CurrentPrice");
+        var averagePrices = document.getElementsByClassName("AveragePrice");
+        var preShare = document.getElementsByClassName("previousShares");
+        var sharesOwned = document.getElementsByClassName("currentShares");
+        var changeShare = document.getElementsByClassName("changeInShares");
+        var unrealizedGL = document.getElementsByClassName("UnrealizedGL");
+
+        var dollarSignsA = document.getElementsByClassName("dollarSignA");
+        var dollarSignsB = document.getElementsByClassName("dollarSignB");
+        var dollarSignsC = document.getElementsByClassName("dollarSignC");
+        var dollarSignsD = document.getElementsByClassName("dollarSignD");
+
+        // Added by Zirui Wang on 7/31/2020
+        var dollarSignUGL = document.getElementsByClassName("dollarSignUGL");
+
+        var shares = 0;
+        var unrealizedTotal = 0;
+        for (var i = 0; i < sharesOwned.length; i++) {
+            shares += (Number(sharesOwned[i].innerHTML) * Number(currentPrices[i].innerHTML));
+            //When the current average stock price and the number of shares held are not 0, the unrealized gain and loss are recalculated.
+            if (averagePrices[i].innerHTML !== "0" && sharesOwned[i].innerHTML !== "0") {
+                var ugl = (Number(sharesOwned[i].innerHTML) * Number(currentPrices[i].innerHTML))
+                - (Number(sharesOwned[i].innerHTML) * Number(averagePrices[i].innerHTML));
+            
+                var toWrite1;
+                unrealizedGL[i].innerHTML = ugl.toFixed(2);
+
+                if (ugl.toFixed(2) > 0) {
+                    // toWrite1 = "<span style = 'color:#3cba9f'>$" + ugl.toFixed(2) + "</span>";
+                    unrealizedGL[i].style.color = "#3cba9f";
+                    dollarSignUGL[i].style.color = "#3cba9f";
+
+                    // Commented by Zirui Wang on 7/31/2020 for the reason of adding realized gain/loss
+                    // currentPrices[i].style.color = "#3cba9f";
+                    // averagePrices[i].style.color = "#3cba9f";
+                    // preShare[i].style.color = "#3cba9f";
+                    // sharesOwned[i].style.color = "#3cba9f";
+                    // changeShare[i].style.color = "#3cba9f";
+
+                    // if(i===0) {
+                    //     for (var j = 0; j < dollarSignsA.length; j++) {
+                    //         dollarSignsA[j].style.color = "#3cba9f";
+                    //     }
+                    // }
+                    // if(i===1) {
+                    //     for (var j = 0; j < dollarSignsB.length; j++) {
+                    //         dollarSignsB[j].style.color = "#3cba9f";
+                    //     }
+                    // }
+                    // if(i===2) {
+                    //     for (var j = 0; j < dollarSignsC.length; j++) {
+                    //         dollarSignsC[j].style.color = "#3cba9f";
+                    //     }
+                    // }
+                    // if(i===3) {
+                    //     for (var j = 0; j < dollarSignsD.length; j++) {
+                    //         dollarSignsD[j].style.color = "#3cba9f";
+                    //     }
+                    // }
+                }
+                else if (ugl.toFixed(2) < 0) {
+                    //toWrite1 = "<span style = 'color:#c45850'>$" + ugl.toFixed(2) + "</span>";
+                    unrealizedGL[i].style.color = "#c45850";
+                    dollarSignUGL[i].style.color = "#c45850";
+                    
+                    // Commented by Zirui Wang on 7/31/2020 for the reason of adding realized gain/loss
+                    // currentPrices[i].style.color = "#c45850";
+                    // averagePrices[i].style.color = "#c45850";
+                    // preShare[i].style.color = "#c45850";
+                    // sharesOwned[i].style.color = "#c45850";
+                    // changeShare[i].style.color = "#c45850";
+                    // if(i===0) {
+                    //     for (var j = 0; j < dollarSignsA.length; j++) {
+                    //         dollarSignsA[j].style.color = "#c45850";
+                    //     }
+                    // }
+                    // if(i===1) {
+                    //     for (var j = 0; j < dollarSignsB.length; j++) {
+                    //         dollarSignsB[j].style.color = "#c45850";
+                    //     }
+                    // }
+                    // if(i===2) {
+                    //     for (var j = 0; j < dollarSignsC.length; j++) {
+                    //         dollarSignsC[j].style.color = "#c45850";
+                    //     }
+                    // }
+                    // if(i===3) {
+                    //     for (var j = 0; j < dollarSignsD.length; j++) {
+                    //         dollarSignsD[j].style.color = "#c45850";
+                    //     }
+                    // }
+                }
+                else{
+                    //toWrite1 = "$" + ugl.toFixed(2);
+                    unrealizedGL[i].style.color = "#000000";
+                    dollarSignUGL[i].style.color = "#000000";
+
+                    currentPrices[i].style.color = "#000000";
+                    averagePrices[i].style.color = "#000000";
+                    preShare[i].style.color = "#000000";
+                    sharesOwned[i].style.color = "#000000";
+                    changeShare[i].style.color = "#000000";
+
+                    if(i===0) {
+                        for (var j = 0; j < dollarSignsA.length; j++) {
+                            dollarSignsA[j].style.color = "#000000";
+                        }
+                    }
+                    if(i===1) {
+                        for (var j = 0; j < dollarSignsB.length; j++) {
+                            dollarSignsB[j].style.color = "#000000";
+                        }
+                    }
+                    if(i===2) {
+                        for (var j = 0; j < dollarSignsC.length; j++) {
+                            dollarSignsC[j].style.color = "#000000";
+                        }
+                    }
+                    if(i===3) {
+                        for (var j = 0; j < dollarSignsD.length; j++) {
+                            dollarSignsD[j].style.color = "#000000";
+                        }
+                    }
+                }
+
+                //unrealizedGL[i].innerHTML = toWrite1;
+                unrealizedTotal += ugl;
+            } else {
+                //Modified by Zirui Wang on 7/31/2020
+                unrealizedGL[i].innerHTML = 0;
+                //unrealizedGL[i].innerHTML = "$0";
+
+                currentPrices[i].style.color = "#000000";
+                averagePrices[i].style.color = "#000000";
+                preShare[i].style.color = "#000000";
+                sharesOwned[i].style.color = "#000000";
+                changeShare[i].style.color = "#000000";
+
+                if(i===0) {
+                    for (var j = 0; j < dollarSignsA.length; j++) {
+                        dollarSignsA[j].style.color = "#000000";
+                    }
+                }
+                if(i===1) {
+                    for (var j = 0; j < dollarSignsB.length; j++) {
+                        dollarSignsB[j].style.color = "#000000";
+                    }
+                }
+                if(i===2) {
+                    for (var j = 0; j < dollarSignsC.length; j++) {
+                        dollarSignsC[j].style.color = "#000000";
+                    }
+                }
+                if(i===3) {
+                    for (var j = 0; j < dollarSignsD.length; j++) {
+                        dollarSignsD[j].style.color = "#000000";
+                    }
+                }
+
+            }
+
+        }
+        _shares = shares;
+        //Recalcault total assets for current period
+        _totalAssets[_currentPeriodIndex] = _cash + _shares;
+        document.getElementById("Shares").innerHTML = _shares;
+        document.getElementById("TotalAssets").innerHTML = _totalAssets[_currentPeriodIndex];
+        unrealisedGain[_currentPeriodIndex] = unrealizedTotal.toFixed(2);
+        // var toWrite;
+        // if (unrealizedTotal.toFixed(2) > 0)
+        //     toWrite = "<span style = 'color:#3cba9f'>$" + unrealizedTotal.toFixed(2) + "</span>";
+        // else if (unrealizedTotal.toFixed(2) < 0)
+        //     toWrite = "<span style = 'color:#c45850'>$" + unrealizedTotal.toFixed(2) + "</span>";
+        // else
+        //     toWrite = "$" + unrealizedTotal.toFixed(2);
+
+        // document.getElementById("UnrealizedTotle").innerHTML = toWrite;
+
+        // Modified by Zirui Wang on 7/31/2020
+        var total = document.getElementById("UnrealizedTotle");
+        var dollarSignT = document.getElementById("dollarSignUT");
+        total.innerHTML = unrealizedTotal.toFixed(2);
+
+        if (unrealizedTotal.toFixed(2) > 0) {
+            total.style.color = "#3cba9f";
+            dollarSignT.style.color = "#3cba9f";
+        } else if (unrealizedTotal.toFixed(2) < 0) {
+            total.style.color = "#c45850";
+            dollarSignT.style.color = "#c45850";
+        } else {
+            total.style.color = "#34407c";
+            dollarSignT.style.color = "#34407c";
+        }
+    }
+
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        //console.log(array);
+
+
+        return array;
+    }
+
+    //generate new stock prices
+    function newPrices(period) {
+        for (var i = 0; i < _sharePrices.length; i++) {
+            var decision = probability(_probabilities[i]);
+            var price_change = _pricechange[Math.floor(Math.random() * 3)];
+            if (decision)
+                this._sharePrices[i][period] = this._sharePrices[i][period - 1] + price_change;
+            else
+                this._sharePrices[i][period] = this._sharePrices[i][period - 1] - price_change;
+        }
+        initializationHtml(false);
+    }
+
+    var probability = function (n) {
+        return !!n && Math.random() <= n;
+    };
+    initialization();
+    initializationHtml(false);
+
+    //call this function when click the Next Period
+    function updatePreviousShares(index) {
+        var previousShares = document.getElementsByClassName("previousShares");
+        //console.log(index);
+        //console.log(_sharesOwnedRound);
+        for (var i = 0; i < previousShares.length; i++) {
+            previousShares[i].innerHTML = _sharesOwnedRound[i][index];
+        }
+    }
+
+    function initializeShareCount(index) {
+        var currentShares = document.getElementsByClassName("currentShares");
+        //console.log(index);
+        //console.log(_sharesOwnedRound);
+        for (var i = 0; i < currentShares.length; i++) {
+            _sharesOwnedRound[i][index] = _sharesOwnedRound[i][index - 1];
+            currentShares[i].innerHTML = _sharesOwnedRound[i][index - 1];
+        }
+    }
+
+    function proceedToNextAttempt() {
+        end();
+        populateEOEModel();
+        openEOEModalBox();
+    }
+
+    function populateEOEModel() {
+        document.getElementById("attempt").innerHTML = currentAttempt + "";
+        document.getElementById("totalAttempts").innerHTML = totalAttempts + "";
+        document.getElementById("totalCash").innerHTML = _cash;
+        document.getElementById("totalShare").innerHTML =  _shares;
+        document.getElementById("totalCashNew").innerHTML = _cash;
+        document.getElementById("totalShareNew").innerHTML =  _shares;
+        document.getElementById("totalAssetNew").innerHTML = total_assets[currentAttempt];
+        document.getElementById("bonusTotalAsset").innerHTML = total_assets[currentAttempt];
+        // $("#totalCash").text(_cash);
+        // $("#totalShare").text(_shares);
+    }
+
+    function proceedToSurvey() {
+        document.getElementById("survey").style.display = "block";
+        showTab(currentTab); // Display the current tab
+        document.getElementById("experiment").style.display = "none";
+        timerCountDown('nextBtn', 'Next', _surveyCountDownComplete, currentTab);
+    }
+
+    // Added by Zirui Wang on 7/5/2020
+    function setupThankyouPanel() {
+        var random_var = Math.floor(Math.random() * 4) + 1
+
+        var num_game = document.getElementById("numRandomGame");
+        var total = document.getElementById("totalAssetthisRound");
+
+        num_game.value = random_var;
+        total.value = total_assets[random_var];
+
+        num_game.style.width = ((num_game.value.length + 1) * 9) + 'px';
+        total.style.width = ((total.value.length + 1) * 9) + 'px';
+
+        var formula = document.getElementById("formula");
+        var bonus_number = total_assets[random_var]*0.003;
+        bonus = bonus_number.toFixed(2);
+        formula.value = "0.3% x $" + total.value + " = $" + bonus;
+        formula.style.width = ((formula.value.length + 1) * 9) + 'px';
+    }
+
+    function proceedToThankyou() {
+        document.getElementById("thankyou").style.display = "block";
+        document.getElementById("survey").style.display = "none";
+    }
+
+    // Added by Zirui Wang on 8/1/2020
+    function proceedToThankyouWhenQuizFailed() {
+        document.getElementById("thankYouQhenQuizFailed").style.display = "block";
+        document.getElementById("intro").style.display = "none";
+    }
+
+    function saveData() {
+        let experiment_number = currentAttempt;
+        let round = _currentPeriodIndex;
+        let price_of_stockA = _sharePrices[0][_currentPeriodIndex];
+        let price_of_stockB = _sharePrices[1][_currentPeriodIndex];
+        let price_of_stockC = _sharePrices[2][_currentPeriodIndex];
+        let price_of_stockD = _sharePrices[3][_currentPeriodIndex];
+        var choices;
+        choices = [];
+        getDate();
+        let changeInShares = document.getElementsByClassName("changeInShares");
+        var i = 0, j = 0;
+        let b_stockA = 0;
+        let b_stockB = 0;
+        let b_stockC = 0;
+        let b_stockD = 0;
+        let s_stockA = 0;
+        let s_stockB = 0;
+        let s_stockC = 0;
+        let s_stockD = 0;
+        for (i = 0; i < changeInShares.length; i++) {
+            if (changeInShares[i].innerHTML > 0) {
+                if (i === 0) {
+                    b_stockA = changeInShares[i].innerHTML;
+                    choices[j] = "b_stockA";
+                    j++
+                } else if (i === 1) {
+                    b_stockB = changeInShares[i].innerHTML;
+                    choices[j] = "b_stockB";
+                    j++
+                } else if (i === 2) {
+                    b_stockC = changeInShares[i].innerHTML;
+                    choices[j] = "b_stockC";
+                    j++
+                } else if (i === 3) {
+                    b_stockD = changeInShares[i].innerHTML;
+                    choices[j] = "b_stockD";
+                    j++
+                }
+            } else if (changeInShares[i].innerHTML < 0) {
+                if (i === 0) {
+                    s_stockA = Math.abs(changeInShares[i].innerHTML);
+                    choices[j] = "s_stockA";
+                    j++
+                } else if (i === 1) {
+                    s_stockB = Math.abs(changeInShares[i].innerHTML);
+                    choices[j] = "s_stockB";
+                    j++
+                } else if (i === 2) {
+                    s_stockC = Math.abs(changeInShares[i].innerHTML);
+                    choices[j] = "s_stockC";
+                    j++
+                } else if (i === 3) {
+                    s_stockD = Math.abs(changeInShares[i].innerHTML);
+                    choices[j] = "s_stockD";
+                    j++
+                }
+            }
+        }
+        //added by Zirui Wang on 5/31/2020
+        let random_number = gainlossPopRandom;
+
+        //added by Zirui Wang on 6/24/2020
+        let worker_id = workerId;
+        let assignment_id = assignmentId;
+
+        let q1 = "";
+        let q2 = "";
+        let q3 = "";
+        let q4 = "";
+        let q5 = "";
+        let q6 = "";
+        let q7 = "";
+        let q8 = "";
+        let q9 = "";
+        let q10 = "";
+        let q11 = "";
+        let q12i = "";
+        let q12ii = "";
+        let q13 = "";
+        let q14 = "";
+        let q15_gender = "";
+        let q15_age = "";
+        let q15_income = "";
+        let q15_networth = "";
+        let q15_job = "";
+        let q15_education = "";
+        let q15_residence = "";
+        let q15_homeowner = "";
+
+        let new_q13_1 ="";
+        let new_q13_2 ="";
+        let new_q14_1 ="";
+        let new_q14_2 ="";
+        let new_q14_3 ="";
+
+        if (surveyDone) {
+            q1 = document.getElementById("q1").value;
+            q2 = document.getElementById("q2").value;
+            q3 = document.getElementById("q3").value;
+            q4 = document.getElementById("q4").value;
+            q5 = getValueByName('question_5');
+            q6 = getValueByName('question_6');
+            q7 = getValueByName('question_7');
+            q8 = getValueByName('question_8');
+            q9 = getValueByName('question_9');
+            q10 = getValueByName('question_10');
+            q11 = getValueByName('question_11');
+            q12i = getValueByName('question_12_i');
+            q12ii = getValueByName('question_12_ii');
+            q13 = getValueByName('question_13');
+            q14 = getValueByName('question_14');
+            q15_gender = getValueByName('question_15_gender');
+            q15_age = document.getElementById("q15_age").value;
+            q15_income = getValueByName('question_15_annual_income');
+            q15_networth = getValueByName('question_15_net_worth');
+            q15_education = document.getElementById("q15_edu").value;
+            q15_homeowner = getValueByName('question_15_owner');
+            q15_residence = document.getElementById("q15_zip").value;
+
+            new_q13_1 = getValueByName('new_question_13_1');
+            new_q13_2 = getValueByName('new_question_13_2');
+            new_q14_1 = getValueByName('new_question_14_1');
+            new_q14_2 = getValueByName('new_question_14_2');
+            new_q14_3 = getValueByName('new_question_14_3');
+        }
+
+        let bonus_payment = bonus;
+        let is_quiz_passed = isQuizPassed;
+
+        var json =
+            {
+                "uid": uid,
+                "experiment_number": experiment_number,
+                "round": round,
+                "price_of_stockA": price_of_stockA,
+                "price_of_stockB": price_of_stockB,
+                "price_of_stockC": price_of_stockC,
+                "price_of_stockD": price_of_stockD,
+                "choices": choices,
+                "b_stockA": b_stockA,
+                "b_stockB": b_stockB,
+                "b_stockC": b_stockC,
+                "b_stockD": b_stockD,
+                "s_stockA": s_stockA,
+                "s_stockB": s_stockB,
+                "s_stockC": s_stockC,
+                "s_stockD": s_stockD,
+                "time_spent": time_spent,
+                "round_played_at": round_played_at,
+                "random_number": random_number,
+                "worker_id": worker_id,
+                "question_1" : q1,                          // 1
+                "question_2" : q2,                          // 2
+                "question_3" : q3,                          // 3
+                "question_4" : q4,                          // 4
+                "question_5" : q5,                          // 5
+                "question_6" : q6,                          // 6
+                "question_7" : q7,                          // 7
+                "question_8" : q8,                          // 8
+                "question_9" : q9,                          // 9
+                "question_10" : q10,                        // 10
+                "question_11" : q11,                        // 10
+                "question_12_i" : q12i,                     // 12
+                "question_12_ii" : q12ii,                   // 12
+                "question_13" : q13,                        // 13
+                "question_14" : q14,                        // 14
+                "question_15_gender" : q15_gender,          // 15
+                "question_15_age" : q15_age,                // 16
+                "question_15_annual_income" : q15_income,   // 17
+                "question_15_net_worth" : q15_networth,     // 18
+                "question_15_education" : q15_education,    // 19
+                "question_15_homeowner" : q15_homeowner,    // 20
+                "question_15_zipcode" : q15_residence,      // 21
+                "bonus" : bonus_payment,                     // 22
+                "assignment_id" : assignment_id,
+                "is_quiz_passed" : is_quiz_passed,
+                "new_question_13_i" :  new_q13_1,
+                "new_question_13_ii" :  new_q13_2,
+                "new_question_14_i" :  new_q14_1,
+                "new_question_14_ii" :  new_q14_2,
+                "new_question_14_iii" :  new_q14_3
+
+            };
+        let xhr = new XMLHttpRequest();
+        let url = urlg + "postSavedDataCh";
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        //console.log(JSON.stringify(json));
+        xhr.send(JSON.stringify(json));
+        xhr.onload = function (e) {
+            //console.log(xhr.status);
+        };
+
+    }
+
+    function getValueByName(name) {
+        var ele = document.getElementsByName(name); 
+              
+        for(i = 0; i < ele.length; i++) { 
+            if(ele[i].checked) 
+                return ele[i].value;
+        } 
+    }
+
+    function start() {
+        startTime = new Date();
+    }
+
+    function end() {
+        endTime = new Date();
+        var diff = endTime - startTime;
+        diff /= 1000;
+        time_spent = Math.round(diff);
+        start();
+    }
+
+    function getDate() {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        const date = new Date();
+        var monthName = monthNames[date.getMonth()];
+        var minutes = date.getMinutes();
+        if (minutes < 10)
+            minutes = "0" + minutes;
+
+        round_played_at = monthName + " " + date.getDate() + " " + date.getHours() + ":" + minutes + " " +
+            date.toString().match(/\((.*)\)/).pop();
+
+
+    }
+
+    // function abbreviateWord(str) {
+    //     if (str !== null) {
+    //         var matches = str.match(/\b(\w)/g);
+    //         return matches.join('');
+    //     } else {
+    //         return str;
+    //     }
+    // }
+
+    function nextPeriod() {
+        if (document.getElementById("next_period").innerHTML === PROCEED_KEY) {
+            proceedToNextAttempt();
+            // Added by Zirui Wang on 7/23/2020
+            timer('proceed','Proceed');
+        }
+        if (document.getElementById("next_period").innerHTML === END_EXPERIMENT_KEY) {
+            proceedToSurvey();
+            //window.location.reload();
+            //proceedToThankyou();
+        }
+        calcAveragePrice();
+        updatePreviousShares(_currentPeriodIndex);
+        //freshUnrealizedTotle();
+        //freshRealizedTotle();
+        if (_currentPeriodIndex <= 2)
+            end();                           //to calculate time_spent during obs round
+        if (_currentPeriodIndex < 14)
+            saveData();
+        _currentPeriodIndex++;
+        initializeShareCount(_currentPeriodIndex);
+        if (_currentPeriodIndex < 14) {
+            newPrices(_currentPeriodIndex);
+            myChart.data.datasets[0].data = _sharePrices[0];
+            myChart.data.datasets[1].data = _sharePrices[1];
+            myChart.data.datasets[2].data = _sharePrices[2];
+            myChart.data.datasets[3].data = _sharePrices[3];
+            myChart.update();
+
+        }
+
+        if (_currentPeriodIndex === 3) {
+            updateNextPeriodButton(ROUND_TRADING, NOTE_TRADING_KEY);
+        }
+        freshAveragePrice();
+        countingAssets();
+        //freshTotalAssetsChart();
+
+
+        // Commented by Zirui Wang on 5/9/2020 in order to remove pop-up windows in between rounds
+        // undo comment by Zirui Wang on 5/30/2020
+        if (_currentPeriodIndex > 3 && _currentPeriodIndex < 14) {
+            populateModal();
+            updateChartTwo();
+        }
+        
+        // Added by Zirui Wang on 5/9/2020
+        // Make sure at the end of each game, change the "Next period" button to "Proceed" button
+        if (_currentPeriodIndex === 13){
+            document.getElementById("note").innerHTML = "You have finished this game. Click the Proceed button to " +
+                "proceed to the next game.";
+            document.getElementById("next_period").innerHTML = PROCEED_KEY;
+
+            // Added by Zirui Wang on 7/5/2020
+            total_assets[currentAttempt]= _totalAssets[_currentPeriodIndex];
+        }
+    }
+
+    function resetDataForNextAttempt() {
+        _cash = 1000;
+        _shares = 0;
+        _totalAssets = [];
+        //_unrealisedListGlobal=[];
+        // _sharePrices=[];
+        //_sharesOwnedRound=[];
+        _currentPeriodIndex = 0;
+        _weightedaverageprice = [0, 0, 0, 0];
+        //unrealisedGain=[];
+        //changeInAssests=[];
+        _sharePrices[0][15] = _sharePrices[0][0];
+        _sharePrices[1][15] = _sharePrices[1][0];
+        _sharePrices[2][15] = _sharePrices[2][0];
+        _sharePrices[3][15] = _sharePrices[3][0];
+        for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < 14; j++) {
+                _sharePrices[i][j] = 0;
+                _sharesOwnedRound[i][j] = 0;
+            }
+        }
+        for (var j = 0; j < 13; j++) {
+            _sharesOwned[j] = 0;
+        }
+        myChart.update();
+        // Added by Zirui Wang on 9/13/2020 to update chart2
+        myChart2.options.title.text = "Total Unrealized Gain/Loss";
+        myChart2.data.datasets[0].label = "";
+        changeInAssests[0] = 0;
+        //changeInAssests[1] = 0;
+        // myChart2.data.labels[0] = "Total Realized Gain/Loss";
+        //myChart2.data.labels[1] = "Total Unrealized Gain/Loss";
+        myChart2.update();
+
+        var averagePrice = document.getElementsByClassName("AveragePrice");
+        var previousShares = document.getElementsByClassName("previousShares");
+        var changeInShares = document.getElementsByClassName("changeInShares");
+        var currentShares = document.getElementsByClassName("currentShares");
+        var UnrealizedGL = document.getElementsByClassName("UnrealizedGL");
+        var realizedGL = document.getElementsByClassName("RealizedGL");
+        document.getElementById("UnrealizedTotle").innerHTML = "0.00";
+        document.getElementById("UnrealizedTotle").style.color = "#34407c";
+        document.getElementById("dollarSignUT").style.color = "#34407c";
+        document.getElementById("RealizedTotal").innerHTML = "0.00";
+        document.getElementById("RealizedTotal").style.color = "#34407c";
+        document.getElementById("dollarSignRT").style.color = "#34407c";
+        for (var i = 0; i < 4; i++) {
+            averagePrice[i].innerHTML = 0;
+            previousShares[i].innerHTML = 0;
+            changeInShares[i].innerHTML = 0;
+            currentShares[i].innerHTML = 0;
+            //Modified by Zirui Wang on 7/31/2020
+            UnrealizedGL[i].innerHTML = 0;
+            UnrealizedGL[i].style.color = "#000000";
+            realizedGL[i].innerHTML = 0;
+            realizedGL[i].style.color = "#000000";
+        }
+        currentAttempt++;
+        document.getElementById("next_period").innerHTML = NEXT_PERIOD_KEY;
+        updateNextPeriodButton(ROUND_OBSERVATION, NOTE_OBSERVATION_KEY);
+
+        // the rest of method added by Zirui Wang on 5/9/2020
+        // reset text&numbers color at each attempt's beginning
+        var currentPrices = document.getElementsByClassName("CurrentPrice");
+
+        var dollarSignsA = document.getElementsByClassName("dollarSignA");
+        var dollarSignsB = document.getElementsByClassName("dollarSignB");
+        var dollarSignsC = document.getElementsByClassName("dollarSignC");
+        var dollarSignsD = document.getElementsByClassName("dollarSignD");
+
+        for (var i = 0; i < currentShares.length; i++) {
+
+            currentPrices[i].style.color = "#000000";
+            averagePrice[i].style.color = "#000000";
+            previousShares[i].style.color = "#000000";
+            currentShares[i].style.color = "#000000";
+            changeInShares[i].style.color = "#000000";
+
+            if(i===0) {
+                for (var j = 0; j < dollarSignsA.length; j++) {
+                    dollarSignsA[j].style.color = "#000000";
+                }
+            }
+            if(i===1) {
+                for (var j = 0; j < dollarSignsB.length; j++) {
+                    dollarSignsB[j].style.color = "#000000";
+                }
+            }
+            if(i===2) {
+                for (var j = 0; j < dollarSignsC.length; j++) {
+                    dollarSignsC[j].style.color = "#000000";
+                }
+            }
+            if(i===3) {
+                for (var j = 0; j < dollarSignsD.length; j++) {
+                    dollarSignsD[j].style.color = "#000000";
+                }
+            }
+        }
+        //Added by Zirui Wang on 7/31/2020
+        var dollarSignRGL = document.getElementsByClassName("dollarSignRGL");
+        var dollarSignUGL = document.getElementsByClassName("dollarSignUGL");
+
+        for( var i = 0; i <dollarSignRGL.length; i++) {
+            dollarSignRGL[i].style.color = "#000000";
+            dollarSignUGL[i].style.color = "#000000";
+        }
+    }
+
+    function updateNextPeriodButton(ROUND_KEY, NOTE_KEY) {
+        document.getElementById("roundtype").innerHTML = ROUND_KEY;
+        const note = document.getElementById("note");
+        note.innerHTML = "";
+        note.innerHTML = NOTE_KEY;
+    }
+
+    function openEOEModalBox() {
+        finalModal.style.display = "block";
+    }
+
+    function openModalBox() {
+        modal.style.display = "block";
+    }
+
+    function closeModalBox() {
+        modal.style.display = "none";
+    }
+
+    function calcAveragePrice() {
+        var sumOfAmount = 0;
+        var sumOfShares = 0;
+        var diffInShares = 0;
+        for (var i = 0; i < _sharePrices.length; i++) {
+            for (var j = 3; j <= _currentPeriodIndex; j++) {
+
+
+                diffInShares = _sharesOwnedRound[i][j] - _sharesOwnedRound[i][j - 1];
+                //console.log(_sharePrices[i][j] * diffInShares+ "   "+ _sharePrices[i][j]+ " "+ diffInShares);
+                if (diffInShares > 0) {
+                    sumOfAmount += _sharePrices[i][j] * diffInShares;
+                    sumOfShares += diffInShares;
+                }
+                if (_sharesOwnedRound[i][j] === 0) {
+                    sumOfAmount = 0;
+                    sumOfShares = 0;
+                }
+            }
+            //console.log(sumOfAmount+"   "+ sumOfShares);
+            if (sumOfShares === 0) {
+                _weightedaverageprice[i] = 0;
+            } else {
+                _weightedaverageprice[i] = (sumOfAmount / sumOfShares);
+            }
+            sumOfAmount = 0;
+            sumOfShares=0;
+        }
+
+
+    }
+
+    //Modified by Zirui Wang on 7/30/2020
+    //call this function when click the buy button
+    function buy(index) {
+        if (_currentPeriodIndex < 3) {
+            alert("You can't buy during observation round. Click next round to proceed");
+            return;
+        }
+        if (_currentPeriodIndex > 12) {
+            alert("End of Experiment");
+            return;
+        }
+        var price = _sharePrices[index][_currentPeriodIndex];
+        if (_cash < price) {
+            alert("The balance of account is insufficient.");
+            return;
+        }
+        _sharesOwned[index]++;
+        _cash = _cash - price;
+        _shares = _shares + price;
+        _sharesOwnedRound[index][_currentPeriodIndex] = _sharesOwned[index];
+
+        
+        var changeInShares = document.getElementsByClassName("changeInShares");
+
+        if( Number( changeInShares[index].innerHTML ) < 0) {
+            var averagePrices = document.getElementsByClassName("AveragePrice");
+            var realizedGLs = document.getElementsByClassName("RealizedGL");
+            var unrealizedGLs = document.getElementsByClassName("UnrealizedGL");
+            var dollarSign = document.getElementsByClassName("dollarSignRGL");
+            var dollarSignUGLs = document.getElementsByClassName("dollarSignUGL");
+
+            var rgl = Number(realizedGLs[index].innerHTML) - (price - Number(averagePrices[index].innerHTML));
+            var updatedUnrealizedGL = Number( unrealizedGLs[index].innerHTML ) + (price - Number(averagePrices[index].innerHTML));
+            
+            realizedGLs[index].innerHTML = rgl.toFixed(2);
+            unrealizedGLs[index].innerHTML = updatedUnrealizedGL.toFixed(2);
+
+            if (updatedUnrealizedGL == 0) {
+                unrealizedGLs[index].style.color = "#000000";
+                dollarSignUGLs[index].style.color = "#000000";
+            } else if ( updatedUnrealizedGL > 0 ) {
+                unrealizedGLs[index].style.color = "#3cba9f";
+                dollarSignUGLs[index].style.color = "#3cba9f";
+            } else if ( updatedUnrealizedGL < 0 ) {
+                unrealizedGLs[index].style.color = "#c45850";
+                dollarSignUGLs[index].style.color = "#c45850";
+            }
+
+            if( rgl.toFixed(2) < 0 ) {
+                realizedGLs[index].style.color = "#c45850";
+                dollarSign[index].style.color = "#c45850";
+
+            } else if ( rgl.toFixed(2) > 0 ) {
+                realizedGLs[index].style.color = "#3cba9f";
+                dollarSign[index].style.color = "#3cba9f";
+
+            } else {
+                realizedGLs[index].style.color = "#000000";
+                dollarSign[index].style.color = "#000000";
+
+            }
+        }
+        // if (averagePrices[index].innerHTML === "0") {
+        //     //averagePrices[index].innerHTML = price.toFixed(2);
+        //     _weightedaverageprice[index] = price.toFixed(2);
+        // } else {
+        //     var ap = Number(averagePrices[index].innerHTML);
+        //     //averagePrices[index].innerHTML = ((ap * (_sharesOwned[index] - 1) + price) / _sharesOwned[index]).toFixed(2);
+        //     //calcAveragePrice();
+        //     _weightedaverageprice[index] = ((ap * (_sharesOwned[index] - 1) + price) / _sharesOwned[index]).toFixed(2);
+        //
+        // }
+        //Cash, Shares, Shares Owned, Average Price has been changed.
+        initializationHtml(true);
+        refreshTotal();
+    }
+
+    //Modified by Zirui Wang on 7/30/2020
+    //call this function when click the Sell button
+    function sell(index) {
+        if (_currentPeriodIndex < 3) {
+            alert("You can't sell during observation round. Click next round to proceed");
+        }
+        if (_currentPeriodIndex > 12) {
+            alert("End of Experiment");
+            return;
+        } else if (_sharesOwned[index] <= 0) {
+            alert("You don't have any shares to sell");
+            return;
+        }
+
+        var price = _sharePrices[index][_currentPeriodIndex];
+        _cash = _cash + price;
+        _shares = _shares - price;
+        _sharesOwned[index]--;
+        _sharesOwnedRound[index][_currentPeriodIndex] = _sharesOwned[index];
+
+        if( Number(document.getElementsByClassName("changeInShares")[index].innerHTML) <= 0) {
+            var averagePrices = document.getElementsByClassName("AveragePrice");
+            var realizedGLs = document.getElementsByClassName("RealizedGL");
+            var unrealizedGLs = document.getElementsByClassName("UnrealizedGL");
+            var dollarSign = document.getElementsByClassName("dollarSignRGL");
+            var dollarSignUGLs = document.getElementsByClassName("dollarSignUGL");
+
+            var rgl = Number(realizedGLs[index].innerHTML) + (price - Number(averagePrices[index].innerHTML));
+            var updateUnrealizedGL = Number(unrealizedGLs[index].innerHTML) - (price - Number(averagePrices[index].innerHTML));
+            //var ugl = (_sharesOwned[index] * price) - (_sharesOwned[index] * Number(averagePrices[index].innerHTML));
+            
+            unrealizedGLs[index].innerHTML = updateUnrealizedGL.toFixed(2);
+            realizedGLs[index].innerHTML = rgl.toFixed(2);
+
+            if( updateUnrealizedGL == 0 ) {
+                unrealizedGLs[index].style.color = "#000000";
+                dollarSignUGLs[index].style.color = "#000000";
+            } else if ( updateUnrealizedGL > 0 ) {
+                unrealizedGLs[index].style.color = "#3cba9f";
+                dollarSignUGLs[index].style.color = "#3cba9f";
+            } else if ( updateUnrealizedGL < 0 ) {
+                unrealizedGLs[index].style.color = "#c45850";
+                dollarSignUGLs[index].style.color = "#c45850";
+            }
+            
+            if(rgl.toFixed(2) > 0) {
+                realizedGLs[index].style.color = "#3cba9f";
+                dollarSign[index].style.color = "#3cba9f";
+            } else if( rgl.toFixed(2) < 0 ) {
+                realizedGLs[index].style.color = "#c45850";
+                dollarSign[index].style.color = "#c45850";
+            } else {
+                realizedGLs[index].style.color = "#000000";
+                dollarSign[index].style.color = "#000000";
+            }
+        }
+        //_unrealisedListGlobal[index] = ugl.toFixed(2);
+        //freshRealizedTotle();
+        //freshUnrealizedTotle();
+        initializationHtml(true);
+        refreshTotal();
+    }
+
+    // Added by Zirui Wang on 9/13/2020
+    // refresh two total figures and chart #2
+    function refreshTotal() {
+        refreshUnrealizedGLTotal();
+        refreshRealizedGLTotal();
+        updateChartTwo();
+    }
+
+    // Added by Zirui Wang
+    function refreshUnrealizedGLTotal() {
+        var unrealizedGLs = document.getElementsByClassName("UnrealizedGL");
+        var unrealizedGLTotal = document.getElementById("UnrealizedTotle");
+        var dollarSignUT = document.getElementById("dollarSignUT");
+        var newTotal = 0;
+
+        for( i = 0; i < unrealizedGLs.length; i ++ ) {
+            newTotal += Number(unrealizedGLs[i].innerHTML);
+        }
+
+        unrealizedGLTotal.innerHTML = newTotal.toFixed(2);
+
+        if (newTotal > 0) {
+            unrealizedGLTotal.style.color = "#3cba9f";
+            dollarSignUT.style.color = "#3cba9f";
+        } else if (newTotal < 0) {
+            unrealizedGLTotal.style.color = "#c45850";
+            dollarSignUT.style.color = "#c45850";
+        } else {
+            unrealizedGLTotal.style.color = "#34407c";
+            dollarSignUT.style.color = "#34407c";
+        }
+    }
+
+    // Added by Zirui Wang on 9/13/2020
+    function refreshRealizedGLTotal() {
+        var realizedGLs = document.getElementsByClassName("RealizedGL");
+        var realizedGLTotal = document.getElementById("RealizedTotal");
+        var dollarSignRT = document.getElementById("dollarSignRT");
+        var newTotal = 0;
+
+        for( i = 0; i < realizedGLs.length; i ++ ) {
+            newTotal += Number(realizedGLs[i].innerHTML);
+        }
+
+        realizedGLTotal.innerHTML = newTotal.toFixed(2);
+
+        if (newTotal > 0) {
+            realizedGLTotal.style.color = "#3cba9f";
+            dollarSignRT.style.color = "#3cba9f";
+        } else if (newTotal < 0) {
+            realizedGLTotal.style.color = "#c45850";
+            dollarSignRT.style.color = "#c45850";
+        } else {
+            realizedGLTotal.style.color = "#34407c";
+            dollarSignRT.style.color = "#34407c";
+        }
+    }
+
+    //refresh realized gain and Loss
+    // function freshRealizedTotle() {
+    //     var realizedGLs = document.getElementsByClassName("RealizedGL");
+    //     var realizedTotal = 0;
+    //     for( var i=0; i<realizedGLs.length; i++)
+    //         realizedTotal += Number(realizedGLs[i].innerHTML);
+    //     document.getElementById("RealizedTotle").innerHTML = realizedTotal.toFixed(2);
+    // }
+
+    //refresh unrealized gain and Los
+    // function freshUnrealizedTotle() {
+    //     alert(_unrealisedListGlobal[0]);
+    //     var unrealizedGLs = document.getElementsByClassName("UnrealizedGL");
+
+    //     for (i = 0; i < _unrealisedListGlobal.length; i++) {
+    //         unrealizedGLs.innerHTML = _unrealisedListGlobal[i];
+    //     }
+    //     alert("test[0]");
+
+    //     var unrealizedTotal = 0;
+    //     for (var i = 0; i < unrealizedGLs.length; i++)
+    //         unrealizedTotal += Number(unrealizedGLs[i].innerHTML);
+
+    //     unrealisedGain[_currentPeriodIndex] = unrealizedTotal;
+    //     var toWrite;
+
+    //     if (unrealizedTotal.toFixed(2) < 0){
+    //         toWrite = "<span style = 'color:#3cba9f'>$" + unrealizedTotal.toFixed(2) + "</span>";
+    //     }
+    //     else if (unrealizedTotal.toFixed(2) > 0) {
+    //         toWrite = "<span style = 'color:#c45850'>$" + unrealizedTotal.toFixed(2)+ "</span>";
+    //     }
+    //     else {
+    //         toWrite = "$" + unrealizedTotal.toFixed(2);
+    //     }
+
+    //     document.getElementById("UnrealizedTotle").innerHTML = toWrite;
+    // }
+
+    function freshAveragePrice() {
+        var averagePrices = document.getElementsByClassName("AveragePrice");
+        for (var i = 0; i < _weightedaverageprice.length; i++) {
+            averagePrices[i].innerHTML = _weightedaverageprice[i].toFixed(2);
+        }
+        for (var i = 0; i < averagePrices.length; i++) {
+            //console.log("shares = "+i+" "+_sharesOwned[i]);
+            if (_sharesOwned[i] === 0) {
+                averagePrices[i].innerHTML = 0;
+            }
+        }
+        //console.log(_weightedaverageprice);
+
+
+    }
+
+    //refresh the total assets Chart
+    function freshTotalAssetsChart() {
+        myChart2.update();
+    }
+
+    // Added by Zirui Wang on 7/5/2020. Refer to w3schools
+    function showIntroTab(n) {
+        // This function will display the specified tab of the form ...
+        var x = document.getElementsByClassName("introTab");
+        x[n].style.display = "block";
+        // ... and fix the Previous/Next buttons:
+        if (n === 0) {
+            document.getElementById("introButtons").style.display = "block";
+            document.getElementById("introSteps").style.display = "block";
+            document.getElementById("introPrevBtn").style.display = "none";
+
+        } else {
+            document.getElementById("introPrevBtn").style.display = "inline";
+        }
+
+        if (n==3) {
+            document.getElementById("introPrevBtn").style.display = "none";
+        }
+        if (n==4) {
+            document.getElementById("introPrevBtn").style.display = "inline";
+        }
+
+
+        if (n === (x.length - 1)) {
+            document.getElementById("introNextBtn").style.display = "none";
+        } 
+        if (n === (x.length - 2)) {
+            document.getElementById("introNextBtn").style.display = "inline";
+        } 
+        // ... and run a function that displays the correct step indicator:
+        fixIntroStepIndicator(n)
+    }
+    // Added by Zirui Wang on 8/1/2020
+    function adjustButtonContent() {
+        if (currentIntroTab == 1) {
+            document.getElementById("introNextBtn").innerHTML = "Start Quiz";
+        }
+        if (currentIntroTab == 2) {
+            document.getElementById("introNextBtn").innerHTML = "Submit Quiz";
+        }
+    }
+    // Added by Zirui Wang on 7/5/2020. Refer to w3schools
+    // Modified by Zirui Wang on 8/1/2020
+    function introNextPrev(n) {
+        
+        if (currentIntroTab == 0 && n == 1) {
+            document.getElementById("introNextBtn").innerHTML = "Start Quiz";
+            if(_introCountDownComplete[currentIntroTab+2]==1) {
+                document.getElementById("introNextBtn").innerHTML = "Continue Quiz";
+            }
+        }
+        if (currentIntroTab == 1 && n == 1) {
+            document.getElementById("introHeader").innerHTML = "Eligibility Quiz";
+            document.getElementById("introNextBtn").innerHTML = "Submit Quiz";
+        }
+        if (currentIntroTab == 1 && n == -1) {
+            document.getElementById("introNextBtn").innerHTML = "Next";
+        }
+        if (currentIntroTab == 2 && n == -1) {
+            document.getElementById("introHeader").innerHTML = "Instructions";
+            document.getElementById("introNextBtn").innerHTML = "Continue Quiz";
+        }
+        if (currentIntroTab == 2 && n == 1) {
+
+            if ( !validateQuiz() ) {
+                return false;
+            }
+
+            var quizAnswer1 = getValueByName('quiz_question_1');
+            var quizAnswer2 = getValueByName('quiz_question_2');
+            var quizAnswer3 = getValueByName('quiz_question_3');
+
+            if (quizAnswer1 == "D" && quizAnswer2 == "A" && quizAnswer3 == "B") {
+                document.getElementById("introHeader").innerHTML = "You answered all questions correctly!";
+                isQuizPassed = true;
+                saveData();
+            } else {
+                saveData();
+                proceedToThankyouWhenQuizFailed();
+            }
+        }
+        if (currentIntroTab == 3 && n == 1) {
+            document.getElementById("introHeader").innerHTML = "Instructions";
+        }
+
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("introTab");
+        // Hide the current tab:
+        x[currentIntroTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentIntroTab = currentIntroTab + n;
+        // if you have reached the end of the form... :
+        if (currentIntroTab >= x.length) {
+            //...the form gets submitted:
+            //document.getElementById("surveyForm").submit();
+            return false;
+        }
+        // Otherwise, display the correct tab:
+        showIntroTab(currentIntroTab);
+        topFunction();
+    }
+
+    function validateQuiz() {
+        var valid = true;
+
+        if(getValueByName("quiz_question_1")==undefined){
+            valid = false;
+            document.getElementById("quiz_required_alert_1").style = "display:inline;";
+        }
+        if(getValueByName("quiz_question_2")==undefined){
+            valid = false;
+            document.getElementById("quiz_required_alert_2").style = "display:inline;";
+        }
+        if(getValueByName("quiz_question_3")==undefined){
+            valid = false;
+            document.getElementById("quiz_required_alert_3").style = "display:inline;";
+        }
+
+        return valid;
+    }
+
+    // Added by Zirui Wang on 7/5/2020. Refer to w3schools
+    function fixIntroStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        var i, x = document.getElementsByClassName("introStep");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class to the current step:
+        x[n].className += " active";
+    }
+
+    // Added by Zirui Wang on 7/13/2020. Refer to w3schools
+    function validateSurvey() {
+        // This function deals with validation of the form fields
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+
+        y = x[currentTab].getElementsByTagName("input");
+        // A loop that checks every input field in the current tab:
+        for (i = 0; i < y.length; i++) {
+            // If a field is empty...
+            if (y[i].value == "") {
+                if(y[i].name=="question_1") document.getElementById("required_alert_1").style = "display:inline;";
+                if(y[i].name=="question_2") document.getElementById("required_alert_2").style = "display:inline;";
+                if(y[i].name=="question_3") document.getElementById("required_alert_3").style = "display:inline;";
+                if(y[i].name=="question_4") document.getElementById("required_alert_4").style = "display:inline;";
+                if(y[i].name=="question_15_age") document.getElementById("required_alert_15_age").style = "display:inline;";
+                if(y[i].name=="question_15_edu_inputbox") document.getElementById("required_alert_15_edu").style = "display:inline;";
+                if(y[i].name=="question_15_zip") document.getElementById("required_alert_15_zip").style = "display:inline;";
+
+                // add an "invalid" class to the field:
+                y[i].className += " invalid";
+                // and set the current valid status to false:
+                valid = false;
+            }
+        }
+        if(currentTab==1){
+            if(getValueByName("question_5")==undefined){
+                valid = false;
+                document.getElementById("required_alert_5").style = "display:inline;";
+            }
+            if(getValueByName("question_6")==undefined){
+                valid = false;
+                document.getElementById("required_alert_6").style = "display:inline;";
+            }
+            if(getValueByName("question_7")==undefined){
+                valid = false;
+                document.getElementById("required_alert_7").style = "display:inline;";
+            }
+        }
+        if(currentTab==2){
+            if(getValueByName("new_question_13_2")==undefined){
+                valid = false;
+                document.getElementById("required_alert_new_13_2").style = "display:inline;";
+            }
+            if(getValueByName("question_8")==undefined){
+                valid = false;
+                document.getElementById("required_alert_8").style = "display:inline;";
+            }
+            if(getValueByName("question_9")==undefined){
+                valid = false;
+                document.getElementById("required_alert_9").style = "display:inline;";
+            }
+            if(getValueByName("question_10")==undefined){
+                valid = false;
+                document.getElementById("required_alert_10").style = "display:inline;";
+            }
+            if(getValueByName("question_11")==undefined){
+                valid = false;
+                document.getElementById("required_alert_11").style = "display:inline;";
+            }
+        }
+        if(currentTab==3){
+            if(getValueByName("question_12_i")==undefined){
+                valid = false;
+                document.getElementById("required_alert_12_i").style = "display:inline;";
+            }
+            if(getValueByName("question_12_ii")==undefined){
+                valid = false;
+                document.getElementById("required_alert_12_ii").style = "display:inline;";
+            }
+        }
+
+        if(currentTab==4){
+            if(getValueByName("new_question_13_1")==undefined){
+                valid = false;
+                document.getElementById("required_alert_new_13_1").style = "display:inline;";
+            }
+        }
+
+        if(currentTab==5){
+            if(getValueByName("new_question_14_1")==undefined){
+                valid = false;
+                document.getElementById("required_alert_new_14_1").style = "display:inline;";
+            }
+            if(getValueByName("new_question_14_2")==undefined){
+                valid = false;
+                document.getElementById("required_alert_new_14_2").style = "display:inline;";
+            }
+            if(getValueByName("new_question_14_3")==undefined){
+                valid = false;
+                document.getElementById("required_alert_new_14_3").style = "display:inline;";
+            }
+        }
+
+
+        if(currentTab==6){
+            if(getValueByName("question_13")==undefined){
+                valid = false;
+                document.getElementById("required_alert_13").style = "display:inline;";
+            }
+            if(getValueByName("question_14")==undefined){
+                valid = false;
+                document.getElementById("required_alert_14").style = "display:inline;";
+            }
+        }
+        if(currentTab==7){
+            if(getValueByName("question_15_gender")==undefined){
+                valid = false;
+                document.getElementById("required_alert_15_gender").style = "display:inline;";
+            }
+            if(getValueByName("question_15_annual_income")==undefined){
+                valid = false;
+                document.getElementById("required_alert_15_income").style = "display:inline;";
+            }
+            if(getValueByName("question_15_net_worth")==undefined){
+                valid = false;
+                document.getElementById("required_alert_15_net_worth").style = "display:inline;";
+            }
+            if(getValueByName("question_15_owner")==undefined){
+                valid = false;
+                document.getElementById("required_alert_15_home").style = "display:inline;";
+            }
+        }
+        // If the valid status is true, mark the step as finished and valid:
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid; // return the valid status
+    }
+
+
+    // Added by Zirui Wang on 6/29/2020. Refer to w3schools
+    function showTab(n) {
+        // This function will display the specified tab of the form ...
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        // ... and fix the Previous/Next buttons:
+        if (n === 0) {
+            document.getElementById("surveyButtons").style.display = "block";
+            document.getElementById("surveySteps").style.display = "block";
+            document.getElementById("prevBtn").style.display = "none";
+
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n === (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Submit";
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next";
+        }
+        // ... and run a function that displays the correct step indicator:
+        fixStepIndicator(n)
+    }
+
+    // Added by Zirui Wang on 6/29/2020. Refer to w3schools
+    function nextPrev(n) {
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateSurvey()) return false;  
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form... :
+        if (currentTab >= x.length) {
+            //...the form gets submitted:
+            //document.getElementById("surveyForm").submit();
+            setupThankyouPanel();
+            surveyDone = true;
+            saveData();
+            proceedToThankyou();
+            return false;
+        }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+        topFunction();
+    }
+
+    // Added by Zirui Wang on 6/29/2020. Refer to w3schools
+    function fixStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class to the current step:
+        x[n].className += " active";
+    }
+
+    // Added by Zirui Wang on 7/12/2020. Refer to w3schools
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+
+    // Added by Zirui Wang on 7/21/2020. Refer to stackoverflow
+    function timer(buttonName, buttonContent) {
+        if(buttonName=="introNextBtn") {
+            document.getElementById('introPrevBtn').setAttribute('disabled','disabled');
+        }
+        if(buttonName=="nextBtn") {
+            document.getElementById('prevBtn').setAttribute('disabled','disabled');
+        }
+        // Get refreence to span and button
+        var btn = document.getElementById(buttonName);
+
+        if(buttonName=="introNextBtn" && currentIntroTab == 7) {
+            btn = document.getElementById("start");
+            buttonContent = "Start Experiment"
+        }
+
+        if( _currentPeriodIndex >= 13 && buttonName == "next_period") {
+            return false;
+        }
+
+        btn.setAttribute('disabled','disabled');
+        btn.innerHTML= "Disabled (<span id='tempSpn'></span>)";
+        var spn = document.getElementById('tempSpn');
+        var count = 0;     // Set count
+        var timer = null;  // For referencing the timer
+
+        (function countDown(){
+            // Display counter and start counting down
+            spn.innerHTML = count;
+            
+            // Run the function again every second if the count is not zero
+            if(count !== 0){
+                timer = setTimeout(countDown, 1000);
+                count--; // decrease the timer
+            } else {
+                // Enable the button
+                btn.removeAttribute("disabled");
+                btn.innerHTML = buttonContent;
+                
+                if(buttonName=="introNextBtn") {
+                    document.getElementById('introPrevBtn').removeAttribute("disabled");
+                                
+                    adjustButtonContent();
+                }
+                if(buttonName=="nextBtn") {
+                    document.getElementById('prevBtn').removeAttribute("disabled");
+                    if( currentTab == 7 ) btn.innerHTML = "Submit";
+                }
+            }
+        }());
+        
+    }
+
+    // Added by Zirui Wang on 7/21/2020. 
+    function timerCountDown(buttonName, buttonContent, completeArray, arrayIndex) {
+        if (completeArray[arrayIndex] == 0) {
+            timer(buttonName, buttonContent);
+            completeArray[arrayIndex] = 1;
+        }
+    }
+
+    var ctx = document.getElementById("myChart").getContext('2d');
+    ctx.height = 800;
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            datasets: [{
+                data: _sharePrices[0],
+                label: "Stock A",
+                borderColor: "#2473ae",
+                fill: false
+            }, {
+                data: _sharePrices[1],
+                label: "Stock B",
+                borderColor: "#8d34a2",
+                fill: false
+            }, {
+                data: _sharePrices[2],
+                label: "Stock C",
+                borderColor: "#d5bd35",
+                fill: false
+            }, {
+                data: _sharePrices[3],
+                label: "Stock D",
+                borderColor: "#888888",
+                fill: false
+            }]
+        },
+        options: {
+            maintainAspectRatio: true,
+            title: {
+                display: true,
+                text: 'Graph of Stock Prices in Each Round'
+            }
+        }
+    });
+
+    //alert("myChart display style: " + document.getElementById("myChart").style.display);
+
+    document.getElementById("myChart").style.display = "block";
+    //alert("myChart display style changed to: " + document.getElementById("myChart").style.display);
+
+    var ctx2 = document.getElementById("myChart2").getContext('2d');
+    var backgroundColors = [];
+    var myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            // labels: ['Total Realized Gain/Loss','Total Unrealized Gain/Loss'],
+            labels: [''],
+            datasets: [
+                {
+                    barThickness: 'flex',
+                    label: '',
+                    backgroundColor: backgroundColors,
+                    data: changeInAssests,
+                    fill: true
+                }              
+            ]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        suggestedMin: -40,
+                        suggestedMax: 40,
+                        steps: 10
+                    }
+                }],
+                xAxes: [{
+                    barPercentage: 0.15
+                }]
+            },
+            title: {
+                display: true,
+                text: 'Total Unrealized Gain/Loss'
+            },
+            animation: {
+                duration: 1,
+                onComplete: function () {
+                    var chartInstance = this.chart;
+                    var ctx = chartInstance.ctx;
+                    ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+
+                    this.data.datasets.forEach(function (dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function (bar, index) {
+                            var data = dataset.data[index];
+                            if (data < 0) {
+                                ctx.fillText(data, bar._model.x, bar._model.y + 15);
+                            } else {
+                                ctx.fillText(data, bar._model.x, bar._model.y - 5);
+                            }
+                        });
+                    });
+                }
+            }
+        }
+    });
+
+    // this line of code added by Zirui Wang on 5/9/2020 to remove chart2
+    // Modified by Zirui Wang on 9/20/2020
+    if( gainlossPopRandom < 0.5 || 0.75 <= gainlossPopRandom) {
+        document.getElementById("myChart2").style.display = "none";
+        document.getElementById("myChart").className += " col-md-offset-6";
+    }
+
+    // Added by Zirui Wang on 9/21/2020
+    if( 0.75 <= gainlossPopRandom && gainlossPopRandom < 1 ) {
+        var total = document.getElementById("urt");
+        var value = document.getElementById("urtv");
+
+        total.style = "box-shadow: 2px 2px gainsboro;border-bottom-left-radius: 25px;border-top-left-radius: 25px;background-color:#fffaf0;font-size:35px";
+        value.style = "box-shadow: 2px 2px gainsboro;border-bottom-right-radius: 25px;border-top-right-radius: 25px;background-color:#fffaf0;font-size:35px";
+
+    }
+
+    // for(i=0;i<chartData.data.length;i++){
+    //     if(chartData.data[i] >= 0){
+    //         backgroundColors.push("#3cba9f");
+    //         chartData.label = "Gain";
+    //     }
+    //     else{
+    //         backgroundColors.push("#c45850");
+    //         chartData.label = "Loss";
+    //     }
+    //     myChart2.update();
+    // }
+
+</script>
+<script type="text/javascript">
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    // Get the <span> element that closes the modal
+    // var span = document.getElementsByClassName("close")[0];
+    var confirmButton = document.getElementById("confirm");
+    // When the user clicks on the button, open the modal
+    // btn.onclick = function() {
+    //     modal.style.display = "block";
+    // }
+
+    // When the user clicks on <span> (x), close the modal
+    confirmButton.onclick = function () {
+        handleModal();
+    };
+
+    function handleModal() {
+        if (_currentPeriodIndex >= 3) {
+            // var printPeriod = _periods[_currentPeriodIndex];
+            // if (_currentPeriodIndex === 13)
+            //     printPeriod = 12;
+            // document.getElementById("period").innerHTML = printPeriod;
+        }
+        if (_currentPeriodIndex === 13){
+            document.getElementById("note").innerHTML = "You have finished this game. Click the Proceed button to " +
+                "proceed to the next game.";
+            document.getElementById("next_period").innerHTML = PROCEED_KEY;
+        }
+        end();
+        modal.style.display = "none";
+
+    }
+
+    // span.onclick = function() {
+    //     modal.style.display = "none";
+    // };
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            handleModal();
+        }
+        if (event.target === finalModal) {
+
+            //finalModal.style.display = "none";
+        }
+    }
+</script>
+<script type="text/javascript">
+    // Get the modal
+    var finalModal = document.getElementById("myEndOfExperimentModal");
+
+    // Get the button that opens the modal
+    // Get the <span> element that closes the modal
+    // var span = document.getElementsByClassName("close")[0];
+    var proceedButton = document.getElementById("proceed");
+    // When the user clicks on the button, open the modal
+    // btn.onclick = function() {
+    //     modal.style.display = "block";
+    // }
+
+    // When the user clicks on <span> (x), close the modal
+    proceedButton.onclick = function () {
+        if (currentAttempt === totalAttempts) {
+            document.getElementById("note_label").innerHTML = "";
+            document.getElementById("note").innerHTML="";
+            document.getElementById("next_period").innerHTML = END_EXPERIMENT_KEY;
+        }
+        else {
+            resetDataForNextAttempt();
+            initialization();
+            initializationHtml(false);
+        }
+        finalModal.style.display = "none";
+
+    };
+    // span.onclick = function() {
+    //     modal.style.display = "none";
+    // };
+
+    // When the user clicks anywhere outside of the modal, close it
+
+</script>
+<!-- Added by Zirui Wang on 8/14/2020 -->
+<script type="text/javascript">
+
+    function redirectCompletionCode() {
+        addr = "https://turkgate.warrington.ufl.edu/codes/generate.php?stamp=10746320&bonus=" + bonus;
+        location.href = addr;
+    }
+    
+</script>
+</html>

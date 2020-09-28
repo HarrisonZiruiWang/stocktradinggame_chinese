@@ -1,0 +1,27 @@
+{
+  "name": "stocktradinggame_chinese",
+  "version": "1.0.0",
+  "description": "The Chinese version of the stock trading game",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarrisonZiruiWang/stocktradinggame_chinese.git"
+  },
+  "author": "Zirui Wang (Harrison)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarrisonZiruiWang/stocktradinggame_chinese/issues"
+  },
+  "homepage": "https://github.com/HarrisonZiruiWang/stocktradinggame_chinese#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^3.0.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  }
+}
