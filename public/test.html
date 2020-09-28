@@ -286,19 +286,17 @@
 
 <!-- Modified by Zirui Wang on 7/5/2020 -->
 <div id="intro">
-    <H2 id="introHeader"> Instructions </H2>
+    <H2 id="introHeader"> 实验说明 </H2>
     <hr>
     
     <div class="introTab">
         <br>
-        <p> This HIT will involve buying and selling fictitious stocks and will take
-            approximately 20 minutes. You will be given $1,000 of experiment cash
-            that you may use to trade stocks. Your final compensation will depend upon <b>the
-            total value of your stocks and cash</b> at the end of the experiment.
+        <p>这是一项关于虚拟股票交易的实验，大约需要花费20分钟。您将获得￥1,000的实验现金用于交易。
+            您最终的报酬将取决于实验结束时你所持有的<b>股票和现金的总价值</b>。
         </p>
         <br>
         <p>
-            Before you start this experiment, you will be required to pass a short eligibility quiz based on key concepts.
+            在开始之前，您需要通过一个简短的资格测验，确保您了解实验涉及的关键概念。
         </p>
         </div>
 
@@ -579,8 +577,8 @@
     <br>
     <div id="introButtons" style="overflow:auto;display: none;">
         <div style="float:right;">
-            <button type="button" id="introPrevBtn" class="btn btn-primary btn-sm" onclick="introNextPrev(-1);">Previous</button>
-            <button type="button" id="introNextBtn" class="btn btn-primary btn-sm" onclick="introNextPrev(1); timerCountDown('introNextBtn', 'Next', _introCountDownComplete, currentIntroTab);" disabled>Next</button>
+            <button type="button" id="introPrevBtn" class="btn btn-primary btn-sm" onclick="introNextPrev(-1);">上一步</button>
+            <button type="button" id="introNextBtn" class="btn btn-primary btn-sm" onclick="introNextPrev(1); timerCountDown('introNextBtn', '下一步', _introCountDownComplete, currentIntroTab);" disabled>下一步</button>
         </div>
     </div>
 
@@ -638,7 +636,7 @@
         <!-- <a href="https://turkgate.warrington.ufl.edu/codes/generate.php?stamp=10746320" 
             class="btn btn-primary btn-sm" role="button">Next</a> -->
 
-        <button id="completeButton1" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >Next</button>
+        <button id="completeButton1" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >下一步</button>
     </div>
 </div>
 
@@ -659,7 +657,7 @@
             class="btn btn-primary btn-sm" role="button">Next
         </a> -->
 
-        <button id="completeButton2" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >Next</button>
+        <button id="completeButton2" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >下一步</button>
 
     </div>
 </div>
@@ -1680,7 +1678,7 @@
     //proceedToSurvey();
 
     // Added by Zirui Wang on 7/21/2020
-    timerCountDown('introNextBtn', 'Next', _introCountDownComplete, currentIntroTab);
+    timerCountDown('introNextBtn', '下一步', _introCountDownComplete, currentIntroTab);
     
     //initialization
     document.getElementById("roundtype").innerHTML = "Observation Round";
@@ -3071,10 +3069,10 @@
     // Added by Zirui Wang on 8/1/2020
     function adjustButtonContent() {
         if (currentIntroTab == 1) {
-            document.getElementById("introNextBtn").innerHTML = "Start Quiz";
+            document.getElementById("introNextBtn").innerHTML = "开始测验";
         }
         if (currentIntroTab == 2) {
-            document.getElementById("introNextBtn").innerHTML = "Submit Quiz";
+            document.getElementById("introNextBtn").innerHTML = "提交测验";
         }
     }
     // Added by Zirui Wang on 7/5/2020. Refer to w3schools
@@ -3082,21 +3080,21 @@
     function introNextPrev(n) {
         
         if (currentIntroTab == 0 && n == 1) {
-            document.getElementById("introNextBtn").innerHTML = "Start Quiz";
+            document.getElementById("introNextBtn").innerHTML = "开始测验";
             if(_introCountDownComplete[currentIntroTab+2]==1) {
-                document.getElementById("introNextBtn").innerHTML = "Continue Quiz";
+                document.getElementById("introNextBtn").innerHTML = "继续测验";
             }
         }
         if (currentIntroTab == 1 && n == 1) {
-            document.getElementById("introHeader").innerHTML = "Eligibility Quiz";
-            document.getElementById("introNextBtn").innerHTML = "Submit Quiz";
+            document.getElementById("introHeader").innerHTML = "资格测验";
+            document.getElementById("introNextBtn").innerHTML = "提交测验";
         }
         if (currentIntroTab == 1 && n == -1) {
-            document.getElementById("introNextBtn").innerHTML = "Next";
+            document.getElementById("introNextBtn").innerHTML = "下一步";
         }
         if (currentIntroTab == 2 && n == -1) {
-            document.getElementById("introHeader").innerHTML = "Instructions";
-            document.getElementById("introNextBtn").innerHTML = "Continue Quiz";
+            document.getElementById("introHeader").innerHTML = "实验说明";
+            document.getElementById("introNextBtn").innerHTML = "继续测验";
         }
         if (currentIntroTab == 2 && n == 1) {
 
@@ -3118,7 +3116,7 @@
             }
         }
         if (currentIntroTab == 3 && n == 1) {
-            document.getElementById("introHeader").innerHTML = "Instructions";
+            document.getElementById("introHeader").innerHTML = "实验说明";
         }
 
         // This function will figure out which tab to display
