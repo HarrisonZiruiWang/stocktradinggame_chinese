@@ -540,14 +540,12 @@
 
         <br>
         <p style="font-size:10px"><u>Consent to Participate in Research</u></p>
-        <p style="font-size: 10px">By answering the following questions, you are participating in a study on the cognitive
-            processes of
-            investors. By participating you are confirming that you are over 18 years of age. If you have questions about
-            this research,
-            or if you would like to receive a report of this research when it is completed please contact Joseph Engelberg
-            at
-            jengelberg@ucsd.edu. Your participation in this research is voluntary. You may decline to answer any or all of
-            the
+        <p style="font-size: 10px">
+            By answering the following questions, you are participating in a study on the cognitive processes of investors. 
+            By participating you are confirming that you are over 18 years of age. If you have questions about
+            this research, or if you would like to receive a report of this research when it is completed please contact 
+            Li An at anl@pbcsf.tsinghua.edu.cn. Your participation in this research is voluntary. 
+            You may decline to answer any or all of the
             following questions. You may decline further participation, at any time, without adverse consequences.
             Your anonymity is assured; the researchers who have requested your participation will not receive any personal
             information about you. By continuing, you are confirming that you understand these instructions and conditions
@@ -608,25 +606,23 @@
 </div>
 <div id="thankyou" style="display: none">
     <!-- Please reload if you wanna play again(but it will no longer affect your score) -->
-    <h3> Thank you for completing all 4 games and answering the questionnaire! </h3>
+    <h3> 多谢您完成四次游戏和回答调查问卷！</h3>
     <hr>
     <br>
     <!-- Added by Zirui Wang on 07/05/2020 -->
-    <p> To compute your bonus payment, Game <input disabled id="numRandomGame" value="#X" type="text"> was 
-        chosen and you finished with $<input disabled id="totalAssetthisRound" value="#Y" type="text"> in this game, 
-        so you will be paid a bonus of <input disabled id="formula" value=".3% x $Y = $Z" type="text">. </p>
-    <br>
+    <p> 为计算您的奖金，第<input disabled id="numRandomGame" value="#X" type="text">次游戏被随机选中，
+        同时您在这次游戏中获得了￥<input disabled id="totalAssetthisRound" value="#Y" type="text">。
+        所以，您将收到<input disabled id="formula" value=".3% x $Y = $Z" type="text">的奖金。
+    </p>
+    <!-- <br>
     <p>If your HIT is approved, your total compensation (including fixed payment and bonus) will be paid within the next <b>3 business days</b>.</p>
     <br>
-    <p>    Click Next to receive the completion code you will need to get paid.</p>
+    <p>    Click Next to receive the completion code you will need to get paid.</p> -->
     <br>
     <!-- Added by Zirui Wang on 06/24/2020 -->
-    <div style="float:right;">
-        <!-- <a href="https://turkgate.warrington.ufl.edu/codes/generate.php?stamp=10746320" 
-            class="btn btn-primary btn-sm" role="button">Next</a> -->
-
+    <!-- <div style="float:right;">
         <button id="completeButton1" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >下一页</button>
-    </div>
+    </div> -->
 </div>
 
 <!-- Added by Zirui Wang on 8/1/2020 -->
@@ -641,14 +637,9 @@
     
     <!-- <p>  Click Next to receive the completion code you will need to get paid.</p> -->
     <br>
-    <div style="float:right;">
-        <!-- <a href="https://turkgate.warrington.ufl.edu/codes/generate.php?stamp=10746320"
-            class="btn btn-primary btn-sm" role="button">Next
-        </a> -->
-
+    <!-- <div style="float:right;">
         <button id="completeButton2" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >下一页</button>
-
-    </div>
+    </div> -->
 </div>
 
 <!-- Commented by Zirui Wang on 6/14/2020 -->
@@ -1040,7 +1031,7 @@
                 <label for="q12_3"><h4>C. 确定损失￥750</h4></label>
                 <br>
                 <input type="radio" id="q12_4" name="question_12_ii" value="D">
-                <label for="q12_4"><h4>D. 25%的概率损失￥1000，75%的概率不会经历任何损失</h4></label><br><br>
+                <label for="q12_4"><h4>D. 75%的概率损失￥1000，25%的概率不会经历任何损失</h4></label><br><br>
             </div>
         </div>
 
@@ -1421,11 +1412,10 @@
                 Your portfolio has <span id="changeType"></span> from the last round.
             </div> -->
             <div id="gainlossdiv" class="portfolio" style="text-align: center">
-                Your stock portfolio has an unrealized <span id="a"></span><span id="gainlossType"></span><span
-                    id="gainloss">10000</span>.
+                您的股票组合现在的<span id="a"></span><span id="gainlossType"></span><span id="gainloss">10000</span>。
             </div>
             <div id="nochangediv" class="portfolio" style="text-align:center; display:none">
-                Your stock portfolio is breaking even.
+                您的股票组合盈亏平衡。
             </div>
             <!-- Added by Zirui Wang on 8/31/2020 -->
             <!-- <div id="gainlossdiv2" class="portfolio" style="text-align: center">
@@ -1447,7 +1437,7 @@
 
             <br>
             <div style="text-align: center">
-                <button class="btn btn-primary btn-lg blue" id="confirm">OK</button>
+                <button class="btn btn-primary btn-lg blue" id="confirm">确认</button>
             </div>
         </div>
 
@@ -1464,17 +1454,17 @@
                 You have total shares of $<span id="totalShare"></span>
             </div>
             <div class="portfolio" style="text-align: center">
-                At the end of this game, your total asset value is $<span id="totalAssetNew"></span> 
+                这轮游戏结束时，您的现金和股票总值是￥<span id="totalAssetNew"></span> 
             </div>
             <div class="portfolio" style="text-align: center">
-            (cash value $<span id="totalCashNew"></span> + stock value $<span id="totalShareNew"></span>).
+            （现金总值￥<span id="totalCashNew"></span> + 股票总值￥<span id="totalShareNew"></span>）。
             </div>
             <div class="portfolio" style="text-align: center">
-                If this game was randomly chosen by the computer for your bonus payment, your bonus payment would be based on a total asset value of $<span id="bonusTotalAsset"></span>. 
+                如果本次游戏被随机抽中用来计算您的奖金，您的奖金将基于￥<span id="bonusTotalAsset"></span>的现金和股票总值。
             </div>
             <br>
             <div style="text-align: center">
-                <button class="btn btn-primary btn-lg blue" id="proceed">Proceed</button>
+                <button class="btn btn-primary btn-lg blue" id="proceed">继续</button>
             </div>
         </div>
     </div>
@@ -1487,7 +1477,8 @@
         <!-- Edited by Zirui Wang  on 7/12/2020 -->
         <div class="row">
             <div class="col-xs-12" style="height: 35px;">
-                <span id = "note_label" style="font-size: 20px;"><u>Note</u>: </span><span id="note">You are now in an Observation Round. You may begin trading in Round 3. Click the Next Round button at the bottom to proceed to the next round.</span>
+                <span id = "note_label" style="font-size: 20px;"><u>提示</u>: </span><span id="note">
+                    您现在处于一个观察轮次。您可以在第三轮开始交易。点击下方的下一轮按钮以进行下一轮。</span>
                 <!-- After ten seconds, you will be able to click the Next Round button at the bottom to proceed. -->
             </div>
             <!-- <div class="col-xs-4 btns" style="height: 100px;">
@@ -1498,15 +1489,15 @@
         <div class="row">
             <div class="col-xs-4 flex ">
                 <div>现金总值:</div>
-                <div>$<span id="Cash">10000</span></div>
+                <div>￥<span id="Cash">10000</span></div>
             </div>
             <div class="col-xs-4 flex ">
                 <div>股票总值:</div>
-                <div>$<span id="Shares">0</span></div>
+                <div>￥<span id="Shares">0</span></div>
             </div>
             <div class="col-xs-4 flex "> 
                 <div>现金和股票总值:</div>
-                <div>$<span id="TotalAssets">10000</span></div>
+                <div>￥<span id="TotalAssets">10000</span></div>
             </div>
         </div>
         <!-- Edited by Zirui Wang  on 7/12/2020 -->
@@ -1549,14 +1540,14 @@
                         <td>
                             <button class="btn sell-button btn-sm" onclick="sell(0)">卖出</button>
                         </td>
-                        <td><span class="dollarSignA">$</span><span class="CurrentPrice">0</span></td>
-                        <td><span class="dollarSignA">$</span><span class="AveragePrice">0</span></td>
+                        <td><span class="dollarSignA">￥</span><span class="CurrentPrice">0</span></td>
+                        <td><span class="dollarSignA">￥</span><span class="AveragePrice">0</span></td>
                         <td><span class="previousShares">0</span></td>
                         <td><span class="currentShares">0</span></td>
                         <td><span class="changeInShares">0</span></td>
                         <!-- Modified by Zirui Wang on 7/31/2020 -->
-                        <td><span class="dollarSignRGL">$</span><span class="RealizedGL">0</span></td>
-                        <td><span class="dollarSignUGL">$</span><span class="UnrealizedGL">0</span></td>
+                        <td><span class="dollarSignRGL">￥</span><span class="RealizedGL">0</span></td>
+                        <td><span class="dollarSignUGL">￥</span><span class="UnrealizedGL">0</span></td>
                     </tr>
                     <tr>
                         <td class="t2">Stock B</td>
@@ -1566,14 +1557,14 @@
                         <td>
                             <button class="btn sell-button btn-sm" onclick="sell(1)">卖出</button>
                         </td>
-                        <td><span class="dollarSignB">$</span><span class="CurrentPrice">0</span></td>
-                        <td><span class="dollarSignB">$</span><span class="AveragePrice">0</span></td>
+                        <td><span class="dollarSignB">￥</span><span class="CurrentPrice">0</span></td>
+                        <td><span class="dollarSignB">￥</span><span class="AveragePrice">0</span></td>
                         <td><span class="previousShares">0</span></td>
                         <td><span class="currentShares">0</span></td>
                         <td><span class="changeInShares">0</span></td>
                         <!-- Modified by Zirui Wang on 7/31/2020 -->
-                        <td><span class="dollarSignRGL">$</span><span class="RealizedGL">0</span></td>
-                        <td><span class="dollarSignUGL">$</span><span class="UnrealizedGL">0</span></td>
+                        <td><span class="dollarSignRGL">￥</span><span class="RealizedGL">0</span></td>
+                        <td><span class="dollarSignUGL">￥</span><span class="UnrealizedGL">0</span></td>
                     </tr>
                     <tr>
                         <td class="t3">Stock C</td>
@@ -1583,14 +1574,14 @@
                         <td>
                             <button class="btn sell-button btn-sm" onclick="sell(2)">卖出</button>
                         </td>
-                        <td><span class="dollarSignC">$</span><span class="CurrentPrice">0</span></td>
-                        <td><span class="dollarSignC">$</span><span class="AveragePrice">0</span></td>
+                        <td><span class="dollarSignC">￥</span><span class="CurrentPrice">0</span></td>
+                        <td><span class="dollarSignC">￥</span><span class="AveragePrice">0</span></td>
                         <td><span class="previousShares">0</span></td>
                         <td><span class="currentShares">0</span></td>
                         <td><span class="changeInShares">0</span></td>
                         <!-- Modified by Zirui Wang on 7/31/2020 -->
-                        <td><span class="dollarSignRGL">$</span><span class="RealizedGL">0</span></td>
-                        <td><span class="dollarSignUGL">$</span><span class="UnrealizedGL">0</span></td>
+                        <td><span class="dollarSignRGL">￥</span><span class="RealizedGL">0</span></td>
+                        <td><span class="dollarSignUGL">￥</span><span class="UnrealizedGL">0</span></td>
                     </tr>
                     <tr>
                         <td class="t4">Stock D</td>
@@ -1600,14 +1591,14 @@
                         <td>
                             <button class="btn sell-button btn-sm" onclick="sell(3)">卖出</button>
                         </td>
-                        <td><span class="dollarSignD">$</span><span class="CurrentPrice">0</span></td>
-                        <td><span class="dollarSignD">$</span><span class="AveragePrice">0</span></td>
+                        <td><span class="dollarSignD">￥</span><span class="CurrentPrice">0</span></td>
+                        <td><span class="dollarSignD">￥</span><span class="AveragePrice">0</span></td>
                         <td><span class="previousShares">0</span></td>
                         <td><span class="currentShares">0</span></td>
                         <td><span class="changeInShares">0</span></td>
                         <!-- Modified by Zirui Wang on 7/31/2020 -->
-                        <td><span class="dollarSignRGL">$</span><span class="RealizedGL">0</span></td>
-                        <td><span class="dollarSignUGL">$</span><span class="UnrealizedGL">0</span></td>
+                        <td><span class="dollarSignRGL">￥</span><span class="RealizedGL">0</span></td>
+                        <td><span class="dollarSignUGL">￥</span><span class="UnrealizedGL">0</span></td>
                     </tr>
                     </tbody>
                     <tfoot>
@@ -1619,9 +1610,9 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td style="font-size: 20px; display: none"><span id="dollarSignRT">$</span><span id="RealizedTotal">0.00</span></td>
+                    <td style="font-size: 20px; display: none"><span id="dollarSignRT">￥</span><span id="RealizedTotal">0.00</span></td>
                     <td style="font-size: 20px" id="urt">共计：</td>
-                    <td style="font-size: 20px" id="urtv"><span id="dollarSignUT">$</span><span id="UnrealizedTotle">0.00</span></td>
+                    <td style="font-size: 20px" id="urtv"><span id="dollarSignUT">￥</span><span id="UnrealizedTotle">0.00</span></td>
                     </tfoot>
 
                 </table>
@@ -1644,17 +1635,15 @@
     var _shares = 0;
     var urlg = "https://stock-trading-game.herokuapp.com/";
 
-    const PROCEED_KEY = "Proceed";
-    const NEXT_PERIOD_KEY = "Next Round";
-    const NOTE_TRADING_KEY = " You are now in a Trading Round. You may now trade stocks using the buttons below.  " +
-        "Click the Next Round button at the bottom to proceed to the next round.";
-    const NOTE_OBSERVATION_KEY = "You are now in an Observation Round.  " +
-        " You may begin trading in Round 3. Click the Next Round button at the bottom to proceed to the next round.";
-    const NOTE_OBSERVATION_KEY_FIRST_ROUND = "You are now in an Observation Round.  " +
-        " You may begin trading in Round 3. After ten seconds, you will be able to click the Next Round button at the bottom to proceed.";
-    const ROUND_TRADING = "Trading Round";
-    const ROUND_OBSERVATION = "Observation Round";
-    const END_EXPERIMENT_KEY = "Start Survey";
+    const PROCEED_KEY = "继续";
+    const NEXT_PERIOD_KEY = "下一轮";
+
+    const NOTE_TRADING_KEY = " 您现在处于一个交易轮次。您现在可以用下方的按钮进行股票交易。点击下方的下一轮按钮以进行下一轮。";
+    const NOTE_OBSERVATION_KEY = " 您现在处于一个观察轮次。您可以在第三轮开始交易。点击下方的下一轮按钮以进行下一轮。";
+
+    const ROUND_TRADING = "交易轮次";
+    const ROUND_OBSERVATION = "观察轮次";
+    const END_EXPERIMENT_KEY = "开始调查问卷";
     //Total assets, it will change over  time
     var _totalAssets = new Array(18);
     var _unrealisedListGlobal = new Array(4);
@@ -1733,7 +1722,7 @@
     timerCountDown('introNextBtn', '下一页', _introCountDownComplete, currentIntroTab);
     
     //initialization
-    document.getElementById("roundtype").innerHTML = "Observation Round";
+    document.getElementById("roundtype").innerHTML = ROUND_OBSERVATION;
     assignUID();
 
     function initialization() {
@@ -1946,15 +1935,15 @@
 
         document.getElementById("gainlossdiv").style.display = "block";
         document.getElementById("nochangediv").style.display = "none";
-        document.getElementById("gainloss").innerHTML = " of $" +  Math.abs(unrealisedGain[_currentPeriodIndex]);
+        document.getElementById("gainloss").innerHTML = "是￥" +  Math.abs(unrealisedGain[_currentPeriodIndex]);
         
         let gainlossType = document.getElementById("gainlossType");
         
         if(unrealisedGain[_currentPeriodIndex] > 0) {
-            gainlossType.innerHTML = "<span style='color: #3cba9f'>gain</span>";
+            gainlossType.innerHTML = "<span style='color: #c45850'>浮盈</span>";
         }
         if(unrealisedGain[_currentPeriodIndex] < 0) {
-            gainlossType.innerHTML = "<span style='color: #c45850'>loss</span>";
+            gainlossType.innerHTML = "<span style='color: #3cba9f'>浮亏</span>";
         } 
         if(unrealisedGain[_currentPeriodIndex] == 0) {
             document.getElementById("gainlossdiv").style.display = "none";
@@ -1976,17 +1965,17 @@
 
         
         if (changeInAssests[0] < 0) {
-            backgroundColors[0] = "#c45850";
-            myChart2.options.title.text = "Total Unrealized Loss";
-            myChart2.data.datasets[0].label = "Loss of $" + Math.abs(changeInAssests[0]);
+            backgroundColors[0] = "#3cba9f";
+            myChart2.options.title.text = "浮动亏损总值";
+            myChart2.data.datasets[0].label = "浮亏为￥" + Math.abs(changeInAssests[0]);
 
         } else if (changeInAssests[0] > 0) {
-            backgroundColors[0] = "#3cba9f";
-            myChart2.options.title.text = "Total Unrealized Gain";
-            myChart2.data.datasets[0].label = "Gain of $" + Math.abs(changeInAssests[0]);
+            backgroundColors[0] = "#c45850";
+            myChart2.options.title.text = "浮动盈利总值";
+            myChart2.data.datasets[0].label = "浮盈为￥" + Math.abs(changeInAssests[0]);
 
         } else if (changeInAssests[0] == 0) {
-            myChart2.options.title.text = "Total Unrealized Gain/Loss";
+            myChart2.options.title.text = "浮动盈亏总值";
             myChart2.data.datasets[0].label = "";
         }
         
@@ -2085,8 +2074,8 @@
 
                 if (ugl.toFixed(2) > 0) {
                     // toWrite1 = "<span style = 'color:#3cba9f'>$" + ugl.toFixed(2) + "</span>";
-                    unrealizedGL[i].style.color = "#3cba9f";
-                    dollarSignUGL[i].style.color = "#3cba9f";
+                    unrealizedGL[i].style.color = "#c45850";
+                    dollarSignUGL[i].style.color = "#c45850";
 
                     // Commented by Zirui Wang on 7/31/2020 for the reason of adding realized gain/loss
                     // currentPrices[i].style.color = "#3cba9f";
@@ -2118,8 +2107,8 @@
                 }
                 else if (ugl.toFixed(2) < 0) {
                     //toWrite1 = "<span style = 'color:#c45850'>$" + ugl.toFixed(2) + "</span>";
-                    unrealizedGL[i].style.color = "#c45850";
-                    dollarSignUGL[i].style.color = "#c45850";
+                    unrealizedGL[i].style.color = "#3cba9f";
+                    dollarSignUGL[i].style.color = "#3cba9f";
                     
                     // Commented by Zirui Wang on 7/31/2020 for the reason of adding realized gain/loss
                     // currentPrices[i].style.color = "#c45850";
@@ -2240,11 +2229,11 @@
         total.innerHTML = unrealizedTotal.toFixed(2);
 
         if (unrealizedTotal.toFixed(2) > 0) {
-            total.style.color = "#3cba9f";
-            dollarSignT.style.color = "#3cba9f";
-        } else if (unrealizedTotal.toFixed(2) < 0) {
             total.style.color = "#c45850";
             dollarSignT.style.color = "#c45850";
+        } else if (unrealizedTotal.toFixed(2) < 0) {
+            total.style.color = "#3cba9f";
+            dollarSignT.style.color = "#3cba9f";
         } else {
             total.style.color = "#34407c";
             dollarSignT.style.color = "#34407c";
@@ -2351,10 +2340,10 @@
         total.style.width = ((total.value.length + 1) * 9) + 'px';
 
         var formula = document.getElementById("formula");
-        var bonus_number = total_assets[random_var]*0.003;
+        var bonus_number = total_assets[random_var]*0.02;
         bonus = bonus_number.toFixed(2);
-        formula.value = "0.3% x $" + total.value + " = $" + bonus;
-        formula.style.width = ((formula.value.length + 1) * 9) + 'px';
+        formula.value = "2% x ￥" + total.value + " = ￥" + bonus;
+        formula.style.width = ((formula.value.length + 2) * 9) + 'px';
     }
 
     function proceedToThankyou() {
@@ -2623,7 +2612,7 @@
         if (document.getElementById("next_period").innerHTML === PROCEED_KEY) {
             proceedToNextAttempt();
             // Added by Zirui Wang on 7/23/2020
-            timer('proceed','Proceed');
+            timer('proceed','继续');
         }
         if (document.getElementById("next_period").innerHTML === END_EXPERIMENT_KEY) {
             proceedToSurvey();
@@ -2668,8 +2657,7 @@
         // Added by Zirui Wang on 5/9/2020
         // Make sure at the end of each game, change the "Next period" button to "Proceed" button
         if (_currentPeriodIndex === 13){
-            document.getElementById("note").innerHTML = "You have finished this game. Click the Proceed button to " +
-                "proceed to the next game.";
+            document.getElementById("note").innerHTML = "您已完成本次游戏。点击继续按钮以进行下一次游戏。";
             document.getElementById("next_period").innerHTML = PROCEED_KEY;
 
             // Added by Zirui Wang on 7/5/2020
@@ -2703,7 +2691,7 @@
         }
         myChart.update();
         // Added by Zirui Wang on 9/13/2020 to update chart2
-        myChart2.options.title.text = "Total Unrealized Gain/Loss";
+        myChart2.options.title.text = "浮动盈亏总值";
         myChart2.data.datasets[0].label = "";
         changeInAssests[0] = 0;
         //changeInAssests[1] = 0;
@@ -2878,20 +2866,20 @@
                 unrealizedGLs[index].style.color = "#000000";
                 dollarSignUGLs[index].style.color = "#000000";
             } else if ( updatedUnrealizedGL > 0 ) {
-                unrealizedGLs[index].style.color = "#3cba9f";
-                dollarSignUGLs[index].style.color = "#3cba9f";
-            } else if ( updatedUnrealizedGL < 0 ) {
                 unrealizedGLs[index].style.color = "#c45850";
                 dollarSignUGLs[index].style.color = "#c45850";
+            } else if ( updatedUnrealizedGL < 0 ) {
+                unrealizedGLs[index].style.color = "#3cba9f";
+                dollarSignUGLs[index].style.color = "#3cba9f";
             }
 
             if( rgl.toFixed(2) < 0 ) {
-                realizedGLs[index].style.color = "#c45850";
-                dollarSign[index].style.color = "#c45850";
-
-            } else if ( rgl.toFixed(2) > 0 ) {
                 realizedGLs[index].style.color = "#3cba9f";
                 dollarSign[index].style.color = "#3cba9f";
+
+            } else if ( rgl.toFixed(2) > 0 ) {
+                realizedGLs[index].style.color = "#c45850";
+                dollarSign[index].style.color = "#c45850";
 
             } else {
                 realizedGLs[index].style.color = "#000000";
@@ -2952,19 +2940,19 @@
                 unrealizedGLs[index].style.color = "#000000";
                 dollarSignUGLs[index].style.color = "#000000";
             } else if ( updateUnrealizedGL > 0 ) {
-                unrealizedGLs[index].style.color = "#3cba9f";
-                dollarSignUGLs[index].style.color = "#3cba9f";
-            } else if ( updateUnrealizedGL < 0 ) {
                 unrealizedGLs[index].style.color = "#c45850";
                 dollarSignUGLs[index].style.color = "#c45850";
+            } else if ( updateUnrealizedGL < 0 ) {
+                unrealizedGLs[index].style.color = "#3cba9f";
+                dollarSignUGLs[index].style.color = "#3cba9f";
             }
             
             if(rgl.toFixed(2) > 0) {
-                realizedGLs[index].style.color = "#3cba9f";
-                dollarSign[index].style.color = "#3cba9f";
-            } else if( rgl.toFixed(2) < 0 ) {
                 realizedGLs[index].style.color = "#c45850";
                 dollarSign[index].style.color = "#c45850";
+            } else if( rgl.toFixed(2) < 0 ) {
+                realizedGLs[index].style.color = "#3cba9f";
+                dollarSign[index].style.color = "#3cba9f";
             } else {
                 realizedGLs[index].style.color = "#000000";
                 dollarSign[index].style.color = "#000000";
@@ -2999,11 +2987,11 @@
         unrealizedGLTotal.innerHTML = newTotal.toFixed(2);
 
         if (newTotal > 0) {
-            unrealizedGLTotal.style.color = "#3cba9f";
-            dollarSignUT.style.color = "#3cba9f";
-        } else if (newTotal < 0) {
             unrealizedGLTotal.style.color = "#c45850";
             dollarSignUT.style.color = "#c45850";
+        } else if (newTotal < 0) {
+            unrealizedGLTotal.style.color = "#3cba9f";
+            dollarSignUT.style.color = "#3cba9f";
         } else {
             unrealizedGLTotal.style.color = "#34407c";
             dollarSignUT.style.color = "#34407c";
@@ -3024,11 +3012,11 @@
         realizedGLTotal.innerHTML = newTotal.toFixed(2);
 
         if (newTotal > 0) {
-            realizedGLTotal.style.color = "#3cba9f";
-            dollarSignRT.style.color = "#3cba9f";
-        } else if (newTotal < 0) {
             realizedGLTotal.style.color = "#c45850";
             dollarSignRT.style.color = "#c45850";
+        } else if (newTotal < 0) {
+            realizedGLTotal.style.color = "#3cba9f";
+            dollarSignRT.style.color = "#3cba9f";
         } else {
             realizedGLTotal.style.color = "#34407c";
             dollarSignRT.style.color = "#34407c";
@@ -3605,8 +3593,8 @@
         var total = document.getElementById("urt");
         var value = document.getElementById("urtv");
 
-        total.style = "box-shadow: 2px 2px gainsboro;border-bottom-left-radius: 25px;border-top-left-radius: 25px;background-color:#fffaf0;font-size:35px";
-        value.style = "box-shadow: 2px 2px gainsboro;border-bottom-right-radius: 25px;border-top-right-radius: 25px;background-color:#fffaf0;font-size:35px";
+        total.style = "box-shadow: 2px 2px gainsboro;border-bottom-left-radius: 25px;border-top-left-radius: 25px;background-color:#fffaf0;font-size:30px";
+        value.style = "box-shadow: 2px 2px gainsboro;border-bottom-right-radius: 25px;border-top-right-radius: 25px;background-color:#fffaf0;font-size:30px";
 
     }
 
@@ -3642,17 +3630,17 @@
     };
 
     function handleModal() {
-        if (_currentPeriodIndex >= 3) {
-            // var printPeriod = _periods[_currentPeriodIndex];
-            // if (_currentPeriodIndex === 13)
-            //     printPeriod = 12;
-            // document.getElementById("period").innerHTML = printPeriod;
-        }
-        if (_currentPeriodIndex === 13){
-            document.getElementById("note").innerHTML = "You have finished this game. Click the Proceed button to " +
-                "proceed to the next game.";
-            document.getElementById("next_period").innerHTML = PROCEED_KEY;
-        }
+        // if (_currentPeriodIndex >= 3) {
+        //     // var printPeriod = _periods[_currentPeriodIndex];
+        //     // if (_currentPeriodIndex === 13)
+        //     //     printPeriod = 12;
+        //     // document.getElementById("period").innerHTML = printPeriod;
+        // }
+        // if (_currentPeriodIndex === 13){
+        //     document.getElementById("note").innerHTML = "You have finished this game. Click the Proceed button to " +
+        //         "proceed to the next game.";
+        //     document.getElementById("next_period").innerHTML = PROCEED_KEY;
+        // }
         end();
         modal.style.display = "none";
 
