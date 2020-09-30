@@ -2828,16 +2828,16 @@
     //Modified by Zirui Wang on 7/30/2020
     //call this function when click the buy button
     function buy(index) {
+        var price = _sharePrices[index][_currentPeriodIndex];
         if (_currentPeriodIndex < 3) {
             alert("本轮是观察轮次，您还不能买卖股票。点击“下一轮”继续进行游戏。");
             return;
-        }
-        if (_currentPeriodIndex > 12) {
+
+        } else if (_currentPeriodIndex > 12) {
             alert("本次游戏已结束。");
             return;
-        }
-        var price = _sharePrices[index][_currentPeriodIndex];
-        if (_cash < price) {
+
+        } else if (_cash < price) {
             alert("您没有足够的现金购买此股票。");
             return;
         }
@@ -2907,8 +2907,7 @@
     function sell(index) {
         if (_currentPeriodIndex < 3) {
             alert("本轮是观察轮次，您还不能买卖股票。点击“下一轮”继续进行游戏。");
-        }
-        if (_currentPeriodIndex > 12) {
+        } else if (_currentPeriodIndex > 12) {
             alert("本次游戏已结束。");
             return;
         } else if (_sharesOwned[index] <= 0) {
