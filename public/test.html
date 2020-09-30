@@ -362,7 +362,7 @@
         </p>
         <p>
             如果John以每股80元的价格购买了3股股票B，而股票B的价格下跌至71元，我们称John的<b>未实现的亏损</b>为27元（每股9元x 3股）。
-            如果John立即以每股￥71的价格卖出2股股票B，则其<b>已实现的损失</b>为￥18（每股9元 x 2股）。由于他还持有一股亏损9元的股票B，
+            如果John立即以每股￥71的价格卖出2股股票B，则其<b>已实现的亏损</b>为￥18（每股9元 x 2股）。由于他还持有一股亏损9元的股票B，
             John此时的<b>未实现亏损</b>为9元。
         </p>
         <br>
@@ -373,7 +373,7 @@
 
     <div class="introTab">
         <span class="required">* 必选</span><br>
-        <span class="required">* 您仅可提交测验答案一次。上交测验答案多余一次的用户讲不会任何报酬。</span><br><br>
+        <span class="required">* 您仅有一次机会提交测验答案。提交测验答案多于一次的用户将不会获得任何报酬。</span><br><br>
         <div style="background-color: #f2f2f2;">
             <br><h3>问题 1</h3>
             <hr>
@@ -500,7 +500,7 @@
             您将不能进行交易。交易轮为第三至十二轮次。
         </p>
         <p> 
-            您将在现金和股票中分配您的资产。持有现金资产不会获得任何利息。左侧标题为“每轮股票价格”的图表将为您展示股票历史价格走势。
+            您将在现金和股票中分配您的资产。持有现金资产不会获得任何利息。标题为“股价走势图”的图表将为您展示股票历史价格走势。
             您可以使用鼠标光标更详细地查看每只股票的价格。
         </p>
         <br>
@@ -518,7 +518,7 @@
         <p> <H4><u>出售股票</u></H4>
         <p> 
             单击每行股票对应的“卖出”按钮，您将出售1股该股票，同时我们会将交易所得计入您的现金余额中。
-            您不能出售你不拥有的股票----换句话讲，在此实验中您无法卖空。
+            您不能出售您不拥有的股票----换句话讲，在此实验中您无法卖空。
         </p>
         <br>
     </div>
@@ -527,8 +527,8 @@
         <br>
         <p><H4><u>报酬计算</u></H4>
         <p> 
-            在本项实验中，您将获得￥1的固定报酬+由交易绩效决定的奖金。计算机将从您所参与的4次游戏中随机选择1个，
-            而您所获得的绩效奖金等于该游戏结束时<b>股票和现金总价值</b>的2％。例如，如果计算机选中了您参与的第三次游戏，
+            在本项实验中，您将获得￥1的固定报酬+由交易绩效决定的奖金。计算机将从您所参与的4次游戏中随机选择1次，
+            而您所获得的绩效奖金等于该次游戏结束时<b>股票和现金总价值</b>的2％。例如，如果计算机选中了您参与的第三次游戏，
             而在该次游戏结束时，您共持有￥1200的股票和￥300的现金，那么您将获得的奖金数额等于2％x￥1500=￥30。
             因此，您的总报酬为￥1+￥30=￥31。完成所有的游戏轮次和问卷后，我们将会告知您获得的报酬总额。
         </p>
@@ -611,7 +611,7 @@
     <br>
     <!-- Added by Zirui Wang on 07/05/2020 -->
     <p> 为计算您的奖金，第<input disabled id="numRandomGame" value="#X" type="text">次游戏被随机选中，
-        同时您在这次游戏中获得了￥<input disabled id="totalAssetthisRound" value="#Y" type="text">。
+        同时您在这次游戏结束时的资产总值是￥<input disabled id="totalAssetthisRound" value="#Y" type="text">。
         所以，您将收到<input disabled id="formula" value=".3% x $Y = $Z" type="text">的奖金。
     </p>
     <!-- <br>
@@ -771,9 +771,9 @@
             <div>
                 <h2>问题 1</h2>
                 <hr>
-                <h4>在每轮游戏中，交易页面右下角（如图所示）显示了您<b>账户总体的浮盈/浮亏</b>。</h4>
+                <h4>在游戏中，交易页面右下角（如图所示）显示了您<b>账户总体的浮盈/浮亏</b>。</h4>
                 <img src="total.png" alt="location reminder of portfolio unrealized gain/loss" class="center">
-                <h4>在最后一轮（第4轮）游戏中，您所经历的最大的账户总体<b>浮盈</b>是多少？<span class="required"> *</span></h4>
+                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的账户总体<b>浮盈</b>是多少？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_1">这是一道必答题。</span><br>
                 <br>
                 <input type="radio" id="q1_1" name="question_1_radio" value="I experienced" 
@@ -792,9 +792,9 @@
             <div style="background-color: #f2f2f2;">
                 <br><h2>问题 2</h2>
                 <hr>
-                <h4>在每轮游戏中，交易页面右下角（如图所示）显示了您<b>账户总体的浮盈/浮亏</b>。</h4>
+                <h4>在游戏中，交易页面右下角（如图所示）显示了您<b>账户总体的浮盈/浮亏</b>。</h4>
                 <img src="total.png" alt="location reminder of portfolio unrealized gain/loss" class="center">
-                <h4>在最后一轮（第4轮）游戏中，您所经历的最大的账户总体<b>浮亏</b>是多少？<span class="required"> *</span></h4>
+                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的账户总体<b>浮亏</b>是多少？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_2">这是一道必答题。</span><br>
                 <br>
                 <input type="radio" id="q2_1" name="question_2_radio" value="Yes, I experienced." 
@@ -811,9 +811,9 @@
             <div>
                 <br><h2>问题 3</h2>
                 <hr>
-                <h4>在每轮游戏中，交易页面右侧（如图所示）显示了您<b>单只股票的浮盈/浮亏</b>。</h4>
+                <h4>在游戏中，交易页面右侧（如图所示）显示了您<b>单只股票的浮盈/浮亏</b>。</h4>
                 <img src="individual.png" alt="location reminder of individual stocks’ unrealized gains/losses" class="center">
-                <h4>在最后一轮（第4轮）游戏中，您所经历的最大的单只股票<b>浮盈</b>是多少？<span class="required"> *</span></h4>
+                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的单只股票<b>浮盈</b>是多少？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_3">这是一道必答题。</span><br>
                 <br>
                 <input type="radio" id="q3_1" name="question_3_radio" value="Yes, I experienced." 
@@ -830,9 +830,9 @@
             <div style="background-color: #f2f2f2;">
                 <br><h2>问题 4</h2>
                 <hr>
-                <h4>在每轮游戏中，交易页面右侧（如图所示）显示了您<b>单只股票的浮盈/浮亏</b>。</h4>
+                <h4>在游戏中，交易页面右侧（如图所示）显示了您<b>单只股票的浮盈/浮亏</b>。</h4>
                 <img src="individual.png" alt="location reminder of individual stocks’ unrealized gains/losses" class="center">
-                <h4>在最后一轮（第4轮）游戏中，您所经历的最大的单只股票<b>浮亏</b>是多少？<span class="required"> *</span></h4>
+                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的单只股票<b>浮亏</b>是多少？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_4">这是一道必答题。</span><br>
                 <br>
                 <input type="radio" id="q4_1" name="question_4_radio" value="Yes, I experienced." 
@@ -967,7 +967,7 @@
             <div style="background-color: #f2f2f2;">
                 <h2>问题 11</h2>
                 <hr>
-                <h4>你刚刚参与了四轮交易游戏，在每一轮游戏中，共有几只股票可以用来交易？<span class="required"> *</span></h4>
+                <h4>你刚刚参与了四次交易游戏，在每一次游戏中，共有几只股票可以用来交易？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_10">这是一道必答题。</span><br>
                 <br>
                 <input type="radio" id="q10_1" name="question_10" value="1">
@@ -1059,7 +1059,7 @@
             <h2>问题 15</h2>
             <hr>
             <h4>
-                在下面的问题中，你将面临三个情景。在每个情境中，A先生和B先生将经历两个不同的事件，
+                在下面的问题中，你将面临三个情境。在每个情境中，A先生和B先生将经历两个不同的事件，
                 你需要判断A先生还是B先生会更开心一些。如果你认为他们的情绪是一样的，请选择“无差异”。
                 每一个情境中的两个事件在涉及的金额上都是相等的。
             </h4>
@@ -1454,13 +1454,13 @@
                 You have total shares of $<span id="totalShare"></span>
             </div>
             <div class="portfolio" style="text-align: center">
-                这轮游戏结束时，您的现金和股票总值是￥<span id="totalAssetNew"></span> 
+                本次游戏结束时，您的现金和股票总值是￥<span id="totalAssetNew"></span> 
             </div>
             <div class="portfolio" style="text-align: center">
             （现金总值￥<span id="totalCashNew"></span> + 股票总值￥<span id="totalShareNew"></span>）。
             </div>
             <div class="portfolio" style="text-align: center">
-                如果本次游戏被随机抽中用来计算您的奖金，您的奖金将基于￥<span id="bonusTotalAsset"></span>的现金和股票总值。
+                如果本次游戏被随机抽中，您的奖金将基于￥<span id="bonusTotalAsset"></span>的账户总值来计算。
             </div>
             <br>
             <div style="text-align: center">
@@ -2829,16 +2829,16 @@
     //call this function when click the buy button
     function buy(index) {
         if (_currentPeriodIndex < 3) {
-            alert("You can't buy during observation round. Click next round to proceed");
+            alert("本轮是观察轮次，您还不能买卖股票。点击“下一轮”继续进行游戏。");
             return;
         }
         if (_currentPeriodIndex > 12) {
-            alert("End of Experiment");
+            alert("本次游戏已结束。");
             return;
         }
         var price = _sharePrices[index][_currentPeriodIndex];
         if (_cash < price) {
-            alert("The balance of account is insufficient.");
+            alert("您没有足够的现金购买此股票。");
             return;
         }
         _sharesOwned[index]++;
@@ -2906,13 +2906,13 @@
     //call this function when click the Sell button
     function sell(index) {
         if (_currentPeriodIndex < 3) {
-            alert("You can't sell during observation round. Click next round to proceed");
+            alert("本轮是观察轮次，您还不能买卖股票。点击“下一轮”继续进行游戏。");
         }
         if (_currentPeriodIndex > 12) {
-            alert("End of Experiment");
+            alert("本次游戏已结束。");
             return;
         } else if (_sharesOwned[index] <= 0) {
-            alert("You don't have any shares to sell");
+            alert("您没有足够的股票出售。");
             return;
         }
 
