@@ -2907,6 +2907,7 @@
     function sell(index) {
         if (_currentPeriodIndex < 3) {
             alert("本轮是观察轮次，您还不能买卖股票。点击“下一轮”继续进行游戏。");
+            return;
         } else if (_currentPeriodIndex > 12) {
             alert("本次游戏已结束。");
             return;
