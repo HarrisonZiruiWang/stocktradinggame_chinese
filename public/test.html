@@ -768,94 +768,160 @@
     <span class="required">* 必答</span><br><br>
     <form id="surveyForm">
         <div class="tab">
-            <div>
-                <h2>问题 1</h2>
+            <h4>问题1-4：在游戏中，交易页面右侧（如图所示）显示了您账户中的浮动盈亏。</h4>
+            <img src="survey.png" alt="location reminder of portfolio/stock unrealized gain/loss" class="center">
+            <br>
+            <div style="background-color: #f2f2f2;">
+                
+                <br><h2>问题 1</h2>
                 <hr>
-                <h4>在游戏中，交易页面右下角（如图所示）显示了您<b>账户总体的浮盈/浮亏</b>。</h4>
-                <img src="total.png" alt="location reminder of portfolio unrealized gain/loss" class="center">
-                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的账户总体<b>浮盈</b>是多少？<span class="required"> *</span></h4>
+                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的<b>账户总体浮盈</b>是多少？<span class="required"> *</span></h4>
+                <h4>（*账户总体浮动盈亏为所有股票浮动盈亏的加总）</h4>
                 <span class="required required_alert" id="required_alert_1">这是一道必答题。</span><br>
                 <br>
                 <input type="radio" id="q1_1" name="question_1_radio" value="I experienced" 
                     onclick="getElementById('q1').removeAttribute('hidden');getElementById('q1').value='';">
-                <label for="q1_1"><h4>我确实有过账户总体<b>浮盈</b>，根据我的回忆，我最大的账户总体<b>浮盈</b>为￥</h4></label>
+                <label for="q1_1"><h4>我确实有过<b>账户总体浮盈</b>，根据我的回忆，我最大的<b>账户总体浮盈</b>为￥</h4></label>
                 
                 <input type="text" id="q1" name="question_1" value="" style="width: 100px;" onfocus="getElementById('q1_1').setAttribute('checked','checked');">
                 <br>
                 
                 <input type="radio" id="q1_2" name="question_1_radio" value="I didn’t experience" 
                     onclick="getElementById('q1').setAttribute('hidden','hidden');getElementById('q1').value='I didn’t experience';">
-                <label for="q1_2"><h4>我没有经历过账户总体<b>浮盈</b>。</h4></label>
-                <br><br>
-            </div>
-
-            <div style="background-color: #f2f2f2;">
-                <br><h2>问题 2</h2>
-                <hr>
-                <h4>在游戏中，交易页面右下角（如图所示）显示了您<b>账户总体的浮盈/浮亏</b>。</h4>
-                <img src="total.png" alt="location reminder of portfolio unrealized gain/loss" class="center">
-                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的账户总体<b>浮亏</b>是多少？<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_2">这是一道必答题。</span><br>
-                <br>
-                <input type="radio" id="q2_1" name="question_2_radio" value="Yes, I experienced." 
-                    onclick="getElementById('q2').removeAttribute('hidden');getElementById('q2').value='';">
-                <label for="q2_1"><h4>我确实有过账户总体<b>浮亏</b>，根据我的回忆，我最大的账户总体<b>浮亏</b>为-￥</h4></label>
-                <input type="text" id="q2" name="question_2" value="" style="width: 100px;" onfocus="getElementById('q2_1').setAttribute('checked','checked');">
-                <br>
-                <input type="radio" id="q2_2" name="question_2_radio" value="I didn’t experience" 
-                    onclick="getElementById('q2').setAttribute('hidden','hidden');getElementById('q2').value='I didn’t experience';">
-                <label for="q2_2"><h4>我没有经历过账户总体<b>浮亏</b>。</h4></label>
+                <label for="q1_2"><h4>我没有经历过<b>账户总体浮盈</b>。</h4></label>
                 <br><br>
             </div>
 
             <div>
-                <br><h2>问题 3</h2>
+                <br><h2>问题 2</h2>
                 <hr>
-                <h4>在游戏中，交易页面右侧（如图所示）显示了您<b>单只股票的浮盈/浮亏</b>。</h4>
-                <img src="individual.png" alt="location reminder of individual stocks’ unrealized gains/losses" class="center">
-                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的单只股票<b>浮盈</b>是多少？<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_3">这是一道必答题。</span><br>
+                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的<b>账户总体浮亏</b>是多少？<span class="required"> *</span></h4>
+                <h4>（*账户总体浮动盈亏为所有股票浮动盈亏的加总）</h4>
+                <span class="required required_alert" id="required_alert_2">这是一道必答题。</span><br>
                 <br>
-                <input type="radio" id="q3_1" name="question_3_radio" value="Yes, I experienced." 
-                    onclick="getElementById('q3').removeAttribute('hidden');getElementById('q3').value='';">
-                <label for="q3_1"><h4>我确实有过单只股票<b>浮盈</b>，根据我的回忆，我最大的单只股票<b>浮盈</b>为￥</h4></label>
-                <input type="text" id="q3" name="question_3" value="" style="width: 100px;" onfocus="getElementById('q3_1').setAttribute('checked','checked');">
+                <input type="radio" id="q2_1" name="question_2_radio" value="Yes, I experienced." 
+                    onclick="getElementById('q2').removeAttribute('hidden');getElementById('q2').value='';">
+                <label for="q2_1"><h4>我确实有过<b>账户总体浮亏</b>，根据我的回忆，我最大的<b>账户总体浮亏</b>为-￥</h4></label>
+                <input type="text" id="q2" name="question_2" value="" style="width: 100px;" onfocus="getElementById('q2_1').setAttribute('checked','checked');">
                 <br>
-                <input type="radio" id="q3_2" name="question_3_radio" value="I didn’t experience" 
-                    onclick="getElementById('q3').setAttribute('hidden','hidden');getElementById('q3').value='I didn’t experience';">
-                <label for="q3_2"><h4>我没有经历过单只股票<b>浮盈</b>。</h4></label>
+                <input type="radio" id="q2_2" name="question_2_radio" value="I didn’t experience" 
+                    onclick="getElementById('q2').setAttribute('hidden','hidden');getElementById('q2').value='I didn’t experience';">
+                <label for="q2_2"><h4>我没有经历过<b>账户总体浮亏</b>。</h4></label>
                 <br><br>
             </div>
 
             <div style="background-color: #f2f2f2;">
+                <br><h2>问题 3</h2>
+                <hr>
+                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的<b>单只股票浮盈</b>是多少？<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_3">这是一道必答题。</span><br>
+                <br>
+                <input type="radio" id="q3_1" name="question_3_radio" value="Yes, I experienced." 
+                    onclick="getElementById('q3').removeAttribute('hidden');getElementById('q3').value='';">
+                <label for="q3_1"><h4>我确实有过<b>单只股票浮盈</b>，根据我的回忆，我最大的<b>单只股票浮盈</b>为￥</h4></label>
+                <input type="text" id="q3" name="question_3" value="" style="width: 100px;" onfocus="getElementById('q3_1').setAttribute('checked','checked');">
+                <br>
+                <input type="radio" id="q3_2" name="question_3_radio" value="I didn’t experience" 
+                    onclick="getElementById('q3').setAttribute('hidden','hidden');getElementById('q3').value='I didn’t experience';">
+                <label for="q3_2"><h4>我没有经历过<b>单只股票浮盈</b>。</h4></label>
+                <br><br>
+            </div>
+
+            <div>
                 <br><h2>问题 4</h2>
                 <hr>
-                <h4>在游戏中，交易页面右侧（如图所示）显示了您<b>单只股票的浮盈/浮亏</b>。</h4>
-                <img src="individual.png" alt="location reminder of individual stocks’ unrealized gains/losses" class="center">
-                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的单只股票<b>浮亏</b>是多少？<span class="required"> *</span></h4>
+                <h4>在<i>最后一次（第4次）</i>游戏中，您所经历的最大的<b>单只股票浮亏</b>是多少？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_4">这是一道必答题。</span><br>
                 <br>
                 <input type="radio" id="q4_1" name="question_4_radio" value="Yes, I experienced." 
                     onclick="getElementById('q4').removeAttribute('hidden');getElementById('q4').value='';">
-                <label for="q4_1"><h4>我确实有过单只股票<b>浮亏</b>，根据我的回忆，我最大的单只股票<b>浮亏</b>为-￥</h4></label>
+                <label for="q4_1"><h4>我确实有过<b>单只股票浮亏</b>，根据我的回忆，我最大的<b>单只股票浮亏</b>为-￥</h4></label>
                 <input type="text" id="q4" name="question_4" value="" style="width: 100px;" onfocus="getElementById('q4_1').setAttribute('checked','checked');">
                 <br>
                 <input type="radio" id="q4_2" name="question_4_radio" value="I didn’t experience" 
                     onclick="getElementById('q4').setAttribute('hidden','hidden');getElementById('q4').value='I didn’t experience';">
-                <label for="q4_2"><h4>我没有经历过单只股票<b>浮亏</b>。</h4></label>
+                <label for="q4_2"><h4>我没有经历过<b>单只股票浮亏</b>。</h4></label>
                 <br><br>
             </div>
         </div>
         
         <div class="tab">
-            <div>
-                <h4>问题5-7，请对以下描述进行打分，1分表示非常不认同，5分表示非常认同。</h4>
+            <h4>问题5-7，请对以下描述进行打分，1分表示非常不认同，5分表示非常认同。</h4>
+            <br>
+
+            <div style="background-color: #f2f2f2;">
                 
                 <br><h2>问题 5</h2>
                 <hr>
-                <!-- <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following
-                    statement: </h4>
-                <br> -->
+                <h4><i>“在刚刚的交易游戏中，如果账户总体处于<b>浮盈</b>，我会在决定是否卖出某只股票时考虑账户总体表现。”</i><span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_5_new">这是一道必答题。</span><br>
+                    <br>
+                <input type="radio" id="q5_1_new" name="new_question_5" value="Strongly disagree">
+                <label for="q5_1_new" style="width:350px"><h4>1— 非常不认同</h4></label>
+                <br>
+                <input type="radio" id="q5_2_new" name="new_question_5" value="Disagree">
+                <label for="q5_2_new" style="width:350px"><h4>2— 不认同</h4></label>
+                <br>
+                <input type="radio" id="q5_3_new" name="new_question_5" value="Neither agree nor disagree">
+                <label for="q5_3_new" style="width:350px"><h4>3— 无所谓</h4></label>
+                <br>
+                <input type="radio" id="q5_4_new" name="new_question_5" value="Agree">
+                <label for="q5_4_new" style="width:350px"><h4>4— 认同</h4></label>
+                <br>
+                <input type="radio" id="q5_5_new" name="new_question_5" value="Strongly agree">
+                <label for="q5_5_new" style="width:350px"><h4>5— 非常认同</h4></label><br><br>
+            </div>
+
+            <div>
+                <br><h2>问题 6</h2>
+                <hr>
+                <!-- <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following statement: </h4><br> -->
+                <h4><i>“在刚刚的交易游戏中，如果账户总体处于<b>浮亏</b>，我会在决定是否卖出某只股票时考虑账户总体表现。”</i><span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_6_new">这是一道必答题。</span><br>
+                    <br>
+                <input type="radio" id="q6_1_new" name="new_question_6" value="Strongly disagree">
+                <label for="q6_1_new" style="width:350px"><h4>1— 非常不认同</h4></label>
+                <br>
+                <input type="radio" id="q6_2_new" name="new_question_6" value="Disagree">
+                <label for="q6_2_new" style="width:350px"><h4>2— 不认同</h4></label>
+                <br>
+                <input type="radio" id="q6_3_new" name="new_question_6" value="Neither agree nor disagree">
+                <label for="q6_3_new" style="width:350px"><h4>3— 无所谓</h4></label>
+                <br>
+                <input type="radio" id="q6_4_new" name="new_question_6" value="Agree">
+                <label for="q6_4_new" style="width:350px"><h4>4— 认同</h4></label>
+                <br>
+                <input type="radio" id="q6_5_new" name="new_question_6" value="Strongly agree">
+                <label for="q6_5_new" style="width:350px"><h4>5— 非常认同</h4></label><br><br>
+            </div>
+            
+            <div style="background-color: #f2f2f2;">
+                <br><h2>问题 7</h2>
+                <hr>
+                <!-- <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following statement: </h4><br> -->
+                <h4><i>“在刚刚的交易游戏中，与账户浮亏的情况相比，当账户总体处于浮盈时，我会在交易时<b>更多</b>考虑账户总体表现。”</i><span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_7_new">这是一道必答题。</span><br>
+                <br>
+                <input type="radio" id="q7_1_new" name="new_question_7" value="Strongly disagree">
+                <label for="q7_1_new" style="width:350px"><h4>1— 非常不认同</h4></label>
+                <br>
+                <input type="radio" id="q7_2_new" name="new_question_7" value="Disagree">
+                <label for="q7_2_new" style="width:350px"><h4>2— 不认同</h4></label>
+                <br>
+                <input type="radio" id="q7_3_new" name="new_question_7" value="Neither agree nor disagree">
+                <label for="q7_3_new" style="width:350px"><h4>3— 无所谓</h4></label>
+                <br>
+                <input type="radio" id="q7_4_new" name="new_question_7" value="Agree">
+                <label for="q7_4_new" style="width:350px"><h4>4— 认同</h4></label>
+                <br>
+                <input type="radio" id="q7_5_new" name="new_question_7" value="Strongly agree">
+                <label for="q7_5_new" style="width:350px"><h4>5— 非常认同</h4></label><br><br>
+            </div>
+
+            <div>
+                
+                <br><h2>问题 8</h2>
+                <hr>
                 <h4><i>“当决定卖出某只股票时，我会考虑整个投资组合的表现。”</i><span class="required"> *</span></h4>
                     <span class="required required_alert" id="required_alert_5">这是一道必答题。</span><br>
                     <br>
@@ -876,7 +942,7 @@
             </div>
 
             <div style="background-color: #f2f2f2;">
-                <h2>问题 6</h2>
+                <br><h2>问题 9</h2>
                 <hr>
                 <!-- <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following statement: </h4><br> -->
                 <h4><i>“当决定卖出某只股票时，我会考虑买入时的价格。”</i><span class="required"> *</span></h4>
@@ -899,7 +965,7 @@
             </div>
             
             <div>
-                <h2>问题 7</h2>
+                <br><h2>问题 10</h2>
                 <hr>
                 <!-- <h4>On a scale of 1 (strongly disagree) to 5 (strongly agree), please rate the following statement: </h4><br> -->
                 <h4><i>“卖出亏损的股票会令我感到沮丧。”</i><span class="required"> *</span></h4>
@@ -939,7 +1005,7 @@
             </div>
 
             <div style="background-color: #f2f2f2;">
-                <h2>问题 9</h2>
+                <br><h2>问题 9</h2>
                 <hr>
                 <h4>一般来讲，如果您持有的某只股票暴涨，下列哪一个行为会让您感到更开心？<span class="required"> *</span></h4>
                     <span class="required required_alert" id="required_alert_8">这是一道必答题。</span><br>
@@ -965,7 +1031,7 @@
             </div>
 
             <div style="background-color: #f2f2f2;">
-                <h2>问题 11</h2>
+                <br><h2>问题 11</h2>
                 <hr>
                 <h4>您刚刚参与了四次交易游戏，在每一次游戏中，共有几只股票可以用来交易？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_10">这是一道必答题。</span><br>
@@ -987,7 +1053,7 @@
             </div>
 
             <div>
-                <h2>问题 12</h2>
+                <br><h2>问题 12</h2>
                 <hr>
                 <h4>请对以下描述进行打分，1分表示非常不认同，5分表示非常认同：</h4><br>
                 <h4><i>“当决定卖出某只股票时，我需要重点关注该股票，并且不应该被持有的其他股票的表现所影响”</i><span class="required"> *</span></h4>
@@ -1015,23 +1081,27 @@
                 <h2>问题 13</h2>
                 <hr>
                 <h4>设想您<b>同时面临</b>以下两个决策，请先完整阅读两个决策，然后再做出决定。</h4><br>
-                <h4>决策1：在以下两个情形中选择<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_12_i">这是一道必答题。</span><br>
-                <br>
-                <input type="radio" id="q12_1" name="question_12_i" value="A">
-                <label for="q12_1"><h4>A. 确定获得￥240</h4></label>
-                <br>
-                <input type="radio" id="q12_2" name="question_12_i" value="B">
-                <label for="q12_2"><h4>B. 25%的概率获得￥1000，75%的概率什么也得不到</h4></label><br>
-                <br>
-                <h4>决策2：在以下两个情形中选择<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_12_ii">这是一道必答题。</span><br>
-                <br>
-                <input type="radio" id="q12_3" name="question_12_ii" value="C">
-                <label for="q12_3"><h4>C. 确定损失￥750</h4></label>
-                <br>
-                <input type="radio" id="q12_4" name="question_12_ii" value="D">
-                <label for="q12_4"><h4>D. 75%的概率损失￥1000，25%的概率不会经历任何损失</h4></label><br><br>
+
+                <div style="background-color: #f2f2f2;">
+                    <br><h4>决策1：在以下两个情形中选择<span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_12_i">这是一道必答题。</span><br>
+                    <br>
+                    <input type="radio" id="q12_1" name="question_12_i" value="A">
+                    <label for="q12_1"><h4>A. 确定获得￥240</h4></label>
+                    <br>
+                    <input type="radio" id="q12_2" name="question_12_i" value="B">
+                    <label for="q12_2"><h4>B. 25%的概率获得￥1000，75%的概率什么也得不到</h4></label><br><br>
+                </div>
+                <div>
+                    <br><h4>决策2：在以下两个情形中选择<span class="required"> *</span></h4>
+                    <span class="required required_alert" id="required_alert_12_ii">这是一道必答题。</span><br>
+                    <br>
+                    <input type="radio" id="q12_3" name="question_12_ii" value="C">
+                    <label for="q12_3"><h4>C. 确定损失￥750</h4></label>
+                    <br>
+                    <input type="radio" id="q12_4" name="question_12_ii" value="D">
+                    <label for="q12_4"><h4>D. 75%的概率损失￥1000，25%的概率不会经历任何损失</h4></label><br><br>
+                </div>  
             </div>
         </div>
 
@@ -1122,40 +1192,6 @@
         </div>
 
         <div class="tab">
-            <div>
-                <h2>问题 16</h2>
-                <hr>
-                <h4>在过去的12个月里，您曾经交易过股票吗？（基金交易不算）<span class="required"> *</span></h4>
-                    <span class="required required_alert" id="required_alert_13">这是一道必答题。</span><br>
-                    <br>
-                <input type="radio" id="q13_1" name="question_13" value="yes">
-                <label for="q13_1" style="width:250px"><h4>是</h4></label>
-                <br>
-                <input type="radio" id="q13_2" name="question_13" value="no">
-                <label for="q13_2" style="width:250px"><h4>否</h4></label><br><br>
-            </div>
-
-            <div style="background-color: #f2f2f2;">
-                <br><h2>问题 17</h2>
-                <hr>
-                <h4>在过去的十二个月内，您大约进行了多少笔交易（买入或卖出）？<span class="required"> *</span></h4>
-                    <span class="required required_alert" id="required_alert_14">这是一道必答题。</span><br>
-                    <br>
-                <input type="radio" id="q14_1" name="question_14" value="<10">
-                <label for="q14_1" style="width:150px"><h4><10</h4></label>
-                <br>
-                <input type="radio" id="q14_2" name="question_14" value="10-50">
-                <label for="q14_2" style="width:150px"><h4>10-50</h4></label>
-                <br>
-                <input type="radio" id="q14_3" name="question_14" value="50-100">
-                <label for="q14_3" style="width:150px"><h4>50-100</h4></label>
-                <br>
-                <input type="radio" id="q14_4" name="question_14" value=">100">
-                <label for="q14_4" style="width:150px"><h4>>100</h4></label><br><br>
-            </div>
-        </div>
-
-        <div class="tab">
             <h2>问题 18</h2>
             <hr>
             <div>
@@ -1193,6 +1229,7 @@
 
             <div>
                 <br><h4>您的电话号码是？<span class="required"> *</span></h4>
+                <h4>（请准确填写您的电话号码，我们将根据您填写的电话号码发放实验报酬。）</h4>
                 <span class="required required_alert" id="required_alert_15_number">这是一道必答题。</span><br>
                 <br>
                 <label><h4>我的电话号码是：</h4></label>
@@ -1265,116 +1302,6 @@
                 <label for="q15_major_7" style="width:300px"><h4>我选择不回答这个问题</h4></label><br><br>
             </div>
 
-            <!-- <div>
-                <br><h4>What is your annual income?<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_15_income">这是一道必答题。</span><br>
-                <br>
-                <input type="radio" id="q15_annual_income_1" name="question_15_annual_income" value="<$15k">
-                <label for="q15_annual_income_1" style="width:330px"><h4><$15k</h4></label>
-                <br>
-                <input type="radio" id="q15_annual_income_2" name="question_15_annual_income" value="$15k-$30k">
-                <label for="q15_annual_income_2" style="width:330px"><h4>$15k-$30k</h4></label>
-                <br>
-                <input type="radio" id="q15_annual_income_3" name="question_15_annual_income" value="$30k-$55k">
-                <label for="q15_annual_income_3" style="width:330px"><h4>$30k-$55k</h4></label>
-                <br>
-                <input type="radio" id="q15_annual_income_4" name="question_15_annual_income" value="$55k-$90k">
-                <label for="q15_annual_income_4" style="width:330px"><h4>$55k-$90k</h4></label>
-                <br>
-                <input type="radio" id="q15_annual_income_5" name="question_15_annual_income" value=">$90k">
-                <label for="q15_annual_income_5" style="width:330px"><h4>>$90k</h4></label>
-                <br>
-                <input type="radio" id="q15_annual_income_6" name="question_15_annual_income" value="I would prefer not to say">
-                <label for="q15_annual_income_6" style="width:330px"><h4>我选择不回答这个问题</h4></label><br><br>
-            </div>
-
-            <div style="background-color: #f2f2f2;">
-                <br><h4>What is your net worth?<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_15_net_worth">这是一道必答题。</span><br>
-                <br>
-                <input type="radio" id="q15_net_worth_1" name="question_15_net_worth" value="<$0">
-                <label for="q15_net_worth_1" style="width:330px"><h4><$0</h4></label>
-                <br>
-                <input type="radio" id="q15_net_worth_2" name="question_15_net_worth" value="$0-$20k">
-                <label for="q15_net_worth_2" style="width:330px"><h4>$0-$20k</h4></label>
-                <br>
-                <input type="radio" id="q15_net_worth_3" name="question_15_net_worth" value="$20k-$95k">
-                <label for="q15_net_worth_3" style="width:330px"><h4>$20k-$95k</h4></label>
-                <br>
-                <input type="radio" id="q15_net_worth_4" name="question_15_net_worth" value="$95k-$320k">
-                <label for="q15_net_worth_4" style="width:330px"><h4>$95k-$320k</h4></label>
-                <br>
-                <input type="radio" id="q15_net_worth_5" name="question_15_net_worth" value=">$320k">
-                <label for="q15_net_worth_5" style="width:330px"><h4>>$320k</h4></label>
-                <br>
-                <input type="radio" id="q15_net_worth_6" name="question_15_net_worth" value="I would prefer not to say">
-                <label for="q15_net_worth_6" style="width:330px"><h4>我选择不回答这个问题</h4></label><br><br>
-            </div>
-
-            <div>
-                <br><h4>What is the highest degree or level of school you have completed?<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_15_edu">这是一道必答题。</span><br>
-                <br>
-                <input type="radio" id="q15_education_1" name="question_15_education" value="High School Diploma"
-                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='High School Diploma';">
-                <label for="q15_education_1" style="width:300px"><h4>High School Diploma</h4></label>
-                <br>
-                <input type="radio" id="q15_education_2" name="question_15_education" value="Associate degree"
-                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='Associate degree';">
-                <label for="q15_education_2" style="width:300px"><h4>Associate degree</h4></label>
-                <br>
-                <input type="radio" id="q15_education_3" name="question_15_education" value="Bachelor's degree"
-                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='Bachelor s degree';">
-                <label for="q15_education_3" style="width:300px"><h4>Bachelor's degree</h4></label>
-                <br>
-                <input type="radio" id="q15_education_4" name="question_15_education" value="Master's degree"
-                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='Master s degree';">
-                <label for="q15_education_4" style="width:300px"><h4>Master's degree</h4></label>
-                <br>
-                <input type="radio" id="q15_education_5" name="question_15_education" value="Doctoral degree"
-                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='Doctoral degree';">
-                <label for="q15_education_5" style="width:300px"><h4>Doctoral degree</h4></label>
-                <br>
-                <input type="radio" id="q15_education_6" name="question_15_education" value="Other"
-                    onclick="getElementById('q15_edu').removeAttribute('hidden');getElementById('q15_edu').value='';">
-                <label for="q15_education_6"><h4>Other, please Specify: </h4></label>
-                <input type="text" id="q15_edu" name="question_15_edu_inputbox" value="" style="width: 300px;" onfocus="getElementById('q15_education_6').setAttribute('checked','checked');">
-                <br>
-                <input type="radio" id="q15_education_7" name="question_15_education" value="I would prefer not to say"
-                    onclick="getElementById('q15_edu').setAttribute('hidden','hidden');getElementById('q15_edu').value='I would prefer not to say';">
-                <label for="q15_education_7" style="width:300px"><h4>我选择不回答这个问题</h4></label><br><br>
-            </div>
-
-            <div style="background-color: #f2f2f2;">
-                <br><h4>Are you homeowner or renter?<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_15_home">这是一道必答题。</span><br>
-                <br>
-                <input type="radio" id="q15_owner_1" name="question_15_owner" value="Homeowner">
-                <label for="q15_owner_1" style="width:250px"><h4>Homeowner</h4></label>
-                <br>
-                <input type="radio" id="q15_owner_2" name="question_15_owner" value="Renter">
-                <label for="q15_owner_2" style="width:250px"><h4>Renter</h4></label>
-                <br>
-                <input type="radio" id="q15_owner_3" name="question_15_owner" value="I would prefer not to say">
-                <label for="q15_owner_3" style="width:300px"><h4>我选择不回答这个问题</h4></label><br><br>
-            </div>
-
-            <div>
-                <br><h4>What is the zip code of your residence?<span class="required"> *</span></h4>
-                <span class="required required_alert" id="required_alert_15_zip">这是一道必答题。</span><br>
-                <br>
-
-                <input type="radio" id="q15_zip_1" name="question_15_zip_radio" value="My zip code is" 
-                    onclick="getElementById('q15_zip').removeAttribute('hidden');getElementById('q15_zip').value='';">
-                <label for="q15_zip_1"><h4>My zip code is </h4></label>
-                <input type="text" id="q15_zip" name="question_15_zip" value="" style="width: 100px;" onfocus="getElementById('q15_zip_1').setAttribute('checked','checked');">
-                <br>
-                <input type="radio" id="q15_zip_2" name="question_15_zip_radio" value="I would prefer not to say" 
-                    onclick="getElementById('q15_zip').setAttribute('hidden','hidden');getElementById('q15_zip').value='I would prefer not to say';">
-                <label for="q15_zip_2"><h4>我选择不回答这个问题</h4></label>
-
-                <br><br>
-            </div> -->
         </div>
         <br>
         <div id="surveyButtons" style="overflow:auto;display: none;">
@@ -1386,7 +1313,6 @@
 
         <!-- Circles which indicates the steps of the form: -->
         <div id="surveySteps" style="text-align:center;margin-top:40px;display: none;">
-            <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
@@ -1708,7 +1634,7 @@
 
     // Added by Zirui Wang on 7/21/2020
     var _introCountDownComplete = [0, 0, 0, 0, 0, 0, 0, 0];
-    var _surveyCountDownComplete = [0, 0, 0, 0, 0, 0];
+    var _surveyCountDownComplete = [0, 0, 0, 0, 0, 0, 0];
 
     // Added by Zirui Wang on 8/4/2020
     var isQuizPassed = false;
@@ -2436,8 +2362,8 @@
         let q11 = "";
         let q12i = "";
         let q12ii = "";
-        let q13 = "";
-        let q14 = "";
+        // let q13 = "";
+        // let q14 = "";
         let q15_gender = "";
         let q15_age = "";
         let q15_tel = "";
@@ -2456,6 +2382,10 @@
         let new_q14_2 ="";
         let new_q14_3 ="";
 
+        let new_q5 = "";
+        let new_q6 = "";
+        let new_q7 = "";
+
         if (surveyDone) {
             q1 = document.getElementById("q1").value;
             q2 = document.getElementById("q2").value;
@@ -2470,8 +2400,8 @@
             q11 = getValueByName('question_11');
             q12i = getValueByName('question_12_i');
             q12ii = getValueByName('question_12_ii');
-            q13 = getValueByName('question_13');
-            q14 = getValueByName('question_14');
+            // q13 = getValueByName('question_13');
+            // q14 = getValueByName('question_14');
             q15_gender = getValueByName('question_15_gender');
             q15_age = document.getElementById("q15_age").value;
             q15_tel = document.getElementById("q15_number").value;
@@ -2489,6 +2419,10 @@
             new_q14_1 = getValueByName('new_question_14_1');
             new_q14_2 = getValueByName('new_question_14_2');
             new_q14_3 = getValueByName('new_question_14_3');
+
+            new_q5 = getValueByName('new_question_5');
+            new_q6 = getValueByName('new_question_6');
+            new_q7 = getValueByName('new_question_7');
         }
 
         let bonus_payment = bonus;
@@ -2529,8 +2463,8 @@
                 "question_11" : q11,                        // 10
                 "question_12_i" : q12i,                     // 12
                 "question_12_ii" : q12ii,                   // 12
-                "question_13" : q13,                        // 13
-                "question_14" : q14,                        // 14
+                // "question_13" : q13,                        // 13
+                // "question_14" : q14,                        // 14
                 "question_15_gender" : q15_gender,          // 15
                 "question_15_age" : q15_age,                // 16
                 "question_15_tel" : q15_tel,
@@ -2547,7 +2481,11 @@
                 "new_question_13_ii" :  new_q13_2,
                 "new_question_14_i" :  new_q14_1,
                 "new_question_14_ii" :  new_q14_2,
-                "new_question_14_iii" :  new_q14_3
+                "new_question_14_iii" :  new_q14_3,
+                
+                "new_question_5" : new_q5,
+                "new_question_6" : new_q6,
+                "new_question_7" : new_q7
 
             };
         let xhr = new XMLHttpRequest();
@@ -3246,6 +3184,19 @@
             }
         }
         if(currentTab==1){
+            if(getValueByName("new_question_5")==undefined){
+                valid = false;
+                document.getElementById("required_alert_5_new").style = "display:inline;";
+            }
+            if(getValueByName("new_question_6")==undefined){
+                valid = false;
+                document.getElementById("required_alert_6_new").style = "display:inline;";
+            }
+            if(getValueByName("new_question_7")==undefined){
+                valid = false;
+                document.getElementById("required_alert_7_new").style = "display:inline;";
+            }
+
             if(getValueByName("question_5")==undefined){
                 valid = false;
                 document.getElementById("required_alert_5").style = "display:inline;";
@@ -3315,17 +3266,17 @@
         }
 
 
+        // if(currentTab==6){
+        //     if(getValueByName("question_13")==undefined){
+        //         valid = false;
+        //         document.getElementById("required_alert_13").style = "display:inline;";
+        //     }
+        //     if(getValueByName("question_14")==undefined){
+        //         valid = false;
+        //         document.getElementById("required_alert_14").style = "display:inline;";
+        //     }
+        // }
         if(currentTab==6){
-            if(getValueByName("question_13")==undefined){
-                valid = false;
-                document.getElementById("required_alert_13").style = "display:inline;";
-            }
-            if(getValueByName("question_14")==undefined){
-                valid = false;
-                document.getElementById("required_alert_14").style = "display:inline;";
-            }
-        }
-        if(currentTab==7){
             if(getValueByName("question_15_gender")==undefined){
                 valid = false;
                 document.getElementById("required_alert_15_gender").style = "display:inline;";
@@ -3463,7 +3414,7 @@
                 }
                 if(buttonName=="nextBtn") {
                     document.getElementById('prevBtn').removeAttribute("disabled");
-                    if( currentTab == 7 ) btn.innerHTML = "提交";
+                    if( currentTab == 6 ) btn.innerHTML = "提交";
                 }
             }
         }());
@@ -3704,5 +3655,10 @@
         location.href = addr;
     }
     
+</script>
+<script type="text/javascript">
+    window.onbeforeunload = function() {
+        return "test";
+    }
 </script>
 </html>
