@@ -1610,34 +1610,34 @@
     var gainlossPopRandom = Math.random();
 
     // For testing only, added by Zirui Wang
-    var treatmentNum = 0;
-    var trtStr = "";
-    if (gainlossPopRandom<0.167) {
-        treatmentNum = 1;
-        trtStr = "Never treatment";
+    // var treatmentNum = 0;
+    // var trtStr = "";
+    // if (gainlossPopRandom<0.167) {
+    //     treatmentNum = 1;
+    //     trtStr = "Never treatment";
     
-    } else if (gainlossPopRandom>=0.167 && gainlossPopRandom<0.334) {
-        treatmentNum = 2;
-        trtStr = "Always pop-up";
+    // } else if (gainlossPopRandom>=0.167 && gainlossPopRandom<0.334) {
+    //     treatmentNum = 2;
+    //     trtStr = "Always pop-up";
 
-    } else if (gainlossPopRandom >= 0.334 && gainlossPopRandom<0.501){
-        treatmentNum = 3;
-        trtStr = "Gain pop-up";
+    // } else if (gainlossPopRandom >= 0.334 && gainlossPopRandom<0.501){
+    //     treatmentNum = 3;
+    //     trtStr = "Gain pop-up";
 
-    } else if (gainlossPopRandom >= 0.501 && gainlossPopRandom<0.668){
-        treatmentNum = 4;
-        trtStr = "Loss pop-up";
+    // } else if (gainlossPopRandom >= 0.501 && gainlossPopRandom<0.668){
+    //     treatmentNum = 4;
+    //     trtStr = "Loss pop-up";
 
-    } else if (gainlossPopRandom >= 0.668 && gainlossPopRandom<0.835){
-        treatmentNum = 5;
-        trtStr = "Remove total";
+    // } else if (gainlossPopRandom >= 0.668 && gainlossPopRandom<0.835){
+    //     treatmentNum = 5;
+    //     trtStr = "Remove total";
 
-    } else if (gainlossPopRandom >= 0.835 && gainlossPopRandom<1){
-        treatmentNum = 6;
-        trtStr = "Super Salient";
-    }
-    prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom.toFixed(4) + ".\n" 
-        + "This is treatment #" + treatmentNum + ": " + trtStr);
+    // } else if (gainlossPopRandom >= 0.835 && gainlossPopRandom<1){
+    //     treatmentNum = 6;
+    //     trtStr = "Super Salient";
+    // }
+    // prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom.toFixed(4) + ".\n" 
+    //     + "This is treatment #" + treatmentNum + ": " + trtStr);
 
     //added by Zirui Wang on 6/24/2020
     const urlParams = new URLSearchParams(window.location.search);
