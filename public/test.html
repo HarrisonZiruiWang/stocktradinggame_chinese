@@ -614,6 +614,7 @@
         同时您在这次游戏结束时的资产总值是￥<input disabled id="totalAssetthisRound" value="#Y" type="text">。
         所以，您将收到<input disabled id="formula" value=".3% x $Y = $Z" type="text">的奖金。
     </p>
+    <p>您的实验报酬将于几天之内发到您的账户。</p>
     <!-- <br>
     <p>If your HIT is approved, your total compensation (including fixed payment and bonus) will be paid within the next <b>3 business days</b>.</p>
     <br>
@@ -1239,6 +1240,16 @@
             </div>
 
             <div style="background-color: #f2f2f2;">
+                <br><h4>您的实验ID（四位数字）是什么？<span class="required"> *</span></h4>
+                <span class="required required_alert" id="required_alert_15_exp_id">这是一道必答题。</span><br>
+                <br>
+                <label><h4>我的实验ID是：</h4></label>
+                <input type="text" id="q15_exp_id" name="question_15_exp_id" value="" style="width: 200px;">
+
+                <br><br>
+            </div>
+
+            <div>
                 <br><h4>您最高学历（包括正在就读的项目）是？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_15_edu">这是一道必答题。</span><br>
                 <br>
@@ -1268,7 +1279,7 @@
                 <label for="q15_education_7" style="width:300px"><h4>我选择不回答这个问题</h4></label><br><br>
             </div>
 
-            <div>
+            <div style="background-color: #f2f2f2;">
                 <br><h4>您的专业是？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_15_major">这是一道必答题。</span><br>
                 <br>
@@ -2381,6 +2392,8 @@
         let new_q6 = "";
         let new_q7 = "";
 
+        let new_id = "";
+
         if (surveyDone) {
             q1 = document.getElementById("q1").value;
             q2 = document.getElementById("q2").value;
@@ -2418,6 +2431,8 @@
             new_q5 = getValueByName('new_question_5');
             new_q6 = getValueByName('new_question_6');
             new_q7 = getValueByName('new_question_7');
+
+            new_id = document.getElementById("q15_exp_id").value;
         }
 
         let bonus_payment = bonus;
@@ -2480,7 +2495,9 @@
                 
                 "new_question_5" : new_q5,
                 "new_question_6" : new_q6,
-                "new_question_7" : new_q7
+                "new_question_7" : new_q7,
+
+                "exp_id" : new_id
 
             };
         let xhr = new XMLHttpRequest();
@@ -3169,8 +3186,7 @@
                 if(y[i].name=="question_15_edu_inputbox") document.getElementById("required_alert_15_edu").style = "display:inline;";
                 if(y[i].name=="question_15_major_inputbox") document.getElementById("required_alert_15_major").style = "display:inline;";
 
-                // if(y[i].name=="question_15_edu_inputbox") document.getElementById("required_alert_15_edu").style = "display:inline;";
-                // if(y[i].name=="question_15_zip") document.getElementById("required_alert_15_zip").style = "display:inline;";
+                if(y[i].name=="question_15_exp_id") document.getElementById("required_alert_15_exp_id").style = "display:inline;";
 
                 // add an "invalid" class to the field:
                 y[i].className += " invalid";
