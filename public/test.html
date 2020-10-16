@@ -1539,6 +1539,8 @@
                     <td style="font-size: 20px; display: none"><span id="dollarSignRT">￥</span><span id="RealizedTotal">0.00</span></td>
                     <td style="font-size: 20px" id="urt">共计：</td>
                     <td style="font-size: 20px" id="urtv"><span id="dollarSignUT">￥</span><span id="UnrealizedTotle">0.00</span></td>
+                    <td id='tempTD1' style="display: none"></td>
+                    <td id='tempTD2' style="display: none"></td>
                     </tfoot>
 
                 </table>
@@ -1597,24 +1599,34 @@
     var gainlossPopRandom = Math.random();
 
     // For testing only, added by Zirui Wang
-    // var treatmentNum = 0;
-    // var trtStr = "";
-    // if (gainlossPopRandom<0.25) {
-    //     treatmentNum = 1;
-    //     trtStr = "Never treatment";
+    var treatmentNum = 0;
+    var trtStr = "";
+    if (gainlossPopRandom<0.167) {
+        treatmentNum = 1;
+        trtStr = "Never treatment";
     
-    // } else if (gainlossPopRandom>=0.25 && gainlossPopRandom<0.5) {
-    //     treatmentNum = 2;
-    //     trtStr = "Always pop-up";
-    // } else if (gainlossPopRandom >= 0.5 && gainlossPopRandom<0.75){
-    //     treatmentNum = 3;
-    //     trtStr = "bar chart";
-    // } else if (gainlossPopRandom >= 0.75 && gainlossPopRandom<1){
-    //     treatmentNum = 4;
-    //     trtStr = "Change Font.";
-    // }
-    // prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom + ".\n" 
-    //     + "This is treatment #" + treatmentNum + ": " + trtStr);
+    } else if (gainlossPopRandom>=0.167 && gainlossPopRandom<0.334) {
+        treatmentNum = 2;
+        trtStr = "Always pop-up";
+
+    } else if (gainlossPopRandom >= 0.334 && gainlossPopRandom<0.501){
+        treatmentNum = 3;
+        trtStr = "Gain pop-up";
+
+    } else if (gainlossPopRandom >= 0.501 && gainlossPopRandom<0.668){
+        treatmentNum = 4;
+        trtStr = "Loss pop-up";
+
+    } else if (gainlossPopRandom >= 0.668 && gainlossPopRandom<0.835){
+        treatmentNum = 5;
+        trtStr = "Remove total";
+
+    } else if (gainlossPopRandom >= 0.835 && gainlossPopRandom<1){
+        treatmentNum = 6;
+        trtStr = "Super Salient";
+    }
+    prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom.toFixed(4) + ".\n" 
+        + "This is treatment #" + treatmentNum + ": " + trtStr);
 
     //added by Zirui Wang on 6/24/2020
     const urlParams = new URLSearchParams(window.location.search);
@@ -1785,32 +1797,6 @@
         // // document.getElementById("gainloss").innerHTML = " is $" + Math.abs(changeInAssests[0]);
         // document.getElementById("gainloss").innerHTML = " of $" +  Math.abs(unrealisedGain[_currentPeriodIndex]);
 
-        
-        // //document.getElementById("a").innerHTML = " a ";
-        // let gainlossType = document.getElementById("gainlossType");
-        // if (gainlossPopRandom>=0.67) {
-        //     if(unrealisedGain[_currentPeriodIndex] > 0) {
-        //         gainlossType.innerHTML = "<span style='color: #3cba9f'>gain</span>";
-        //         openModalBox();
-        //     }
-        // } else if (gainlossPopRandom>=0.34 && gainlossPopRandom<0.67) {
-        //     if(unrealisedGain[_currentPeriodIndex] < 0) {
-        //         gainlossType.innerHTML = "<span style='color: #c45850'>loss</span>";
-        //         openModalBox();
-        //     } 
-        // } else if (gainlossPopRandom < 0.34){
-        //     if(unrealisedGain[_currentPeriodIndex] > 0) {
-        //         gainlossType.innerHTML = "<span style='color: #3cba9f'>gain</span>";
-        //     }
-        //     if(unrealisedGain[_currentPeriodIndex] < 0) {
-        //         gainlossType.innerHTML = "<span style='color: #c45850'>loss</span>";
-        //     } 
-        //     if(unrealisedGain[_currentPeriodIndex] == 0) {
-        //         document.getElementById("gainlossdiv").style.display = "none";
-        //         document.getElementById("nochangediv").style.display = "block";
-        //     } 
-        //     openModalBox();
-        // }
 
         // Added by Zirui Wang on 8/31/2020
         // Always pop up to tell the portfolio gain or loss
@@ -1864,21 +1850,30 @@
         document.getElementById("gainloss").innerHTML = "是￥" +  Math.abs(unrealisedGain[_currentPeriodIndex]);
         
         let gainlossType = document.getElementById("gainlossType");
-        
-        if(unrealisedGain[_currentPeriodIndex] > 0) {
-            gainlossType.innerHTML = "<span style='color: #c45850'>浮盈</span>";
-        }
-        if(unrealisedGain[_currentPeriodIndex] < 0) {
-            gainlossType.innerHTML = "<span style='color: #3cba9f'>浮亏</span>";
-        } 
-        if(unrealisedGain[_currentPeriodIndex] == 0) {
-            document.getElementById("gainlossdiv").style.display = "none";
-            document.getElementById("nochangediv").style.display = "block";
-        } 
-        if(0.25<=gainlossPopRandom && gainlossPopRandom<0.5) {
+
+        if (gainlossPopRandom>=0.334 && gainlossPopRandom<0.501) {
+            if(unrealisedGain[_currentPeriodIndex] > 0) {
+                gainlossType.innerHTML = "<span style='color: #c45850'>浮盈</span>";
+                openModalBox();
+            }
+        } else if (gainlossPopRandom>=0.501 && gainlossPopRandom<0.668) {
+            if(unrealisedGain[_currentPeriodIndex] < 0) {
+                gainlossType.innerHTML = "<span style='color: #3cba9f'>浮亏</span>";
+                openModalBox();
+            } 
+        } else if (0.167<=gainlossPopRandom && gainlossPopRandom<0.334 || gainlossPopRandom >= 0.835){
+            if(unrealisedGain[_currentPeriodIndex] > 0) {
+                gainlossType.innerHTML = "<span style='color: #c45850'>浮盈</span>";
+            }
+            if(unrealisedGain[_currentPeriodIndex] < 0) {
+                gainlossType.innerHTML = "<span style='color: #3cba9f'>浮亏</span>";
+            } 
+            if(unrealisedGain[_currentPeriodIndex] == 0) {
+                document.getElementById("gainlossdiv").style.display = "none";
+                document.getElementById("nochangediv").style.display = "block";
+            } 
             openModalBox();
         }
-    
 
         
         // updateStockPrice();
@@ -3534,18 +3529,33 @@
 
     // this line of code added by Zirui Wang on 5/9/2020 to remove chart2
     // Modified by Zirui Wang on 9/20/2020
-    if( gainlossPopRandom < 0.5 || 0.75 <= gainlossPopRandom) {
+    // Modified by Zirui Wang on 10/15/2020
+    if( gainlossPopRandom < 0.835) {
         document.getElementById("myChart2").style.display = "none";
         document.getElementById("myChart").className += " col-md-offset-6";
-    }
-
-    // Added by Zirui Wang on 9/21/2020
-    if( 0.75 <= gainlossPopRandom && gainlossPopRandom < 1 ) {
+    } else {
         var total = document.getElementById("urt");
         var value = document.getElementById("urtv");
 
         total.style = "box-shadow: 2px 2px gainsboro;border-bottom-left-radius: 25px;border-top-left-radius: 25px;background-color:#fffaf0;font-size:30px";
         value.style = "box-shadow: 2px 2px gainsboro;border-bottom-right-radius: 25px;border-top-right-radius: 25px;background-color:#fffaf0;font-size:30px";
+    }
+
+    // Added by Zirui Wang on 9/21/2020
+    // Modified by Zirui Wang on 10/15/2020
+    if( 0.668 <= gainlossPopRandom && gainlossPopRandom < 0.835 ) {
+        // Remove total text
+        var total = document.getElementById("urt");
+        var value = document.getElementById("urtv");
+        var td1 = document.getElementById("tempTD1");
+        var td2 = document.getElementById("tempTD2");
+
+        td1.style.display = 'table-cell';
+        td2.style.display = 'table-cell';
+
+        total.style.display = 'none';
+        value.style.display = 'none';
+        
 
     }
 
