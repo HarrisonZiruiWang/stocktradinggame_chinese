@@ -3160,7 +3160,7 @@
                 isQuizPassed = true;
                 saveData();
             } else {
-                //saveData();
+                saveData();
                 proceedToThankyouWhenQuizFailed();
             }
         }
@@ -3526,7 +3526,7 @@
             return;
         } else {
             document.getElementById("failedQuizTitle").innerHTML="提交成功!";
-            document.getElementById("failedQuizPara").style.display = "none";
+            document.getElementById("failedQuizPara").innerHTML="<p>您的实验报酬将于几天之内发到您的账户。</p>";
             document.getElementById("failedSurvey").style.display = "none";
             
             failedSurveyDone = true;
