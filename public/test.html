@@ -629,18 +629,61 @@
 <!-- Added by Zirui Wang on 8/1/2020 -->
 <div id="thankYouQhenQuizFailed" style="display: none">
     <!-- Please reload if you wanna play again(but it will no longer affect your score) -->
-    <h3> 多谢您完成测验！</h3>
+    <h3 id="failedQuizTitle"> 多谢您完成测验！</h3>
     <hr>
     <br>
-    <p>  
-        很抱歉，您未能正确地回答全部3个问题，不能继续参与我们的股票交易实验。您将获得￥1固定报酬，但是无法获取额外奖金。
-    </p>
-    
-    <!-- <p>  Click Next to receive the completion code you will need to get paid.</p> -->
+    <div id="failedQuizPara">
+        <p>  
+            很抱歉，您未能正确地回答全部3个问题，不能继续参与我们的股票交易实验。您将获得￥1固定报酬，但是无法获取额外奖金。
+        </p>
+        <p>  
+            请准确填写下方问题，我们将根据您填写的信息发放实验报酬。
+        </p>
+    </div>
     <br>
     <!-- <div style="float:right;">
         <button id="completeButton2" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >下一页</button>
     </div> -->
+    <div id="failedSurvey">
+        <span class="required">* 必答</span><br><br>
+        <form id="failedSurveyForm">
+            <div style="background-color: #f2f2f2;">
+                <br><h4>您的电话号码是？<span class="required"> *</span></h4>
+                <!-- <p>（请准确填写您的电话号码，我们将根据您填写的电话号码发放实验报酬。）</p> -->
+                <hr>
+                <span class="required required_alert" id="required_alert_failed_number">这是一道必答题。</span>
+                <span class="required required_alert" id="alert_number_isNum">此项仅限输入数字。</span><br>
+                <p>我的电话号码是：
+                    <input type="text" id="failed_number" name="question_failed_number" value="" style="width: 200px;">
+                </p>
+                <br>
+            </div>
+
+            <div>
+                <br><h4>您的实验场次号码？<span class="required"> *</span></h4>
+                <hr>
+                <span class="required required_alert" id="required_alert_failed_exp_id">这是一道必答题。</span>
+                <span class="required required_alert" id="alert_exp_id_isNum">此项仅限输入数字。</span><br>
+                <p>我的实验场次号码是：
+                    <input type="text" id="failed_exp_id" name="question_failed_exp_id" value="" style="width: 200px;">
+                </p>
+                <br><br>
+            </div>
+            <br>
+
+            <div style="float:right;">
+                <button type="button" id="failedSubmitBtn" class="btn btn-primary btn-sm" onclick="validateFailedQuiz()">提交</button>
+            </div>
+            <br>
+
+        </form> 
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
 
 <!-- Commented by Zirui Wang on 6/14/2020 -->
@@ -1240,10 +1283,10 @@
             </div>
 
             <div style="background-color: #f2f2f2;">
-                <br><h4>您的实验ID（四位数字）是什么？<span class="required"> *</span></h4>
+                <br><h4>您的实验场次号码是？<span class="required"> *</span></h4>
                 <span class="required required_alert" id="required_alert_15_exp_id">这是一道必答题。</span><br>
                 <br>
-                <label><h4>我的实验ID是：</h4></label>
+                <label><h4>我的实验场次号码是：</h4></label>
                 <input type="text" id="q15_exp_id" name="question_15_exp_id" value="" style="width: 200px;">
 
                 <br><br>
@@ -1653,6 +1696,7 @@
     // Added by Zirui Wang on 7/5/2020
     var total_assets = [0, 1000, 1000, 1000, 1000];
     var surveyDone = false;
+    var failedSurveyDone = false;
     var bonus = 0;
 
     // Added by Zirui Wang on 7/21/2020
@@ -2435,6 +2479,12 @@
             new_id = document.getElementById("q15_exp_id").value;
         }
 
+        if (failedSurveyDone) {
+            
+            q15_tel = document.getElementById("failed_number").value;
+            new_id = document.getElementById("failed_exp_id").value;
+        }
+
         let bonus_payment = bonus;
         let is_quiz_passed = isQuizPassed;
 
@@ -3110,7 +3160,7 @@
                 isQuizPassed = true;
                 saveData();
             } else {
-                saveData();
+                //saveData();
                 proceedToThankyouWhenQuizFailed();
             }
         }
@@ -3438,6 +3488,54 @@
             timer(buttonName, buttonContent);
             completeArray[arrayIndex] = 1;
         }
+    }
+
+    function validateFailedQuiz() {
+        validate = true;
+
+        var numberEle = document.getElementById("failed_number");
+        var expIdEle = document.getElementById("failed_exp_id");
+
+        if (numberEle.value == "") {
+            document.getElementById("required_alert_failed_number").style = "display:inline;";
+            document.getElementById("alert_number_isNum").style = "display:none;";
+            validate = false;
+        } else if (!isNumeric(numberEle.value)) {
+            document.getElementById("required_alert_failed_number").style = "display:none;";
+            document.getElementById("alert_number_isNum").style = "display:inline;";
+            validate = false;
+        } else {
+            document.getElementById("required_alert_failed_number").style = "display:none;";
+            document.getElementById("alert_number_isNum").style = "display:none;";
+        }
+
+        if (expIdEle.value == "") {
+            document.getElementById("required_alert_failed_exp_id").style = "display:inline;";
+            document.getElementById("alert_exp_id_isNum").style = "display:none;";
+            validate = false;
+        } else if (!isNumeric(expIdEle.value)) {
+            document.getElementById("required_alert_failed_exp_id").style = "display:none;";
+            document.getElementById("alert_exp_id_isNum").style = "display:inline;";
+            validate = false;
+        } else {
+            document.getElementById("required_alert_failed_exp_id").style = "display:none;";
+            document.getElementById("alert_exp_id_isNum").style = "display:none;";
+        }
+
+        if (validate == false) {
+            return;
+        } else {
+            document.getElementById("failedQuizTitle").innerHTML="提交成功!";
+            document.getElementById("failedQuizPara").style.display = "none";
+            document.getElementById("failedSurvey").style.display = "none";
+            
+            failedSurveyDone = true;
+            saveData();
+        }
+    }
+
+    function isNumeric(value) {
+        return /^\d+$/.test(value);
     }
 
     var ctx = document.getElementById("myChart").getContext('2d');
