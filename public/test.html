@@ -1697,31 +1697,31 @@
     var gainlossPopRandom = Math.random();
 
     // For testing only, added by Zirui Wang
-    var treatmentNum = 0;
-    var trtStr = "";
-    if (gainlossPopRandom<0.2) {
-        treatmentNum = 1;
-        trtStr = "Never treatment";
+    // var treatmentNum = 0;
+    // var trtStr = "";
+    // if (gainlossPopRandom<0.2) {
+    //     treatmentNum = 1;
+    //     trtStr = "Never treatment";
     
-    } else if (gainlossPopRandom>=0.2 && gainlossPopRandom<0.4) {
-        treatmentNum = 2;
-        trtStr = "Always pop-up";
+    // } else if (gainlossPopRandom>=0.2 && gainlossPopRandom<0.4) {
+    //     treatmentNum = 2;
+    //     trtStr = "Always pop-up";
 
-    } else if (gainlossPopRandom >= 0.4 && gainlossPopRandom<0.6){
-        treatmentNum = 3;
-        trtStr = "Gain pop-up";
+    // } else if (gainlossPopRandom >= 0.4 && gainlossPopRandom<0.6){
+    //     treatmentNum = 3;
+    //     trtStr = "Gain pop-up";
 
-    } else if (gainlossPopRandom >= 0.6 && gainlossPopRandom<0.8){
-        treatmentNum = 4;
-        trtStr = "Loss pop-up";
+    // } else if (gainlossPopRandom >= 0.6 && gainlossPopRandom<0.8){
+    //     treatmentNum = 4;
+    //     trtStr = "Loss pop-up";
 
-    } else if (gainlossPopRandom >= 0.8 && gainlossPopRandom<1){
-        treatmentNum = 5;
-        trtStr = "Composition treatment";
+    // } else if (gainlossPopRandom >= 0.8 && gainlossPopRandom<1){
+    //     treatmentNum = 5;
+    //     trtStr = "Composition treatment";
 
-    } 
-    prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom.toFixed(4) + ".\n" 
-        + "This is treatment #" + treatmentNum + ": " + trtStr);
+    // } 
+    // prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom.toFixed(4) + ".\n" 
+    //     + "This is treatment #" + treatmentNum + ": " + trtStr);
 
     //added by Zirui Wang on 6/24/2020
     const urlParams = new URLSearchParams(window.location.search);
