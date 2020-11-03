@@ -286,21 +286,21 @@
 
 <!-- Modified by Zirui Wang on 7/5/2020 -->
 <div id="intro">
-    <H2 id="introHeader"> 实验说明 </H2>
+    <H2 id="introHeader"> 实验说明 (Presentation only: Instructions)</H2>
     <hr>
     <div class="introTab">
         <div id="failedSurvey">
             <p>  
-                请准确填写下方问题，我们将根据您填写的信息发放实验报酬。
+                请准确填写下方问题，我们将根据您填写的信息发放实验报酬。(Presentation only: Please answer the following questions. We will pay you according to the information you provided below.)
             </p>
             <span class="required">* 必答</span><br><br>
             <form id="failedSurveyForm">
                 <div style="background-color: #f2f2f2;">
-                    <br><h4>您的电话号码是？<span class="required"> *</span></h4>
+                    <br><h4>您的电话号码是？(Presentation only: What is your phone number?)<span class="required"> *</span></h4>
                     <!-- <p>（请准确填写您的电话号码，我们将根据您填写的电话号码发放实验报酬。）</p> -->
                     <hr>
-                    <span class="required required_alert" id="required_alert_failed_number">这是一道必答题。</span>
-                    <span class="required required_alert" id="alert_number_isNum">此项仅限输入数字。</span><br>
+                    <span class="required required_alert" id="required_alert_failed_number">这是一道必答题。(Presentation only: This questions is required.)</span>
+                    <span class="required required_alert" id="alert_number_isNum">此项仅限输入数字。(Presentation only: You can only enter numbers.)</span><br>
                     <p>我的电话号码是：
                         <input type="text" id="failed_number" name="question_failed_number" value="" style="width: 200px;">
                     </p>
@@ -308,10 +308,10 @@
                 </div>
     
                 <div>
-                    <br><h4>您的实验场次号码？<span class="required"> *</span></h4>
+                    <br><h4>您的实验场次号码？(Presentation only: What is your experiment ID?)<span class="required"> *</span></h4>
                     <hr>
-                    <span class="required required_alert" id="required_alert_failed_exp_id">这是一道必答题。</span>
-                    <span class="required required_alert" id="alert_exp_id_isNum">此项仅限输入数字。</span><br>
+                    <span class="required required_alert" id="required_alert_failed_exp_id">这是一道必答题。(Presentation only: This questions is required.)</span>
+                    <span class="required required_alert" id="alert_exp_id_isNum">此项仅限输入数字。(Presentation only: You can only enter numbers.)</span><br>
                     <p>我的实验场次号码是：
                         <input type="text" id="failed_exp_id" name="question_failed_exp_id" value="" style="width: 200px;">
                     </p>
@@ -1438,6 +1438,9 @@
             <div id="nochangediv" class="portfolio" style="text-align:center; display:none">
                 您的股票组合盈亏平衡。
             </div>
+            <div id="compositionTrtDiv" class="portfolio" style="text-align:center; display:none">
+                您现在持有<span id="z"></span>只股票，其中<span id="x"></span><span id="zfy">只浮盈</span>，<span id="y"></span><span id="zfk">只浮亏</span>。
+            </div>
             <!-- Added by Zirui Wang on 8/31/2020 -->
             <!-- <div id="gainlossdiv2" class="portfolio" style="text-align: center">
                 Your portfolio has a total <span id="gainlossType2"></span><span id="gainloss2">10000</span>.
@@ -1694,34 +1697,31 @@
     var gainlossPopRandom = Math.random();
 
     // For testing only, added by Zirui Wang
-    // var treatmentNum = 0;
-    // var trtStr = "";
-    // if (gainlossPopRandom<0.167) {
-    //     treatmentNum = 1;
-    //     trtStr = "Never treatment";
+    var treatmentNum = 0;
+    var trtStr = "";
+    if (gainlossPopRandom<0.2) {
+        treatmentNum = 1;
+        trtStr = "Never treatment";
     
-    // } else if (gainlossPopRandom>=0.167 && gainlossPopRandom<0.334) {
-    //     treatmentNum = 2;
-    //     trtStr = "Always pop-up";
+    } else if (gainlossPopRandom>=0.2 && gainlossPopRandom<0.4) {
+        treatmentNum = 2;
+        trtStr = "Always pop-up";
 
-    // } else if (gainlossPopRandom >= 0.334 && gainlossPopRandom<0.501){
-    //     treatmentNum = 3;
-    //     trtStr = "Gain pop-up";
+    } else if (gainlossPopRandom >= 0.4 && gainlossPopRandom<0.6){
+        treatmentNum = 3;
+        trtStr = "Gain pop-up";
 
-    // } else if (gainlossPopRandom >= 0.501 && gainlossPopRandom<0.668){
-    //     treatmentNum = 4;
-    //     trtStr = "Loss pop-up";
+    } else if (gainlossPopRandom >= 0.6 && gainlossPopRandom<0.8){
+        treatmentNum = 4;
+        trtStr = "Loss pop-up";
 
-    // } else if (gainlossPopRandom >= 0.668 && gainlossPopRandom<0.835){
-    //     treatmentNum = 5;
-    //     trtStr = "Remove total";
+    } else if (gainlossPopRandom >= 0.8 && gainlossPopRandom<1){
+        treatmentNum = 5;
+        trtStr = "Composition treatment";
 
-    // } else if (gainlossPopRandom >= 0.835 && gainlossPopRandom<1){
-    //     treatmentNum = 6;
-    //     trtStr = "Super Salient";
-    // }
-    // prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom.toFixed(4) + ".\n" 
-    //     + "This is treatment #" + treatmentNum + ": " + trtStr);
+    } 
+    prompt("This pop-up window is for testing only.\nRandom variable = " + gainlossPopRandom.toFixed(4) + ".\n" 
+        + "This is treatment #" + treatmentNum + ": " + trtStr);
 
     //added by Zirui Wang on 6/24/2020
     const urlParams = new URLSearchParams(window.location.search);
@@ -1851,7 +1851,6 @@
     // modified by Zirui Wang on 5/31/2020
     function populateModal() {
     
-        //prompt("random = " + gainlossPopRandom);
 
         //var change =changeInAssests[0];
         //document.getElementById("changeAssets").innerHTML = " by $"+Math.abs(change);
@@ -1941,33 +1940,90 @@
         //Removed by Zirui Wang on 9/13/2020 to remove the pop-up window
         //openModalBox();
 
-        document.getElementById("gainlossdiv").style.display = "block";
-        document.getElementById("nochangediv").style.display = "none";
-        document.getElementById("gainloss").innerHTML = "是￥" +  Math.abs(unrealisedGain[_currentPeriodIndex]);
-        
-        let gainlossType = document.getElementById("gainlossType");
+        if (gainlossPopRandom<0.8) {
+            document.getElementById("gainlossdiv").style.display = "block";
+            document.getElementById("nochangediv").style.display = "none";
+            document.getElementById("gainloss").innerHTML = "是￥" +  Math.abs(unrealisedGain[_currentPeriodIndex]);
+            
+            let gainlossType = document.getElementById("gainlossType");
 
-        if (gainlossPopRandom>=0.334 && gainlossPopRandom<0.501) {
-            if(unrealisedGain[_currentPeriodIndex] > 0) {
-                gainlossType.innerHTML = "<span style='color: #c45850'>浮盈</span>";
+            if (gainlossPopRandom>=0.4 && gainlossPopRandom<0.6) {
+                if(unrealisedGain[_currentPeriodIndex] > 0) {
+                    gainlossType.innerHTML = "<span style='color: #c45850'>浮盈</span>";
+                    openModalBox();
+                }
+            } else if (gainlossPopRandom>=0.6 && gainlossPopRandom<0.8) {
+                if(unrealisedGain[_currentPeriodIndex] < 0) {
+                    gainlossType.innerHTML = "<span style='color: #3cba9f'>浮亏</span>";
+                    openModalBox();
+                } 
+            } else if (0.2<=gainlossPopRandom && gainlossPopRandom<0.4){
+                if(unrealisedGain[_currentPeriodIndex] > 0) {
+                    gainlossType.innerHTML = "<span style='color: #c45850'>浮盈</span>";
+                }
+                if(unrealisedGain[_currentPeriodIndex] < 0) {
+                    gainlossType.innerHTML = "<span style='color: #3cba9f'>浮亏</span>";
+                } 
+                if(unrealisedGain[_currentPeriodIndex] == 0) {
+                    document.getElementById("gainlossdiv").style.display = "none";
+                    document.getElementById("nochangediv").style.display = "block";
+                } 
                 openModalBox();
             }
-        } else if (gainlossPopRandom>=0.501 && gainlossPopRandom<0.668) {
-            if(unrealisedGain[_currentPeriodIndex] < 0) {
-                gainlossType.innerHTML = "<span style='color: #3cba9f'>浮亏</span>";
-                openModalBox();
-            } 
-        } else if (0.167<=gainlossPopRandom && gainlossPopRandom<0.334 || gainlossPopRandom >= 0.835){
-            if(unrealisedGain[_currentPeriodIndex] > 0) {
-                gainlossType.innerHTML = "<span style='color: #c45850'>浮盈</span>";
+        } else {
+            document.getElementById("gainlossdiv").style.display = "none";
+            document.getElementById("nochangediv").style.display = "none";
+            document.getElementById("compositionTrtDiv").style.display = "block";
+
+            var z = document.getElementById("z");
+            var x = document.getElementById("x");
+            var y = document.getElementById("y");
+            var zfy = document.getElementById("zfy");
+            var zfk = document.getElementById("zfk");
+
+            var previousShares = document.getElementsByClassName("previousShares");
+            var sumHoldShare = 0;
+            for (var i = 0; i < previousShares.length; i++) {
+                var preShare = Number(previousShares[i].innerHTML);
+                if(preShare>0) {
+                    sumHoldShare += 1;
+                }
             }
-            if(unrealisedGain[_currentPeriodIndex] < 0) {
-                gainlossType.innerHTML = "<span style='color: #3cba9f'>浮亏</span>";
-            } 
-            if(unrealisedGain[_currentPeriodIndex] == 0) {
-                document.getElementById("gainlossdiv").style.display = "none";
-                document.getElementById("nochangediv").style.display = "block";
-            } 
+            z.innerHTML = sumHoldShare;
+
+            var unrealizedGLs = document.getElementsByClassName("UnrealizedGL");
+            var sumGain = 0;
+            var sumLoss = 0;
+            for (var i = 0; i < unrealizedGLs.length; i++) {
+                var amt = Number(unrealizedGLs[i].innerHTML);
+                if(amt > 0) {
+                    sumGain += 1;
+                }
+                if(amt < 0) {
+                    sumLoss += 1;
+                }
+            }
+            x.innerHTML = sumGain;
+            y.innerHTML = sumLoss;
+
+            if (sumGain > 0) {
+                x.style.color = "#c45850";
+                zfy.style.color = "#c45850";
+
+            } else if (sumGain == 0) {
+                x.style.color = "#000000";
+                zfy.style.color = "#000000";
+
+            }
+            
+            if (sumLoss > 0) {
+                y.style.color = "#3cba9f";
+                zfk.style.color = "#3cba9f";
+            } else if (sumLoss == 0) {
+                y.style.color = "#000000";
+                zfk.style.color = "#000000";
+            }
+
             openModalBox();
         }
 
@@ -3690,36 +3746,35 @@
     });
 
     // this line of code added by Zirui Wang on 5/9/2020 to remove chart2
-    // Modified by Zirui Wang on 9/20/2020
-    // Modified by Zirui Wang on 10/15/2020
-    if( gainlossPopRandom < 0.835) {
-        document.getElementById("myChart2").style.display = "none";
-        document.getElementById("myChart").className += " col-md-offset-6";
-    } else {
-        var total = document.getElementById("urt");
-        var value = document.getElementById("urtv");
+    // Modified by Zirui Wang on 9/20/2020 and on 10/15/2020
+    //if( gainlossPopRandom < 0.835) {
+    document.getElementById("myChart2").style.display = "none";
+    document.getElementById("myChart").className += " col-md-offset-6";
+    // } else {
+    //     var total = document.getElementById("urt");
+    //     var value = document.getElementById("urtv");
 
-        total.style = "box-shadow: 2px 2px gainsboro;border-bottom-left-radius: 25px;border-top-left-radius: 25px;background-color:#fffaf0;font-size:30px";
-        value.style = "box-shadow: 2px 2px gainsboro;border-bottom-right-radius: 25px;border-top-right-radius: 25px;background-color:#fffaf0;font-size:30px";
-    }
+    //     total.style = "box-shadow: 2px 2px gainsboro;border-bottom-left-radius: 25px;border-top-left-radius: 25px;background-color:#fffaf0;font-size:30px";
+    //     value.style = "box-shadow: 2px 2px gainsboro;border-bottom-right-radius: 25px;border-top-right-radius: 25px;background-color:#fffaf0;font-size:30px";
+    // }
 
     // Added by Zirui Wang on 9/21/2020
-    // Modified by Zirui Wang on 10/15/2020
-    if( 0.668 <= gainlossPopRandom && gainlossPopRandom < 0.835 ) {
-        // Remove total text
-        var total = document.getElementById("urt");
-        var value = document.getElementById("urtv");
-        var td1 = document.getElementById("tempTD1");
-        var td2 = document.getElementById("tempTD2");
+    // Modified by Zirui Wang on 10/15/2020, 
+    // if( 0.668 <= gainlossPopRandom && gainlossPopRandom < 0.835 ) {
+    //     // Remove total text
+    //     var total = document.getElementById("urt");
+    //     var value = document.getElementById("urtv");
+    //     var td1 = document.getElementById("tempTD1");
+    //     var td2 = document.getElementById("tempTD2");
 
-        td1.style.display = 'table-cell';
-        td2.style.display = 'table-cell';
+    //     td1.style.display = 'table-cell';
+    //     td2.style.display = 'table-cell';
 
-        total.style.display = 'none';
-        value.style.display = 'none';
+    //     total.style.display = 'none';
+    //     value.style.display = 'none';
         
 
-    }
+    // }
 
     // for(i=0;i<chartData.data.length;i++){
     //     if(chartData.data[i] >= 0){
