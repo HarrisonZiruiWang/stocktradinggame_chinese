@@ -288,7 +288,46 @@
 <div id="intro">
     <H2 id="introHeader"> 实验说明 </H2>
     <hr>
+    <div class="introTab">
+        <div id="failedSurvey">
+            <p>  
+                请准确填写下方问题，我们将根据您填写的信息发放实验报酬。
+            </p>
+            <span class="required">* 必答</span><br><br>
+            <form id="failedSurveyForm">
+                <div style="background-color: #f2f2f2;">
+                    <br><h4>您的电话号码是？<span class="required"> *</span></h4>
+                    <!-- <p>（请准确填写您的电话号码，我们将根据您填写的电话号码发放实验报酬。）</p> -->
+                    <hr>
+                    <span class="required required_alert" id="required_alert_failed_number">这是一道必答题。</span>
+                    <span class="required required_alert" id="alert_number_isNum">此项仅限输入数字。</span><br>
+                    <p>我的电话号码是：
+                        <input type="text" id="failed_number" name="question_failed_number" value="" style="width: 200px;">
+                    </p>
+                    <br>
+                </div>
     
+                <div>
+                    <br><h4>您的实验场次号码？<span class="required"> *</span></h4>
+                    <hr>
+                    <span class="required required_alert" id="required_alert_failed_exp_id">这是一道必答题。</span>
+                    <span class="required required_alert" id="alert_exp_id_isNum">此项仅限输入数字。</span><br>
+                    <p>我的实验场次号码是：
+                        <input type="text" id="failed_exp_id" name="question_failed_exp_id" value="" style="width: 200px;">
+                    </p>
+                    <br><br>
+                </div>
+                <br>
+    
+                <!-- <div style="float:right;">
+                    <button type="button" id="failedSubmitBtn" class="btn btn-primary btn-sm" onclick="validateFailedQuiz()">提交</button>
+                </div> -->
+                <br>
+    
+            </form> 
+        </div>
+    </div>
+
     <div class="introTab">
         <br>
         <p>这是一项关于虚拟股票交易的实验，大约需要花费20分钟。您将获得￥1,000的实验现金用于交易。
@@ -579,6 +618,7 @@
         <span class="introStep"></span>
         <span class="introStep"></span>
         <span class="introStep"></span>
+        <span class="introStep"></span>
     </div>
     <br>
     <!-- Modified by Zirui Wang on 06/27/2020 -->
@@ -636,20 +676,21 @@
         <p>  
             很抱歉，您未能正确地回答全部3个问题，不能继续参与我们的股票交易实验。您将获得￥1固定报酬，但是无法获取额外奖金。
         </p>
-        <p>  
+        <p>您的实验报酬将于几天之内发到您的账户。</p>
+        <!-- <p>  
             请准确填写下方问题，我们将根据您填写的信息发放实验报酬。
-        </p>
+        </p> -->
     </div>
     <br>
     <!-- <div style="float:right;">
         <button id="completeButton2" onclick="redirectCompletionCode();" class="btn btn-primary btn-sm" >下一页</button>
     </div> -->
-    <div id="failedSurvey">
+    
+    <!-- <div id="failedSurvey">
         <span class="required">* 必答</span><br><br>
         <form id="failedSurveyForm">
             <div style="background-color: #f2f2f2;">
                 <br><h4>您的电话号码是？<span class="required"> *</span></h4>
-                <!-- <p>（请准确填写您的电话号码，我们将根据您填写的电话号码发放实验报酬。）</p> -->
                 <hr>
                 <span class="required required_alert" id="required_alert_failed_number">这是一道必答题。</span>
                 <span class="required required_alert" id="alert_number_isNum">此项仅限输入数字。</span><br>
@@ -677,7 +718,7 @@
             <br>
 
         </form> 
-    </div>
+    </div> -->
     <br>
     <br>
     <br>
@@ -1271,7 +1312,7 @@
                 <br><br>
             </div>
 
-            <div>
+            <!-- <div>
                 <br><h4>您的电话号码是？<span class="required"> *</span></h4>
                 <h4>（请准确填写您的电话号码，我们将根据您填写的电话号码发放实验报酬。）</h4>
                 <span class="required required_alert" id="required_alert_15_number">这是一道必答题。</span><br>
@@ -1290,7 +1331,7 @@
                 <input type="text" id="q15_exp_id" name="question_15_exp_id" value="" style="width: 200px;">
 
                 <br><br>
-            </div>
+            </div> -->
 
             <div>
                 <br><h4>您最高学历（包括正在就读的项目）是？<span class="required"> *</span></h4>
@@ -1700,7 +1741,7 @@
     var bonus = 0;
 
     // Added by Zirui Wang on 7/21/2020
-    var _introCountDownComplete = [0, 0, 0, 0, 0, 0, 0, 0];
+    var _introCountDownComplete = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     var _surveyCountDownComplete = [0, 0, 0, 0, 0, 0, 0];
 
     // Added by Zirui Wang on 8/4/2020
@@ -2456,7 +2497,7 @@
             // q14 = getValueByName('question_14');
             q15_gender = getValueByName('question_15_gender');
             q15_age = document.getElementById("q15_age").value;
-            q15_tel = document.getElementById("q15_number").value;
+            //q15_tel = document.getElementById("q15_number").value;
             q15_education = document.getElementById("q15_edu").value;
             q15_major = document.getElementById("q15_major").value;
 
@@ -2476,7 +2517,7 @@
             new_q6 = getValueByName('new_question_6');
             new_q7 = getValueByName('new_question_7');
 
-            new_id = document.getElementById("q15_exp_id").value;
+            //new_id = document.getElementById("q15_exp_id").value;
         }
 
         if (failedSurveyDone) {
@@ -3089,7 +3130,7 @@
         var x = document.getElementsByClassName("introTab");
         x[n].style.display = "block";
         // ... and fix the Previous/Next buttons:
-        if (n === 0) {
+        if (n === 0 || n === 1) {
             document.getElementById("introButtons").style.display = "block";
             document.getElementById("introSteps").style.display = "block";
             document.getElementById("introPrevBtn").style.display = "none";
@@ -3098,10 +3139,10 @@
             document.getElementById("introPrevBtn").style.display = "inline";
         }
 
-        if (n==3) {
+        if (n==4) {
             document.getElementById("introPrevBtn").style.display = "none";
         }
-        if (n==4) {
+        if (n==5) {
             document.getElementById("introPrevBtn").style.display = "inline";
         }
 
@@ -3117,35 +3158,39 @@
     }
     // Added by Zirui Wang on 8/1/2020
     function adjustButtonContent() {
-        if (currentIntroTab == 1) {
+        if (currentIntroTab == 2) {
             document.getElementById("introNextBtn").innerHTML = "开始测验";
         }
-        if (currentIntroTab == 2) {
+        if (currentIntroTab == 3) {
             document.getElementById("introNextBtn").innerHTML = "提交测验";
         }
     }
     // Added by Zirui Wang on 7/5/2020. Refer to w3schools
     // Modified by Zirui Wang on 8/1/2020
     function introNextPrev(n) {
-        
         if (currentIntroTab == 0 && n == 1) {
+            if (!validateFailedQuiz()){
+                return false;
+            }
+        }
+        if (currentIntroTab == 1 && n == 1) {
             document.getElementById("introNextBtn").innerHTML = "开始测验";
             if(_introCountDownComplete[currentIntroTab+2]==1) {
                 document.getElementById("introNextBtn").innerHTML = "继续测验";
             }
         }
-        if (currentIntroTab == 1 && n == 1) {
+        if (currentIntroTab == 2 && n == 1) {
             document.getElementById("introHeader").innerHTML = "资格测验";
             document.getElementById("introNextBtn").innerHTML = "提交测验";
         }
-        if (currentIntroTab == 1 && n == -1) {
+        if (currentIntroTab == 2 && n == -1) {
             document.getElementById("introNextBtn").innerHTML = "下一页";
         }
-        if (currentIntroTab == 2 && n == -1) {
+        if (currentIntroTab == 3 && n == -1) {
             document.getElementById("introHeader").innerHTML = "实验说明";
             document.getElementById("introNextBtn").innerHTML = "继续测验";
         }
-        if (currentIntroTab == 2 && n == 1) {
+        if (currentIntroTab == 3 && n == 1) {
 
             if ( !validateQuiz() ) {
                 return false;
@@ -3164,7 +3209,7 @@
                 proceedToThankyouWhenQuizFailed();
             }
         }
-        if (currentIntroTab == 3 && n == 1) {
+        if (currentIntroTab == 4 && n == 1) {
             document.getElementById("introHeader").innerHTML = "实验说明";
         }
 
@@ -3232,11 +3277,11 @@
                 if(y[i].name=="question_4") document.getElementById("required_alert_4").style = "display:inline;";
                 if(y[i].name=="question_15_age") document.getElementById("required_alert_15_age").style = "display:inline;";
 
-                if(y[i].name=="question_15_number") document.getElementById("required_alert_15_number").style = "display:inline;";
+                //if(y[i].name=="question_15_number") document.getElementById("required_alert_15_number").style = "display:inline;";
                 if(y[i].name=="question_15_edu_inputbox") document.getElementById("required_alert_15_edu").style = "display:inline;";
                 if(y[i].name=="question_15_major_inputbox") document.getElementById("required_alert_15_major").style = "display:inline;";
 
-                if(y[i].name=="question_15_exp_id") document.getElementById("required_alert_15_exp_id").style = "display:inline;";
+                //if(y[i].name=="question_15_exp_id") document.getElementById("required_alert_15_exp_id").style = "display:inline;";
 
                 // add an "invalid" class to the field:
                 y[i].className += " invalid";
@@ -3440,7 +3485,7 @@
         // Get refreence to span and button
         var btn = document.getElementById(buttonName);
 
-        if(buttonName=="introNextBtn" && currentIntroTab == 7) {
+        if(buttonName=="introNextBtn" && currentIntroTab == 8) {
             btn = document.getElementById("start");
             buttonContent = "开始实验"
         }
@@ -3496,6 +3541,7 @@
         var numberEle = document.getElementById("failed_number");
         var expIdEle = document.getElementById("failed_exp_id");
 
+        //first blank: phone number
         if (numberEle.value == "") {
             document.getElementById("required_alert_failed_number").style = "display:inline;";
             document.getElementById("alert_number_isNum").style = "display:none;";
@@ -3509,6 +3555,7 @@
             document.getElementById("alert_number_isNum").style = "display:none;";
         }
 
+        //second blank: experiment id
         if (expIdEle.value == "") {
             document.getElementById("required_alert_failed_exp_id").style = "display:inline;";
             document.getElementById("alert_exp_id_isNum").style = "display:none;";
@@ -3523,14 +3570,15 @@
         }
 
         if (validate == false) {
-            return;
+            return false;
         } else {
-            document.getElementById("failedQuizTitle").innerHTML="提交成功!";
-            document.getElementById("failedQuizPara").innerHTML="<p>您的实验报酬将于几天之内发到您的账户。</p>";
-            document.getElementById("failedSurvey").style.display = "none";
+            // document.getElementById("failedQuizTitle").innerHTML="提交成功!";
+            // document.getElementById("failedQuizPara").innerHTML="<p>您的实验报酬将于几天之内发到您的账户。</p>";
+            // document.getElementById("failedSurvey").style.display = "none";
             
             failedSurveyDone = true;
-            saveData();
+            // saveData();
+            return true;
         }
     }
 
